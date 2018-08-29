@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<System Comment="" Name="SystemTests">
+  <Identification Description="Copyright (c) 2018 Johannes Kepler University&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
+  <Application Comment="Small test application for measuring the execution time of a few fbs for evaluating runtime performance" Name="Timing">
+    <SubAppNetwork>
+      <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2900.0" y="500.0">
+        <Parameter Name="FILE_NAME" Value="executiontime.csv"/>
+      </FB>
+      <FB Comment="" Name="E_SR" Type="E_SR" x="965.0" y="175.0"/>
+      <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="-300.0" y="1100.0"/>
+      <FB Comment="" Name="Iterations" Type="E_CTU" x="-900.0" y="1100.0">
+        <Parameter Name="PV" Value="1000"/>
+      </FB>
+      <SubApp Comment="" Name="FBNuTest" x="500.0" y="1100.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+          <SubAppEventOutputs>
+            <SubAppEvent Comment="" Name="Done" Type="Event"/>
+          </SubAppEventOutputs>
+          <InputVars>
+            <VarDeclaration Comment="" Name="iterations" Type="UINT"/>
+          </InputVars>
+          <OutputVars/>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="E_CTU" Type="E_CTU" x="900.0" y="300.0"/>
+          <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="1500.0" y="300.0"/>
+          <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3300.0" y="300.0"/>
+          <FB Comment="" Name="E_CTU_1" Type="E_CTU" x="2700.0" y="300.0">
+            <Parameter Name="PV" Value="65500"/>
+          </FB>
+          <DataConnections>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_CTU.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_CTU_1.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_CTU.PV" Source="iterations" dx1="0.0" dx2="0.0" dy="0.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="E_CTU.CU" Source="E_CTU_1.RO" dx1="0.0" dx2="0.0" dy="-315.0"/>
+            <Connection Comment="" Destination="E_CTU.R" Source="E_SWITCH_1.EO1" dx1="40.0" dx2="-305.0" dy="475.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.EI" Source="E_CTU.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_CTU_1.CU" Source="E_SWITCH_1.EO0" dx1="345.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="E_CTU_1.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_CTU_1.CU" Source="E_SWITCH.EO0" dx1="260.0" dx2="-405.0" dy="710.0"/>
+            <Connection Comment="" Destination="E_CTU_1.R" Source="E_SWITCH.EO1" dx1="-15.0" dx2="-305.0" dy="490.0"/>
+            <Connection Comment="" Destination="E_CTU.CU" Source="Start" dx1="375.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="Done" Source="E_CTU.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+        <Parameter Name="iterations" Value="100"/>
+      </SubApp>
+      <FB Comment="" Name="STEST_END" Type="STEST_END" x="4400.0" y="500.0"/>
+      <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3800.0" y="500.0"/>
+      <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1150.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="0.0" dx2="0.0" dy="0.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="4470.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="0.0" dx2="-215.0" dy="535.0"/>
+        <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0" dx1="945.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="0.0" dx2="-290.0" dy="930.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="0.0" dx2="0.0" dy="-945.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
+  <Device Comment="" Name="DuT" Type="FORTE_PC" x="2300.0" y="1300.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="123,174,195"/>
+    <Resource Comment="" Name="TimingTestRes" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="3800.0" y="500.0">
+          <Parameter Name="FILE_NAME" Value="executiontime.csv"/>
+        </FB>
+        <FB Comment="" Name="E_SR" Type="E_SR" x="965.0" y="175.0"/>
+        <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="-300.0" y="1100.0"/>
+        <FB Comment="" Name="Iterations" Type="E_CTU" x="-900.0" y="1100.0">
+          <Parameter Name="PV" Value="1000"/>
+        </FB>
+        <SubApp Comment="" Name="FBNuTest" x="900.0" y="1100.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+            <SubAppEventOutputs>
+              <SubAppEvent Comment="" Name="Done" Type="Event"/>
+            </SubAppEventOutputs>
+            <InputVars>
+              <VarDeclaration Comment="" Name="iterations" Type="ANY_MAGNITUDE"/>
+            </InputVars>
+            <OutputVars/>
+          </SubAppInterfaceList>
+          <Parameter Name="iterations" Value="100"/>
+        </SubApp>
+        <FB Comment="" Name="STEST_END" Type="STEST_END" x="5300.0" y="500.0"/>
+        <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="4700.0" y="500.0"/>
+        <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
+        <DataConnections>
+          <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="0.0" dx2="0.0" dy="0.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="0.0" dx2="-210.0" dy="610.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_SR.S" Source="START.COLD" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="0.0" dx2="0.0" dy="-1045.0"/>
+          <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="0.0" dx2="0.0" dy="0.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Mapping From="Timing.CSV_WRITER_1" To="DuT.TimingTestRes.CSV_WRITER_1"/>
+  <Mapping From="Timing.E_SR" To="DuT.TimingTestRes.E_SR"/>
+  <Mapping From="Timing.E_SWITCH_2" To="DuT.TimingTestRes.E_SWITCH_2"/>
+  <Mapping From="Timing.Iterations" To="DuT.TimingTestRes.Iterations"/>
+  <Mapping From="Timing.FBNuTest" To="DuT.TimingTestRes.FBNuTest"/>
+  <Mapping From="Timing.STEST_END" To="DuT.TimingTestRes.STEST_END"/>
+  <Mapping From="Timing.E_SWITCH" To="DuT.TimingTestRes.E_SWITCH"/>
+  <Mapping From="Timing.E_StopWatch" To="DuT.TimingTestRes.E_StopWatch"/>
+</System>
