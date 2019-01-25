@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
 <System Comment="" Name="SystemTests">
-  <Identification Description="Copyright (c) 2018 Johannes Kepler University&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
   <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
   <Application Comment="Small test application for measuring the execution time of a few fbs for evaluating runtime performance" Name="Timing">
     <SubAppNetwork>
@@ -22,9 +21,8 @@
             <SubAppEvent Comment="" Name="Done" Type="Event"/>
           </SubAppEventOutputs>
           <InputVars>
-            <VarDeclaration Comment="" Name="iterations" Type="UINT"/>
+            <VarDeclaration Comment="" InitialValue="100" Name="iterations" Type="UINT"/>
           </InputVars>
-          <OutputVars/>
         </SubAppInterfaceList>
         <SubAppNetwork>
           <FB Comment="" Name="E_CTU" Type="E_CTU" x="900.0" y="300.0"/>
@@ -34,20 +32,20 @@
             <Parameter Name="PV" Value="65500"/>
           </FB>
           <DataConnections>
-            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_CTU.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_CTU_1.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
-            <Connection Comment="" Destination="E_CTU.PV" Source="iterations" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_CTU.Q"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_CTU_1.Q"/>
+            <Connection Comment="" Destination="E_CTU.PV" Source="iterations"/>
           </DataConnections>
           <EventConnections>
-            <Connection Comment="" Destination="E_CTU.CU" Source="E_CTU_1.RO" dx1="0.0" dx2="0.0" dy="-315.0"/>
+            <Connection Comment="" Destination="E_CTU.CU" Source="E_CTU_1.RO"/>
             <Connection Comment="" Destination="E_CTU.R" Source="E_SWITCH_1.EO1" dx1="40.0" dx2="-305.0" dy="475.0"/>
-            <Connection Comment="" Destination="E_SWITCH_1.EI" Source="E_CTU.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
-            <Connection Comment="" Destination="E_CTU_1.CU" Source="E_SWITCH_1.EO0" dx1="345.0" dx2="0.0" dy="0.0"/>
-            <Connection Comment="" Destination="E_SWITCH.EI" Source="E_CTU_1.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.EI" Source="E_CTU.CUO"/>
+            <Connection Comment="" Destination="E_CTU_1.CU" Source="E_SWITCH_1.EO0" dx1="345.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="E_CTU_1.CUO"/>
             <Connection Comment="" Destination="E_CTU_1.CU" Source="E_SWITCH.EO0" dx1="260.0" dx2="-405.0" dy="710.0"/>
             <Connection Comment="" Destination="E_CTU_1.R" Source="E_SWITCH.EO1" dx1="-15.0" dx2="-305.0" dy="490.0"/>
-            <Connection Comment="" Destination="E_CTU.CU" Source="Start" dx1="375.0" dx2="0.0" dy="0.0"/>
-            <Connection Comment="" Destination="Done" Source="E_CTU.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
+            <Connection Comment="" Destination="E_CTU.CU" Source="Start" dx1="375.0"/>
+            <Connection Comment="" Destination="Done" Source="E_CTU.RO"/>
           </EventConnections>
         </SubAppNetwork>
         <Parameter Name="iterations" Value="100"/>
@@ -56,24 +54,91 @@
       <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3800.0" y="500.0"/>
       <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
       <DataConnections>
-        <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1150.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="0.0" dx2="0.0" dy="0.0"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1150.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="395.0"/>
       </DataConnections>
       <EventConnections>
-        <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="4470.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="0.0" dx2="-215.0" dy="535.0"/>
-        <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0" dx1="945.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="0.0" dx2="-290.0" dy="930.0"/>
-        <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
-        <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="0.0" dx2="0.0" dy="-945.0"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="1620.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO"/>
+        <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="60.0" dx2="60.0" dy="120.0"/>
+        <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="755.0"/>
+        <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0"/>
+        <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="60.0" dx2="60.0" dy="250.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0"/>
+        <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO"/>
+        <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="675.0"/>
+        <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="275.0"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="395.0"/>
+        <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="60.0" dx2="60.0" dy="250.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
+  <Application Comment="" Name="Soft_Pass_Example">
+    <SubAppNetwork>
+      <FB Comment="" Name="NOT_ZERO" Type="TEST_CONDITION" x="4425.0" y="715.0"/>
+      <FB Comment="" Name="STEST_END_0_1" Type="STEST_END" x="5585.0" y="695.0"/>
+      <FB Comment="" Name="F_MUX_2" Type="F_MUX_2" x="1315.0" y="560.0">
+        <Parameter Name="K" Value="UINT#2"/>
+      </FB>
+      <FB Comment="" Name="F_NOT" Type="F_NOT" x="3155.0" y="960.0"/>
+      <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="2210.0" y="665.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
+        <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="755.0"/>
+        <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="NOT_ZERO.REQ" Source="F_NOT.CNF" dx1="755.0"/>
+        <Connection Comment="" Destination="STEST_END_0_1.REQ" Source="NOT_ZERO.CNF" dx1="230.0"/>
+        <Connection Comment="" Destination="F_NOT.REQ" Source="BOOL2BOOL.CNF" dx1="285.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
+  <Application Comment="" Name="Fail_Example">
+    <SubAppNetwork>
+      <FB Comment="" Name="STEST_END_0" Type="STEST_END" x="7150.0" y="1955.0"/>
+      <FB Comment="" Name="BOOL2BOOL_1_1_1" Type="BOOL2BOOL" x="1665.0" y="1845.0">
+        <Parameter Name="IN" Value="false"/>
+      </FB>
+      <FB Comment="" Name="SHOULD_FAIL_1" Type="TEST_CONDITION" x="3505.0" y="410.0"/>
+      <FB Comment="" Name="BOOL2BOOL_1" Type="BOOL2BOOL" x="1695.0" y="390.0">
+        <Parameter Name="IN" Value="false"/>
+      </FB>
+      <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="3525.0" y="1120.0"/>
+      <FB Comment="" Name="BOOL2BOOL_1_1" Type="BOOL2BOOL" x="1715.0" y="1100.0">
+        <Parameter Name="IN" Value="true"/>
+      </FB>
+      <FB Comment="" Name="SHOULD_FAIL_2" Type="TEST_CONDITION" x="3475.0" y="1865.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="640.0"/>
+        <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
+        <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="640.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="SHOULD_FAIL_1.REQ" Source="BOOL2BOOL_1.CNF" dx1="640.0"/>
+        <Connection Comment="" Destination="STEST_END_0.REQ" Source="SHOULD_FAIL_2.CNF" dx1="1500.0"/>
+        <Connection Comment="" Destination="BOOL2BOOL_1_1.REQ" Source="SHOULD_FAIL_1.CNF" dx1="60.0" dx2="60.0" dy="345.0"/>
+        <Connection Comment="" Destination="BOOL2BOOL_1_1_1.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="60.0" dx2="60.0" dy="360.0"/>
+        <Connection Comment="" Destination="SHOULD_FAIL_2.REQ" Source="BOOL2BOOL_1_1_1.CNF" dx1="640.0"/>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL_1_1.CNF" dx1="640.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
+  <Application Comment="" Name="Hard_Pass_Example">
+    <SubAppNetwork>
+      <FB Comment="" Name="STEST_END" Type="STEST_END" x="7435.0" y="645.0"/>
+      <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="4665.0" y="565.0">
+        <Parameter Name="IN" Value="true"/>
+      </FB>
+      <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="6035.0" y="560.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL.CNF" dx1="420.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="350.0"/>
       </EventConnections>
     </SubAppNetwork>
   </Application>
@@ -100,9 +165,8 @@
               <SubAppEvent Comment="" Name="Done" Type="Event"/>
             </SubAppEventOutputs>
             <InputVars>
-              <VarDeclaration Comment="" Name="iterations" Type="ANY_MAGNITUDE"/>
+              <VarDeclaration Comment="" InitialValue="100" Name="iterations" Type="ANY_MAGNITUDE"/>
             </InputVars>
-            <OutputVars/>
           </SubAppInterfaceList>
           <Parameter Name="iterations" Value="100"/>
         </SubApp>
@@ -110,25 +174,100 @@
         <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="4700.0" y="500.0"/>
         <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
         <DataConnections>
-          <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="845.0"/>
         </DataConnections>
         <EventConnections>
-          <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="0.0" dx2="-210.0" dy="610.0"/>
-          <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_SR.S" Source="START.COLD" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="0.0" dx2="0.0" dy="-1045.0"/>
-          <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="0.0" dx2="0.0" dy="0.0"/>
-          <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="0.0" dx2="0.0" dy="0.0"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="1290.0"/>
+          <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="60.0" dx2="60.0" dy="120.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO"/>
+          <Connection Comment="" Destination="E_SR.R" Source="Iterations.RO" dx1="450.0"/>
+          <Connection Comment="" Destination="FBNuTest.Start" Source="E_SWITCH_2.EO0"/>
+          <Connection Comment="" Destination="E_SR.S" Source="START.COLD" dx1="200.0"/>
+          <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO"/>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0"/>
+          <Connection Comment="" Destination="Iterations.CU" Source="E_SWITCH.EO1" dx1="60.0" dx2="60.0" dy="250.0"/>
+          <Connection Comment="" Destination="E_StopWatch.START" Source="E_SWITCH_2.EO0" dx1="675.0"/>
+          <Connection Comment="" Destination="E_StopWatch.STOP" Source="FBNuTest.Done" dx1="75.0"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="845.0"/>
+          <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="60.0" dx2="60.0" dy="250.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="Hard_Pass_Example" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="STEST_END" Type="STEST_END" x="4575.0" y="630.0"/>
+        <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="3175.0" y="545.0"/>
+        <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="1805.0" y="550.0">
+          <Parameter Name="IN" Value="true"/>
+        </FB>
+        <DataConnections>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="350.0"/>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL.CNF" dx1="420.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.COLD" dx1="1185.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.WARM" dx1="1185.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="Soft_Pass_Example" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="NOT_ZERO" Type="TEST_CONDITION" x="4425.0" y="715.0"/>
+        <FB Comment="" Name="F_NOT" Type="F_NOT" x="3155.0" y="960.0"/>
+        <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="2210.0" y="665.0"/>
+        <FB Comment="" Name="STEST_END_0_1" Type="STEST_END" x="5585.0" y="695.0"/>
+        <FB Comment="" Name="F_MUX_2" Type="F_MUX_2" x="1315.0" y="560.0">
+          <Parameter Name="K" Value="UINT#2"/>
+        </FB>
+        <DataConnections>
+          <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="440.0"/>
+          <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="NOT_ZERO.REQ" Source="F_NOT.CNF" dx1="440.0"/>
+          <Connection Comment="" Destination="F_NOT.REQ" Source="BOOL2BOOL.CNF" dx1="280.0"/>
+          <Connection Comment="" Destination="STEST_END_0_1.REQ" Source="NOT_ZERO.CNF" dx1="230.0"/>
+          <Connection Comment="" Destination="F_MUX_2.REQ" Source="START.COLD" dx1="375.0"/>
+          <Connection Comment="" Destination="F_MUX_2.REQ" Source="START.WARM" dx1="375.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.COLD" dx1="1590.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.WARM" dx1="1475.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="Fail_Example" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="BOOL2BOOL_1_1_1" Type="BOOL2BOOL" x="1665.0" y="1845.0">
+          <Parameter Name="IN" Value="false"/>
+        </FB>
+        <FB Comment="" Name="BOOL2BOOL_1" Type="BOOL2BOOL" x="1695.0" y="390.0">
+          <Parameter Name="IN" Value="false"/>
+        </FB>
+        <FB Comment="" Name="BOOL2BOOL_1_1" Type="BOOL2BOOL" x="1715.0" y="1100.0">
+          <Parameter Name="IN" Value="true"/>
+        </FB>
+        <FB Comment="" Name="STEST_END_0" Type="STEST_END" x="7150.0" y="1955.0"/>
+        <FB Comment="" Name="SHOULD_FAIL_1" Type="TEST_CONDITION" x="3505.0" y="410.0"/>
+        <FB Comment="" Name="SHOULD_FAIL_2" Type="TEST_CONDITION" x="3475.0" y="1865.0"/>
+        <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="3525.0" y="1120.0"/>
+        <DataConnections>
+          <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
+          <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="575.0"/>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="610.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="SHOULD_FAIL_1.REQ" Source="BOOL2BOOL_1.CNF" dx1="640.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL_1_1.REQ" Source="SHOULD_FAIL_1.CNF" dx1="60.0" dx2="60.0" dy="345.0"/>
+          <Connection Comment="" Destination="SHOULD_FAIL_2.REQ" Source="BOOL2BOOL_1_1_1.CNF" dx1="575.0"/>
+          <Connection Comment="" Destination="STEST_END_0.REQ" Source="SHOULD_FAIL_2.CNF" dx1="1490.0"/>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL_1_1.CNF" dx1="610.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL_1_1_1.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="60.0" dx2="60.0" dy="360.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL_1.REQ" Source="START.COLD" dx1="565.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL_1.REQ" Source="START.WARM" dx1="565.0"/>
         </EventConnections>
       </FBNetwork>
     </Resource>
@@ -141,4 +280,19 @@
   <Mapping From="Timing.STEST_END" To="DuT.TimingTestRes.STEST_END"/>
   <Mapping From="Timing.E_SWITCH" To="DuT.TimingTestRes.E_SWITCH"/>
   <Mapping From="Timing.E_StopWatch" To="DuT.TimingTestRes.E_StopWatch"/>
+  <Mapping From="Soft_Pass_Example.NOT_ZERO" To="DuT.Soft_Pass_Example.NOT_ZERO"/>
+  <Mapping From="Soft_Pass_Example.F_NOT" To="DuT.Soft_Pass_Example.F_NOT"/>
+  <Mapping From="Soft_Pass_Example.BOOL2BOOL" To="DuT.Soft_Pass_Example.BOOL2BOOL"/>
+  <Mapping From="Soft_Pass_Example.STEST_END_0_1" To="DuT.Soft_Pass_Example.STEST_END_0_1"/>
+  <Mapping From="Soft_Pass_Example.F_MUX_2" To="DuT.Soft_Pass_Example.F_MUX_2"/>
+  <Mapping From="Fail_Example.BOOL2BOOL_1_1_1" To="DuT.Fail_Example.BOOL2BOOL_1_1_1"/>
+  <Mapping From="Fail_Example.BOOL2BOOL_1" To="DuT.Fail_Example.BOOL2BOOL_1"/>
+  <Mapping From="Fail_Example.BOOL2BOOL_1_1" To="DuT.Fail_Example.BOOL2BOOL_1_1"/>
+  <Mapping From="Fail_Example.STEST_END_0" To="DuT.Fail_Example.STEST_END_0"/>
+  <Mapping From="Fail_Example.SHOULD_FAIL_1" To="DuT.Fail_Example.SHOULD_FAIL_1"/>
+  <Mapping From="Fail_Example.SHOULD_FAIL_2" To="DuT.Fail_Example.SHOULD_FAIL_2"/>
+  <Mapping From="Fail_Example.SHOULD_NOT_FAIL" To="DuT.Fail_Example.SHOULD_NOT_FAIL"/>
+  <Mapping From="Hard_Pass_Example.STEST_END" To="DuT.Hard_Pass_Example.STEST_END"/>
+  <Mapping From="Hard_Pass_Example.SHOULD_NOT_FAIL" To="DuT.Hard_Pass_Example.SHOULD_NOT_FAIL"/>
+  <Mapping From="Hard_Pass_Example.BOOL2BOOL" To="DuT.Hard_Pass_Example.BOOL2BOOL"/>
 </System>
