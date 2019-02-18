@@ -1,52 +1,105 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Comment="Event driven up counter" Name="E_CTU">
-  <Identification Description="Copyright (c) 2017 fortiss GmbH&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-1 Annex 2"/>
-  <VersionInfo Author="Alois Zoitl" Date="2017-09-21" Organization="fortiss GmbH" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
+<FBType Comment="Event-Driven Up Counter" Name="E_CTU">
+  <Identification Classification="Event-driven blocks" Function="Up-counter" Standard="61499-1-A.18"/>
+  <VersionInfo Author="IH" Date="2012-12-20" Organization="TU Wien" Remarks="added service sequences for test case specification" Version="0.3"/>
+  <VersionInfo Author="JHC" Date="2006-09-07" Organization="Holobloc Inc" Remarks="Changed package to fb.rt.events." Version="0.2"/>
+  <VersionInfo Author="JHC" Date="2001-04-27" Organization="Rockwell Automation" Remarks="XML version" Version="0.1"/>
+  <VersionInfo Author="JHC" Date="1999-01-22" Organization="Rockwell Automation" Remarks="SRC version" Version="0.0"/>
+  <CompilerInfo header="package fb.rt.events;">
+    <Compiler Language="Java" Product="JDK" Vendor="Sun" Version="1.5.0"/>
+  </CompilerInfo>
   <InterfaceList>
     <EventInputs>
-      <Event Comment="Count up" Name="CU" Type="Event">
+      <Event Comment="Count Up" Name="CU" Type="Event">
         <With Var="PV"/>
       </Event>
       <Event Comment="Reset" Name="R" Type="Event"/>
     </EventInputs>
     <EventOutputs>
-      <Event Comment="Count up output" Name="CUO" Type="Event">
+      <Event Comment="Count Up Output Event" Name="CUO" Type="Event">
         <With Var="Q"/>
         <With Var="CV"/>
       </Event>
-      <Event Comment="Reset output" Name="RO" Type="Event">
+      <Event Comment="Reset Output Event" Name="RO" Type="Event">
         <With Var="Q"/>
         <With Var="CV"/>
       </Event>
     </EventOutputs>
     <InputVars>
-      <VarDeclaration Comment="Process Value" Name="PV" Type="UINT"/>
+      <VarDeclaration Comment="Preset Value" Name="PV" Type="UINT"/>
     </InputVars>
     <OutputVars>
-      <VarDeclaration Comment="True if CV &gt;= PV" Name="Q" Type="BOOL"/>
-      <VarDeclaration Comment="Counter Value" Name="CV" Type="UINT"/>
+      <VarDeclaration Comment="CV&gt;=PV" Name="Q" Type="BOOL"/>
+      <VarDeclaration Name="CV" Type="UINT"/>
     </OutputVars>
   </InterfaceList>
-  <BasicFB>
-    <ECC>
-      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
-      <ECState Comment="" Name="CU" x="1570.0" y="165.0">
-        <ECAction Algorithm="CU" Output="CUO"/>
-      </ECState>
-      <ECState Comment="" Name="R" x="900.0" y="1000.0">
-        <ECAction Algorithm="R" Output="RO"/>
-      </ECState>
-      <ECTransition Comment="" Condition="CU[CV &lt; 65535]" Destination="CU" Source="START" x="970.0" y="210.0"/>
-      <ECTransition Comment="" Condition="1" Destination="START" Source="CU" x="1285.0" y="510.0"/>
-      <ECTransition Comment="" Condition="R" Destination="R" Source="START" x="845.0" y="770.0"/>
-      <ECTransition Comment="" Condition="1" Destination="START" Source="R" x="545.0" y="1050.0"/>
-    </ECC>
-    <Algorithm Comment="reset counter" Name="R">
-      <ST Text="CV := 0;&#13;&#10;Q := FALSE;"/>
-    </Algorithm>
-    <Algorithm Comment="count up" Name="CU">
-      <ST Text="CV := CV + 1;&#13;&#10;Q  := (CV &gt;= PV);"/>
-    </Algorithm>
-  </BasicFB>
+  <Service Comment="Event-Driven Up Counter" LeftInterface="FB interface" RightInterface="Runtime Environment">
+    <ServiceSequence Name="Initial Count-up">
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=FALSE;CV:=1;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=FALSE;CV:=2;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=FALSE;CV:=3;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=FALSE;CV:=4;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=5;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=5;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=6;"/>
+      </ServiceTransaction>
+    </ServiceSequence>
+    <ServiceSequence Name="Count up and reset with PV=0">
+      <ServiceTransaction>
+        <InputPrimitive Event="R" Interface="FB interface" Parameters=""/>
+        <OutputPrimitive Event="RO" Interface="FB interface" Parameters="Q:=FALSE;CV:=0;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=0;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=1;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="R" Interface="FB interface" Parameters=""/>
+        <OutputPrimitive Event="RO" Interface="FB interface" Parameters="Q:=TRUE;CV:=0;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=1;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=1;"/>
+      </ServiceTransaction>
+    </ServiceSequence>
+    <ServiceSequence Name="Count up with changing PV-values">
+      <ServiceTransaction>
+        <InputPrimitive Event="R" Interface="FB interface" Parameters=""/>
+        <OutputPrimitive Event="RO" Interface="FB interface" Parameters="Q:=FALSE;CV:=0;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=1;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=1;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=3;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=FALSE;CV:=2;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="CU" Interface="FB interface" Parameters="PV:=3;"/>
+        <OutputPrimitive Event="CUO" Interface="FB interface" Parameters="Q:=TRUE;CV:=3;"/>
+      </ServiceTransaction>
+      <ServiceTransaction>
+        <InputPrimitive Event="R" Interface="FB interface" Parameters=""/>
+        <OutputPrimitive Event="RO" Interface="FB interface" Parameters="Q:=FALSE;CV:=0;"/>
+      </ServiceTransaction>
+    </ServiceSequence>
+  </Service>
 </FBType>

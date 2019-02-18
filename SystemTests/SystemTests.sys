@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
 <System Comment="" Name="SystemTests">
-  <Identification Description="Copyright (c) 2018 - 2019 Johannes Kepler University, fortiss GmbH&#13;&#10;&#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
   <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
   <Application Comment="Small test application for measuring the execution time of a few fbs for evaluating runtime performance" Name="Timing">
     <SubAppNetwork>
@@ -143,6 +142,51 @@
       </EventConnections>
     </SubAppNetwork>
   </Application>
+  <Application Comment="" Name="DeInitCommFB">
+    <SubAppNetwork>
+      <FB Comment="" Name="E_SR" Type="E_SR" x="1115.0" y="2840.0"/>
+      <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3955.0" y="4050.0"/>
+      <FB Comment="" Name="STEST_END" Type="STEST_END" x="5515.0" y="3505.0"/>
+      <FB Comment="" Name="PUBLISH_0" Type="SERVER_0" x="2860.0" y="3140.0"/>
+      <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="4105.0" y="2365.0"/>
+      <FB Comment="" Name="E_SR_1" Type="E_SR" x="1265.0" y="1155.0"/>
+      <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="4315.0" y="690.0"/>
+      <FB Comment="" Name="E_SR_2" Type="E_SR" x="1475.0" y="-520.0"/>
+      <FB Comment="" Name="E_SR_3" Type="E_SR" x="1555.0" y="-2555.0"/>
+      <FB Comment="" Name="E_SWITCH_3" Type="E_SWITCH" x="4395.0" y="-1345.0"/>
+      <FB Comment="" Name="PUBLISH_0_3" Type="PUBLISH_0" x="3300.0" y="-2255.0"/>
+      <FB Comment="" Name="PUBLISH_0_2" Type="SUBSCRIBE_0" x="3220.0" y="-220.0"/>
+      <FB Comment="" Name="PUBLISH_0_1" Type="CLIENT_0" x="3010.0" y="1455.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="370.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="E_SWITCH.EI" Source="PUBLISH_0.INITO" dx1="300.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_3.INIT" Source="E_SR_3.EO" dx1="745.0"/>
+        <Connection Comment="" Destination="E_SWITCH_3.EI" Source="PUBLISH_0_3.INITO" dx1="300.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_2.INIT" Source="E_SR_2.EO" dx1="745.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.EI" Source="PUBLISH_0_2.INITO" dx1="300.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_1.INIT" Source="E_SR_1.EO" dx1="745.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.EI" Source="PUBLISH_0_1.INITO" dx1="300.0"/>
+        <Connection Comment="" Destination="E_SR_3.R" Source="E_SWITCH_3.EO1" dx1="60.0" dx2="60.0" dy="-1760.0"/>
+        <Connection Comment="" Destination="E_SR_2.S" Source="E_SWITCH_3.EO0" dx1="270.0" dx2="60.0" dy="410.0"/>
+        <Connection Comment="" Destination="E_SR_2.R" Source="E_SWITCH_2.EO1" dx1="60.0" dx2="60.0" dy="-605.0"/>
+        <Connection Comment="" Destination="E_SR_1.S" Source="E_SWITCH_2.EO0" dx1="60.0" dx2="60.0" dy="235.0"/>
+        <Connection Comment="" Destination="E_SR_1.R" Source="E_SWITCH_1.EO1" dx1="60.0" dx2="60.0" dy="-605.0"/>
+        <Connection Comment="" Destination="E_SR.S" Source="E_SWITCH_1.EO0" dx1="60.0" dx2="60.0" dy="235.0"/>
+        <Connection Comment="" Destination="E_SR.R" Source="E_SWITCH.EO1" dx1="60.0" dx2="60.0" dy="-605.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="560.0"/>
+        <Connection Comment="" Destination="PUBLISH_0.INIT" Source="E_SR.EO" dx1="740.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
   <Device Comment="" Name="DuT" Type="FORTE_PC" x="2300.0" y="1300.0">
     <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
     <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
@@ -272,6 +316,53 @@
         </EventConnections>
       </FBNetwork>
     </Resource>
+    <Resource Comment="" Name="DeInitCommFB" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="E_SR" Type="E_SR" x="1120.0" y="465.0"/>
+        <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3960.0" y="1335.0"/>
+        <FB Comment="" Name="STEST_END" Type="STEST_END" x="5210.0" y="1415.0"/>
+        <FB Comment="" Name="PUBLISH_0" Type="SERVER_0" x="2865.0" y="765.0"/>
+        <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="4200.0" y="2605.0"/>
+        <FB Comment="" Name="E_SR_1" Type="E_SR" x="1120.0" y="1900.0"/>
+        <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="4345.0" y="290.0"/>
+        <FB Comment="" Name="E_SR_2" Type="E_SR" x="1505.0" y="-920.0"/>
+        <FB Comment="" Name="E_SR_3" Type="E_SR" x="1555.0" y="-2555.0"/>
+        <FB Comment="" Name="E_SWITCH_3" Type="E_SWITCH" x="4395.0" y="-1345.0"/>
+        <FB Comment="" Name="PUBLISH_0_3" Type="PUBLISH_0" x="3300.0" y="-2255.0"/>
+        <FB Comment="" Name="PUBLISH_0_2" Type="SUBSCRIBE_0" x="3250.0" y="-620.0"/>
+        <FB Comment="" Name="PUBLISH_0_1" Type="CLIENT_0" x="2955.0" y="2025.0"/>
+        <DataConnections>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="510.0"/>
+          <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="745.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="E_SWITCH.EI" Source="PUBLISH_0.INITO" dx1="330.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_3.INIT" Source="E_SR_3.EO" dx1="745.0"/>
+          <Connection Comment="" Destination="E_SWITCH_3.EI" Source="PUBLISH_0_3.INITO" dx1="315.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_2.INIT" Source="E_SR_2.EO" dx1="745.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.EI" Source="PUBLISH_0_2.INITO" dx1="275.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_1.INIT" Source="E_SR_1.EO" dx1="745.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.EI" Source="PUBLISH_0_1.INITO" dx1="320.0"/>
+          <Connection Comment="" Destination="E_SR_3.S" Source="START.COLD" dx1="500.0"/>
+          <Connection Comment="" Destination="E_SR_3.S" Source="START.WARM" dx1="500.0"/>
+          <Connection Comment="" Destination="E_SR_3.R" Source="E_SWITCH_3.EO1" dx1="60.0" dx2="60.0" dy="-605.0"/>
+          <Connection Comment="" Destination="E_SR_2.S" Source="E_SWITCH_3.EO0" dx1="60.0" dx2="60.0" dy="210.0"/>
+          <Connection Comment="" Destination="E_SR_2.R" Source="E_SWITCH_2.EO1" dx1="60.0" dx2="60.0" dy="-605.0"/>
+          <Connection Comment="" Destination="E_SR_1.S" Source="E_SWITCH_2.EO0" dx1="60.0" dx2="60.0" dy="805.0"/>
+          <Connection Comment="" Destination="E_SR_1.R" Source="E_SWITCH_1.EO1" dx1="60.0" dx2="60.0" dy="-350.0"/>
+          <Connection Comment="" Destination="E_SR.S" Source="E_SWITCH_1.EO0" dx1="60.0" dx2="60.0" dy="-1070.0"/>
+          <Connection Comment="" Destination="E_SR.R" Source="E_SWITCH.EO1" dx1="60.0" dx2="60.0" dy="-435.0"/>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="400.0"/>
+          <Connection Comment="" Destination="PUBLISH_0.INIT" Source="E_SR.EO" dx1="745.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
   </Device>
   <Mapping From="Timing.CSV_WRITER_1" To="DuT.TimingTestRes.CSV_WRITER_1"/>
   <Mapping From="Timing.E_SR" To="DuT.TimingTestRes.E_SR"/>
@@ -296,4 +387,17 @@
   <Mapping From="Hard_Pass_Example.STEST_END" To="DuT.Hard_Pass_Example.STEST_END"/>
   <Mapping From="Hard_Pass_Example.SHOULD_NOT_FAIL" To="DuT.Hard_Pass_Example.SHOULD_NOT_FAIL"/>
   <Mapping From="Hard_Pass_Example.BOOL2BOOL" To="DuT.Hard_Pass_Example.BOOL2BOOL"/>
+  <Mapping From="DeInitCommFB.E_SR" To="DuT.DeInitCommFB.E_SR"/>
+  <Mapping From="DeInitCommFB.E_SWITCH" To="DuT.DeInitCommFB.E_SWITCH"/>
+  <Mapping From="DeInitCommFB.STEST_END" To="DuT.DeInitCommFB.STEST_END"/>
+  <Mapping From="DeInitCommFB.PUBLISH_0" To="DuT.DeInitCommFB.PUBLISH_0"/>
+  <Mapping From="DeInitCommFB.E_SWITCH_1" To="DuT.DeInitCommFB.E_SWITCH_1"/>
+  <Mapping From="DeInitCommFB.E_SR_1" To="DuT.DeInitCommFB.E_SR_1"/>
+  <Mapping From="DeInitCommFB.E_SWITCH_2" To="DuT.DeInitCommFB.E_SWITCH_2"/>
+  <Mapping From="DeInitCommFB.E_SR_2" To="DuT.DeInitCommFB.E_SR_2"/>
+  <Mapping From="DeInitCommFB.E_SR_3" To="DuT.DeInitCommFB.E_SR_3"/>
+  <Mapping From="DeInitCommFB.E_SWITCH_3" To="DuT.DeInitCommFB.E_SWITCH_3"/>
+  <Mapping From="DeInitCommFB.PUBLISH_0_3" To="DuT.DeInitCommFB.PUBLISH_0_3"/>
+  <Mapping From="DeInitCommFB.PUBLISH_0_2" To="DuT.DeInitCommFB.PUBLISH_0_2"/>
+  <Mapping From="DeInitCommFB.PUBLISH_0_1" To="DuT.DeInitCommFB.PUBLISH_0_1"/>
 </System>

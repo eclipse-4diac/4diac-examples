@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd" >
-<FBType Name="E_SR" Comment="Event-driven bistable" >
+<FBType Name="E_RS" Comment="Event-driven bistable,Reset dominant" >
   <Identification Standard="61499-1-A.1" Classification="Event Processing" />
+  <VersionInfo Organization="Rockwell Automation" Version="0.3" Author="JHC" Date="2004-01-10" Remarks="Moved R to &#34;dominant&#34; position." />
   <VersionInfo Organization="Rockwell Automation" Version="0.2" Author="JHC" Date="2003-12-30" Remarks="Updated for 61499-1 CDV." />
   <VersionInfo Organization="Rockwell Automation" Version="0.1" Author="JHC" Date="2001-08-16" Remarks="XML version" />
   <VersionInfo Organization="Rockwell Automation" Version="0.0" Author="JHC" Date="1998-04-11" Remarks="SRC version" />
@@ -10,9 +11,9 @@
   </CompilerInfo>
   <InterfaceList>
     <EventInputs>
-      <Event Name="S" Comment="Set Event" >
-      </Event>
       <Event Name="R" Comment="Reset Event" >
+      </Event>
+      <Event Name="S" Comment="Set Event" >
       </Event>
     </EventInputs>
     <EventOutputs>
