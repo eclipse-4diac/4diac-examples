@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<virtualDNS:VirtualDNSManagement xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:virtualDNS="org.eclipse.fordiac.ide.virtualDNS"/>
+<virtualDNS:VirtualDNSManagement xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:virtualDNS="org.eclipse.fordiac.ide.virtualDNS" activeVirtualDNS="//@availableDNSCollections.0">
+  <availableDNSCollections name="NormalTests">
+    <virtualDNSEntries name="intCommID1" value="239.192.0.2:61499"/>
+    <virtualDNSEntries name="intCommID2" value="239.192.0.2:61500"/>
+    <virtualDNSEntries name="dintValueToTest" value="DINT#26"/>
+  </availableDNSCollections>
+</virtualDNS:VirtualDNSManagement>

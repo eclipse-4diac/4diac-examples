@@ -187,7 +187,47 @@
       </EventConnections>
     </SubAppNetwork>
   </Application>
-  <Device Comment="" Name="DuT" Type="FORTE_PC" x="2300.0" y="1300.0">
+  <Application Comment="" Name="simpleCommunicationTest">
+    <SubAppNetwork>
+      <FB Comment="" Name="WaitServer" Type="E_DELAY" x="150.0" y="-415.0">
+        <Parameter Name="DT" Value="T#2s"/>
+      </FB>
+      <FB Comment="" Name="ReturnetValueOK" Type="TEST_CONDITION" x="7240.0" y="-200.0"/>
+      <FB Comment="" Name="F_EQ_1" Type="F_EQ" x="3655.0" y="240.0">
+        <Parameter Name="IN2" Value="%dintValueToTest%"/>
+      </FB>
+      <FB Comment="" Name="F_EQ" Type="F_EQ" x="6515.0" y="-245.0">
+        <Parameter Name="IN2" Value="%dintValueToTest%"/>
+      </FB>
+      <FB Comment="" Name="DINT2DINT_2" Type="DINT2DINT" x="5450.0" y="-215.0"/>
+      <FB Comment="" Name="DINT2DINT_1" Type="DINT2DINT" x="2470.0" y="-185.0"/>
+      <FB Comment="" Name="STEST_END" Type="STEST_END" x="8350.0" y="-185.0"/>
+      <FB Comment="" Name="DINT2DINT" Type="DINT2DINT" x="1355.0" y="-150.0">
+        <Parameter Name="IN" Value="%dintValueToTest%"/>
+      </FB>
+      <FB Comment="" Name="ReceivedDINTOK" Type="TEST_CONDITION" x="4370.0" y="255.0"/>
+      <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="5865.0" y="730.0"/>
+      <DataConnections>
+        <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
+        <Connection Comment="" Destination="DINT2DINT_2.IN" Source="DINT2DINT_1.OUT" dx1="525.0"/>
+        <Connection Comment="" Destination="DINT2DINT_1.IN" Source="DINT2DINT.OUT" dx1="560.0"/>
+        <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="165.0"/>
+        <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="430.0"/>
+        <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="290.0"/>
+      </DataConnections>
+      <EventConnections>
+        <Connection Comment="" Destination="F_EQ_1.REQ" Source="DINT2DINT_1.CNF" dx1="525.0"/>
+        <Connection Comment="" Destination="DINT2DINT_1.REQ" Source="DINT2DINT.CNF" dx1="560.0"/>
+        <Connection Comment="" Destination="DINT2DINT_2.REQ" Source="ReceivedDINTOK.CNF" dx1="105.0"/>
+        <Connection Comment="" Destination="ReceivedDINTOK.REQ" Source="F_EQ_1.CNF" dx1="165.0"/>
+        <Connection Comment="" Destination="ReturnetValueOK.REQ" Source="F_EQ.CNF" dx1="265.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="ReturnetValueOK.CNF" dx1="205.0"/>
+        <Connection Comment="" Destination="F_EQ.REQ" Source="DINT2DINT_2.CNF" dx1="290.0"/>
+        <Connection Comment="" Destination="DINT2DINT.REQ" Source="WaitServer.EO" dx1="395.0"/>
+      </EventConnections>
+    </SubAppNetwork>
+  </Application>
+  <Device Comment="" Name="DuT" Type="FORTE_PC" x="710.0" y="2220.0">
     <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
     <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
     <Attribute Comment="color" Name="Color" Type="STRING" Value="123,174,195"/>
@@ -364,6 +404,92 @@
       </FBNetwork>
     </Resource>
   </Device>
+  <Device Comment="" Name="Client" Type="FORTE_PC" x="1870.0" y="550.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="185,131,214"/>
+    <Resource Comment="" Name="simpleClientTest" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="PUBLISH_1" Type="PUBLISH_1" x="2625.0" y="515.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%intCommID1%"/>
+        </FB>
+        <FB Comment="" Name="SUBSCRIBE_1" Type="SUBSCRIBE_1" x="4920.0" y="460.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%intCommID2%"/>
+        </FB>
+        <FB Comment="" Name="WaitServer" Type="E_DELAY" x="195.0" y="1205.0">
+          <Parameter Name="DT" Value="T#2s"/>
+        </FB>
+        <FB Comment="" Name="ReturnetValueOK" Type="TEST_CONDITION" x="8450.0" y="2530.0"/>
+        <FB Comment="" Name="F_EQ" Type="F_EQ" x="7675.0" y="2545.0">
+          <Parameter Name="IN2" Value="%dintValueToTest%"/>
+        </FB>
+        <FB Comment="" Name="STEST_END" Type="STEST_END" x="9715.0" y="2565.0"/>
+        <FB Comment="" Name="DINT2DINT" Type="DINT2DINT" x="1030.0" y="1815.0">
+          <Parameter Name="IN" Value="%dintValueToTest%"/>
+        </FB>
+        <FB Comment="" Name="DINT2DINT_2" Type="DINT2DINT" x="6215.0" y="1250.0"/>
+        <DataConnections>
+          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT.OUT" dx1="565.0"/>
+          <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="330.0"/>
+          <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="865.0"/>
+          <Connection Comment="" Destination="DINT2DINT_2.IN" Source="SUBSCRIBE_1.RD_1" dx1="375.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="PUBLISH_1.INIT" Source="START.COLD" dx1="1725.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.INIT" Source="START.WARM" dx1="1605.0"/>
+          <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="PUBLISH_1.INITO" dx1="385.0"/>
+          <Connection Comment="" Destination="WaitServer.START" Source="SUBSCRIBE_1.INITO" dx1="60.0" dx2="60.0" dy="-680.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.REQ" Source="DINT2DINT.CNF" dx1="315.0"/>
+          <Connection Comment="" Destination="ReturnetValueOK.REQ" Source="F_EQ.CNF" dx1="330.0"/>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="ReturnetValueOK.CNF" dx1="285.0"/>
+          <Connection Comment="" Destination="DINT2DINT.REQ" Source="WaitServer.EO" dx1="210.0"/>
+          <Connection Comment="" Destination="F_EQ.REQ" Source="DINT2DINT_2.CNF" dx1="865.0"/>
+          <Connection Comment="" Destination="DINT2DINT_2.REQ" Source="SUBSCRIBE_1.IND" dx1="375.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Device Comment="" Name="Server" Type="FORTE_PC" x="4670.0" y="475.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61500&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="124,239,165"/>
+    <Resource Comment="" Name="simpleServerTest" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="PUBLISH_1" Type="PUBLISH_1" x="6480.0" y="-585.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%intCommID2%"/>
+        </FB>
+        <FB Comment="" Name="SUBSCRIBE_1" Type="SUBSCRIBE_1" x="1375.0" y="-585.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%intCommID1%"/>
+        </FB>
+        <FB Comment="" Name="F_EQ_1" Type="F_EQ" x="3305.0" y="1470.0">
+          <Parameter Name="IN2" Value="%dintValueToTest%"/>
+        </FB>
+        <FB Comment="" Name="ReceivedDINTOK" Type="TEST_CONDITION" x="4285.0" y="1505.0"/>
+        <FB Comment="" Name="DINT2DINT_1" Type="DINT2DINT" x="2390.0" y="965.0"/>
+        <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="7900.0" y="315.0"/>
+        <DataConnections>
+          <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
+          <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="170.0"/>
+          <Connection Comment="" Destination="DINT2DINT_1.IN" Source="SUBSCRIBE_1.RD_1" dx1="230.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT_1.OUT" dx1="1800.0"/>
+        </DataConnections>
+        <EventConnections>
+          <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="START.COLD" dx1="410.0"/>
+          <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="START.WARM" dx1="410.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.INIT" Source="SUBSCRIBE_1.INITO"/>
+          <Connection Comment="" Destination="ReceivedDINTOK.REQ" Source="F_EQ_1.CNF" dx1="165.0"/>
+          <Connection Comment="" Destination="F_EQ_1.REQ" Source="DINT2DINT_1.CNF" dx1="240.0"/>
+          <Connection Comment="" Destination="DINT2DINT_1.REQ" Source="SUBSCRIBE_1.IND" dx1="320.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.REQ" Source="ReceivedDINTOK.CNF" dx1="750.0"/>
+          <Connection Comment="" Destination="STEST_END_1.REQ" Source="PUBLISH_1.CNF" dx1="450.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
   <Mapping From="Timing.CSV_WRITER_1" To="DuT.TimingTestRes.CSV_WRITER_1"/>
   <Mapping From="Timing.E_SR" To="DuT.TimingTestRes.E_SR"/>
   <Mapping From="Timing.E_SWITCH_2" To="DuT.TimingTestRes.E_SWITCH_2"/>
@@ -400,4 +526,14 @@
   <Mapping From="DeInitCommFB.PUBLISH_0_3" To="DuT.DeInitCommFB.PUBLISH_0_3"/>
   <Mapping From="DeInitCommFB.PUBLISH_0_2" To="DuT.DeInitCommFB.PUBLISH_0_2"/>
   <Mapping From="DeInitCommFB.PUBLISH_0_1" To="DuT.DeInitCommFB.PUBLISH_0_1"/>
+  <Mapping From="simpleCommunicationTest.WaitServer" To="Client.simpleClientTest.WaitServer"/>
+  <Mapping From="simpleCommunicationTest.ReturnetValueOK" To="Client.simpleClientTest.ReturnetValueOK"/>
+  <Mapping From="simpleCommunicationTest.F_EQ_1" To="Server.simpleServerTest.F_EQ_1"/>
+  <Mapping From="simpleCommunicationTest.F_EQ" To="Client.simpleClientTest.F_EQ"/>
+  <Mapping From="simpleCommunicationTest.STEST_END" To="Client.simpleClientTest.STEST_END"/>
+  <Mapping From="simpleCommunicationTest.DINT2DINT" To="Client.simpleClientTest.DINT2DINT"/>
+  <Mapping From="simpleCommunicationTest.ReceivedDINTOK" To="Server.simpleServerTest.ReceivedDINTOK"/>
+  <Mapping From="simpleCommunicationTest.DINT2DINT_1" To="Server.simpleServerTest.DINT2DINT_1"/>
+  <Mapping From="simpleCommunicationTest.DINT2DINT_2" To="Client.simpleClientTest.DINT2DINT_2"/>
+  <Mapping From="simpleCommunicationTest.STEST_END_1" To="Server.simpleServerTest.STEST_END_1"/>
 </System>
