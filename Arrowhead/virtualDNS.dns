@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<virtualDNS:VirtualDNSManagement xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:virtualDNS="org.eclipse.fordiac.ide.virtualDNS" activeVirtualDNS="//@availableDNSCollections.0">
+  <availableDNSCollections name="arrowheadTests">
+    <virtualDNSEntries name="wagoIp" value=""/>
+    <virtualDNSEntries name="revpiIp" value=""/>
+    <virtualDNSEntries name="embrickIp" value=""/>
+    <virtualDNSEntries name="serviceRegistryAddress" value="WSTRING#127.0.0.1:8442/serviceregistry"/>
+    <virtualDNSEntries name="wagoPort" value=""/>
+    <virtualDNSEntries name="rpiIP" value=""/>
+    <virtualDNSEntries name="localIP" value=""/>
+    <virtualDNSEntries name="serviceName" value=""/>
+    <virtualDNSEntries name="humidityDevice" value=""/>
+    <virtualDNSEntries name="testAddress" value="localhost"/>
+    <virtualDNSEntries name="emptyEndpoint" value="WSTRING#:0"/>
+    <virtualDNSEntries name="windowIP" value=""/>
+    <virtualDNSEntries name="serviceDefinition" value="WSTRING#serviceTest"/>
+    <virtualDNSEntries name="systemName" value="WSTRING#systemTestName"/>
+    <virtualDNSEntries name="addressSeparator" value=":"/>
+    <virtualDNSEntries name="testPort" value="61499"/>
+    <virtualDNSEntries name="systemPort" value="8090"/>
+    <virtualDNSEntries name="serviceURI" value="/serviceTest/start"/>
+    <virtualDNSEntries name="serviceVersion" value="1"/>
+    <virtualDNSEntries name="serviceMetadata" value="[&quot;key1=value1&quot;, &quot;key2=value2&quot;]"/>
+    <virtualDNSEntries name="validEndpoint" value="WSTRING#localhost:8090/serviceTest/start"/>
+    <virtualDNSEntries name="metadata" value="&quot;key1=value1, key2=value2&quot;"/>
+    <virtualDNSEntries name="firstResourceReady" value="WSTRIGN#RegisterUnregisterTestReady"/>
+    <virtualDNSEntries name="serviceDefinition2" value="WSTRING#serviceTest2"/>
+    <virtualDNSEntries name="serviceURI2" value="/serviceTest/start2"/>
+    <virtualDNSEntries name="validEndpoint2" value="WSTRING#localhost:8090/serviceTest/start2"/>
+    <virtualDNSEntries name="secondResourceReady" value="WSTRIGN#DoubleRegisterReady"/>
+    <virtualDNSEntries name="cleanFinished" value="WSTRIGN#allCleaned"/>
+    <virtualDNSEntries name="testMoreServicesReady" value="WSTRIGN#testMoreServicesReady"/>
+    <virtualDNSEntries name="systemName2" value="WSTRING#systemTestName2"/>
+    <virtualDNSEntries name="sameServiceTwiceReady" value="WSTRIGN#sameServiceTwiceReady"/>
+    <virtualDNSEntries name="allEnded" value="WSTRIGN#allEnded"/>
+    <virtualDNSEntries name="versionEnded" value="WSTRIGN#versionEnded"/>
+    <virtualDNSEntries name="orchestratorAddress" value="WSTRING#127.0.0.1:8440/orchestrator"/>
+    <virtualDNSEntries name="test6Ended" value="test6Ended"/>
+    <virtualDNSEntries name="test7Ended" value="WSTRING#test7Ended"/>
+    <virtualDNSEntries name="authRuleEndpoint" value="127.0.0.1:8444/authorization/mgmt/intracloud"/>
+    <virtualDNSEntries name="authRuleData" value="{&quot;consumer&quot;: {&quot;systemName&quot; : &quot;systemTestName&quot;,&quot;address&quot; : &quot;localhost&quot;,&quot;port&quot; : 8090},&quot;providerList&quot;: [{&quot;systemName&quot; : &quot;systemTestName&quot;,&quot;address&quot; : &quot;localhost&quot;,&quot;port&quot; : 8090}],&quot;serviceList&quot;: [{&quot;serviceDefinition&quot; : &quot;serviceTest&quot;}]}"/>
+    <virtualDNSEntries name="orchStoreEndpoint" value="127.0.0.1:8440/orchestrator/mgmt/store"/>
+    <virtualDNSEntries name="orchRuleData" value="[{&quot;service&quot; : {&quot;serviceDefinition&quot; : &quot;serviceTest&quot;,&quot;interfaces&quot; : [ &quot;XML&quot;, &quot;JSON&quot;],&quot;serviceMetadata&quot; : { &quot;key1&quot; : &quot;value1&quot;, &quot;key2&quot; : &quot;value2&quot;}},&quot;consumer&quot; : {&quot;systemName&quot; : &quot;systemTestName&quot;,&quot;address&quot; :&quot;localhost&quot;,&quot;port&quot; : 8090, &quot;authenticationInfo&quot; : &quot;&quot;},&quot;providerSystem&quot; : {&quot;systemName&quot; : &quot;systemTestName&quot;,&quot;address&quot; : &quot;localhost&quot;,&quot;port&quot; : 8090,&quot;authenticationInfo&quot; : &quot;&quot;},&quot;priority&quot; : 1,&quot;defaultEntry&quot; : true,&quot;name&quot; : &quot;&quot;,&quot;lastUpdated&quot; : &quot;&quot;,&quot;instruction&quot; : &quot;&quot;,&quot;attributes&quot; : { },&quot;serviceURI&quot; : &quot;serviceTest/start&quot;} ]"/>
+    <virtualDNSEntries name="test8Ended" value="test8Ended"/>
+    <virtualDNSEntries name="serviceRegistryOpcUaAddress" value="opc.tcp://127.0.0.1:12686/arrowhead"/>
+    <virtualDNSEntries name="allLoaded" value="WSTRING#allLoaded"/>
+  </availableDNSCollections>
+</virtualDNS:VirtualDNSManagement>

@@ -536,4 +536,9 @@
   <Mapping From="simpleCommunicationTest.DINT2DINT_1" To="Server.simpleServerTest.DINT2DINT_1"/>
   <Mapping From="simpleCommunicationTest.DINT2DINT_2" To="Client.simpleClientTest.DINT2DINT_2"/>
   <Mapping From="simpleCommunicationTest.STEST_END_1" To="Server.simpleServerTest.STEST_END_1"/>
+  <Segment Comment="" Name="Ethernet" Type="Ethernet" dx1="1500.0" x="3465.0" y="165.0">
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="161,223,137"/>
+  </Segment>
+  <Link CommResource="Client" Comment="" SegmentName="Ethernet"/>
+  <Link CommResource="Server" Comment="" SegmentName="Ethernet"/>
 </System>
