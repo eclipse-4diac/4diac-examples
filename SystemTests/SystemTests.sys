@@ -227,6 +227,331 @@
       </EventConnections>
     </SubAppNetwork>
   </Application>
+  <Application Comment="" Name="CSVWriterTests">
+    <SubAppNetwork>
+      <SubApp Comment="" Name="NormalExecution" x="440.0" y="140.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="writeNormal" Type="TEST_CONDITION" x="5080.0" y="390.0"/>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2260.0" y="330.0">
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="5065.0" y="1245.0"/>
+          <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="165.0" y="870.0">
+            <Parameter Name="IN" Value="%csvFirstValue%"/>
+          </FB>
+          <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
+          <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3640.0" y="1460.0"/>
+          <FB Comment="" Name="E_SR" Type="E_SR" x="1130.0" y="340.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="writeNormal.REQ" Source="CSV_WRITER_1.CNF" dx1="1775.0"/>
+            <Connection Comment="" Destination="E_SR.R" Source="writeNormal.CNF" dx1="60.0" dx2="60.0" dy="-545.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="InitTest.CNF" dx1="380.0" dx2="295.0" dy="-1435.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="220.0"/>
+            <Connection Comment="" Destination="InitTest.REQ" Source="E_SWITCH.EO1" dx1="170.0"/>
+            <Connection Comment="" Destination="E_SR.S" Source="STRING2STRING.CNF" dx1="160.0"/>
+            <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="DeInitTest.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="E_SWITCH.EO0" dx1="255.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="60.0" dx2="60.0" dy="490.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="DontClose" x="510.0" y="590.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_2" Type="CSV_WRITER_1" x="975.0" y="1890.0">
+            <Parameter Name="QI" Value="1"/>
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="endNormal_1_1" Type="STEST_END" x="3200.0" y="1985.0"/>
+          <EventConnections>
+            <Connection Comment="" Destination="endNormal_1_1.REQ" Source="CSV_WRITER_2.INITO" dx1="1065.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_2.INIT" Source="Start" dx1="385.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="DoubleInit" x="530.0" y="1040.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="F_NOT_1" Type="F_NOT" x="5595.0" y="7255.0"/>
+          <FB Comment="" Name="E_SR_1" Type="E_SR" x="495.0" y="5440.0"/>
+          <FB Comment="" Name="DoubleInit1" Type="TEST_CONDITION" x="5645.0" y="5540.0"/>
+          <FB Comment="" Name="CSV_WRITER_1_1" Type="CSV_WRITER_1" x="2880.0" y="5420.0">
+            <Parameter Name="QI" Value="1"/>
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="4290.0" y="6155.0"/>
+          <FB Comment="" Name="endNormal_1" Type="STEST_END" x="7090.0" y="7260.0"/>
+          <FB Comment="" Name="DoubleInit2" Type="TEST_CONDITION" x="6195.0" y="7235.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="F_NOT_1.IN" Source="CSV_WRITER_1_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DoubleInit2.check" Source="F_NOT_1.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="DoubleInit1.check" Source="CSV_WRITER_1_1.QO" dx1="1740.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="F_NOT_1.REQ" Source="E_SWITCH_1.EO0" dx1="610.0"/>
+            <Connection Comment="" Destination="DoubleInit2.REQ" Source="F_NOT_1.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SR_1.R" Source="DoubleInit1.CNF" dx1="380.0" dx2="295.0" dy="-615.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1_1.INIT" Source="E_SR_1.EO" dx1="440.0"/>
+            <Connection Comment="" Destination="DoubleInit1.REQ" Source="E_SWITCH_1.EO1" dx1="840.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.EI" Source="CSV_WRITER_1_1.INITO" dx1="345.0"/>
+            <Connection Comment="" Destination="endNormal_1.REQ" Source="DoubleInit2.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="E_SR_1.S" Source="Start" dx1="150.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="InitDeinitNoWrite" x="420.0" y="1560.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2260.0" y="330.0">
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="5065.0" y="1245.0"/>
+          <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="165.0" y="870.0">
+            <Parameter Name="IN" Value="%csvFirstValue%"/>
+          </FB>
+          <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
+          <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3640.0" y="1460.0"/>
+          <FB Comment="" Name="E_SR" Type="E_SR" x="1130.0" y="340.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="440.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="220.0"/>
+            <Connection Comment="" Destination="InitTest.REQ" Source="E_SWITCH.EO1" dx1="170.0"/>
+            <Connection Comment="" Destination="E_SR.S" Source="STRING2STRING.CNF" dx1="160.0"/>
+            <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="DeInitTest.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="E_SWITCH.EO0" dx1="255.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="60.0" dx2="60.0" dy="490.0"/>
+            <Connection Comment="" Destination="E_SR.R" Source="InitTest.CNF" dx1="60.0" dx2="60.0" dy="-1375.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="closeNotOpenedFile" x="420.0" y="2085.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2260.0" y="330.0">
+            <Parameter Name="QI" Value="0"/>
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5610.0" y="365.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="7670.0" y="2140.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4770.0" y="430.0"/>
+          <FB Comment="" Name="STEST_END" Type="STEST_END" x="6655.0" y="470.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.INITO" dx1="995.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="Start" dx1="1030.0"/>
+            <Connection Comment="" Destination="STEST_END.REQ" Source="DeInitTest.CNF" dx1="175.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="writeWithoutInit" x="455.0" y="2570.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2420.0" y="220.0">
+            <Parameter Name="QI" Value="1"/>
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="595.0" y="370.0">
+            <Parameter Name="IN" Value="%csvFirstValue%"/>
+          </FB>
+          <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5595.0" y="330.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6490.0" y="355.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4995.0" y="350.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="105.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="105.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="DeInitTest.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="195.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="STRING2STRING.CNF" dx1="465.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.CNF" dx1="1775.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="writeQIFalse" x="370.0" y="3140.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2650.0" y="335.0">
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="4980.0" y="185.0"/>
+          <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="165.0" y="870.0">
+            <Parameter Name="IN" Value="%csvFirstValue%"/>
+          </FB>
+          <FB Comment="" Name="writeQIFalse" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
+          <FB Comment="" Name="E_SR" Type="E_SR" x="1000.0" y="285.0"/>
+          <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="1565.0" y="205.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1550.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1545.0"/>
+            <Connection Comment="" Destination="writeQIFalse.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="150.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="E_SR.S" Source="STRING2STRING.CNF" dx1="135.0"/>
+            <Connection Comment="" Destination="writeQIFalse.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="writeQIFalse.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="60.0" dx2="60.0" dy="490.0"/>
+            <Connection Comment="" Destination="InitTest.REQ" Source="CSV_WRITER_1.INITO" dx1="1000.0"/>
+            <Connection Comment="" Destination="E_SR.R" Source="InitTest.CNF" dx1="380.0" dx2="295.0" dy="-1435.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SWITCH.EO1" dx1="320.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_SWITCH.EO0" dx1="210.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="E_SR.EO" dx1="150.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.CNF" dx1="800.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="NormalExecutionMultiple" x="455.0" y="3765.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="writeNormal" Type="TEST_CONDITION" x="5080.0" y="390.0"/>
+          <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="5065.0" y="1245.0"/>
+          <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="165.0" y="870.0">
+            <Parameter Name="IN" Value="%csvFirstValue%"/>
+          </FB>
+          <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
+          <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3640.0" y="1460.0"/>
+          <FB Comment="" Name="E_SR" Type="E_SR" x="1130.0" y="340.0"/>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_3" x="2260.0" y="330.0">
+            <Parameter Name="FILE_NAME" Value="%csvFileName%"/>
+          </FB>
+          <FB Comment="" Name="E_SR_1" Type="E_SR" x="7105.0" y="-45.0"/>
+          <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="6240.0" y="545.0"/>
+          <FB Comment="" Name="E_SR_2" Type="E_SR" x="-335.0" y="1620.0"/>
+          <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="-1030.0" y="1595.0"/>
+          <FB Comment="" Name="E_CTU" Type="E_CTU" x="380.0" y="2400.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="60.0" dx2="60.0" dy="845.0"/>
+            <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="60.0" dx2="60.0" dy="130.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_3" Source="E_CTU.CV" dx1="1465.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_2" Source="E_SR_2.Q" dx1="1505.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="InitTest.REQ" Source="E_SWITCH.EO1" dx1="170.0"/>
+            <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="DeInitTest.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="E_SWITCH.EO0" dx1="255.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="440.0"/>
+            <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="220.0"/>
+            <Connection Comment="" Destination="writeNormal.REQ" Source="CSV_WRITER_1.CNF" dx1="1775.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.EI" Source="writeNormal.CNF" dx1="230.0"/>
+            <Connection Comment="" Destination="E_SR_1.S" Source="E_SWITCH_1.EO0" dx1="210.0"/>
+            <Connection Comment="" Destination="E_SR.R" Source="E_SWITCH_1.EO1" dx1="135.0" dx2="60.0" dy="-545.0"/>
+            <Connection Comment="" Destination="E_SR.S" Source="Start" dx1="85.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="InitTest.CNF" dx1="380.0" dx2="295.0" dy="-1435.0"/>
+            <Connection Comment="" Destination="STRING2STRING.REQ" Source="E_SWITCH_1.EO0" dx1="60.0" dx2="460.0" dy="-935.0"/>
+            <Connection Comment="" Destination="E_SWITCH_2.EI" Source="STRING2STRING.CNF" dx1="60.0" dx2="60.0" dy="195.0"/>
+            <Connection Comment="" Destination="E_SR_2.S" Source="E_SWITCH_2.EO0" dx1="125.0"/>
+            <Connection Comment="" Destination="E_SR_2.R" Source="E_SWITCH_2.EO1" dx1="125.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_CTU.CUO" dx1="760.0"/>
+            <Connection Comment="" Destination="E_CTU.CU" Source="E_SR_2.EO" dx1="230.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+      <SubApp Comment="" Name="noNameFile" x="505.0" y="4220.0">
+        <SubAppInterfaceList>
+          <SubAppEventInputs>
+            <SubAppEvent Comment="" Name="Start" Type="Event"/>
+          </SubAppEventInputs>
+        </SubAppInterfaceList>
+        <SubAppNetwork>
+          <FB Comment="" Name="CSV_WRITER_1" Type="CSV_WRITER_1" x="2260.0" y="330.0">
+            <Parameter Name="QI" Value="1"/>
+          </FB>
+          <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
+          <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
+          <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
+          <DataConnections>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+          </DataConnections>
+          <EventConnections>
+            <Connection Comment="" Destination="InitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
+            <Connection Comment="" Destination="endNormal.REQ" Source="InitTest.CNF" dx1="125.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="Start" dx1="1030.0"/>
+            <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.INITO" dx1="1870.0"/>
+          </EventConnections>
+        </SubAppNetwork>
+      </SubApp>
+    </SubAppNetwork>
+  </Application>
   <Device Comment="" Name="DuT" Type="FORTE_PC" x="710.0" y="2220.0">
     <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
     <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
@@ -490,6 +815,146 @@
       </FBNetwork>
     </Resource>
   </Device>
+  <Device Comment="" Name="CSVWriterTestDevice" Type="FORTE_PC" x="3915.0" y="2320.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="96,212,183"/>
+    <Resource Comment="" Name="normalExecution" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="NormalExecution" x="495.0" y="855.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="NormalExecution.Start" Source="START.COLD" dx1="390.0"/>
+          <Connection Comment="" Destination="NormalExecution.Start" Source="START.WARM" dx1="390.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="openAndNoClose" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="DontClose" x="1055.0" y="1725.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="DontClose.Start" Source="START.COLD" dx1="60.0" dx2="60.0" dy="-1155.0"/>
+          <Connection Comment="" Destination="DontClose.Start" Source="START.WARM" dx1="60.0" dx2="60.0" dy="-1205.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="doubleInit" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="DoubleInit" x="1570.0" y="2855.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="DoubleInit.Start" Source="START.COLD" dx1="725.0"/>
+          <Connection Comment="" Destination="DoubleInit.Start" Source="START.WARM" dx1="725.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="initDeinitNoWrite" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="InitDeinitNoWrite" x="925.0" y="235.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="InitDeinitNoWrite.Start" Source="START.COLD" dx1="180.0"/>
+          <Connection Comment="" Destination="InitDeinitNoWrite.Start" Source="START.WARM" dx1="180.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="closeNotOpened" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="closeNotOpenedFile" x="420.0" y="2085.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="closeNotOpenedFile.Start" Source="START.COLD" dx1="60.0" dx2="60.0" dy="1040.0"/>
+          <Connection Comment="" Destination="closeNotOpenedFile.Start" Source="START.WARM" dx1="60.0" dx2="60.0" dy="990.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="writeWithoutInit" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="writeWithoutInit" x="915.0" y="210.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="writeWithoutInit.Start" Source="START.WARM" dx1="175.0"/>
+          <Connection Comment="" Destination="writeWithoutInit.Start" Source="START.COLD" dx1="175.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="writeQIFalse" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="writeQIFalse" x="1135.0" y="-10.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="writeQIFalse.Start" Source="START.COLD" dx1="285.0"/>
+          <Connection Comment="" Destination="writeQIFalse.Start" Source="START.WARM" dx1="285.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="normalExecutionMultiple" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="NormalExecutionMultiple" x="920.0" y="265.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="NormalExecutionMultiple.Start" Source="START.COLD" dx1="180.0"/>
+          <Connection Comment="" Destination="NormalExecutionMultiple.Start" Source="START.WARM" dx1="180.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+    <Resource Comment="" Name="noNameFile" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <SubApp Comment="" Name="noNameFile" x="995.0" y="565.0">
+          <SubAppInterfaceList>
+            <SubAppEventInputs>
+              <SubAppEvent Comment="" Name="Start" Type="Event"/>
+            </SubAppEventInputs>
+          </SubAppInterfaceList>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="noNameFile.Start" Source="START.COLD" dx1="215.0"/>
+          <Connection Comment="" Destination="noNameFile.Start" Source="START.WARM" dx1="215.0"/>
+        </EventConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
   <Mapping From="Timing.CSV_WRITER_1" To="DuT.TimingTestRes.CSV_WRITER_1"/>
   <Mapping From="Timing.E_SR" To="DuT.TimingTestRes.E_SR"/>
   <Mapping From="Timing.E_SWITCH_2" To="DuT.TimingTestRes.E_SWITCH_2"/>
@@ -536,6 +1001,15 @@
   <Mapping From="simpleCommunicationTest.DINT2DINT_1" To="Server.simpleServerTest.DINT2DINT_1"/>
   <Mapping From="simpleCommunicationTest.DINT2DINT_2" To="Client.simpleClientTest.DINT2DINT_2"/>
   <Mapping From="simpleCommunicationTest.STEST_END_1" To="Server.simpleServerTest.STEST_END_1"/>
+  <Mapping From="CSVWriterTests.NormalExecution" To="CSVWriterTestDevice.normalExecution.NormalExecution"/>
+  <Mapping From="CSVWriterTests.DontClose" To="CSVWriterTestDevice.openAndNoClose.DontClose"/>
+  <Mapping From="CSVWriterTests.DoubleInit" To="CSVWriterTestDevice.doubleInit.DoubleInit"/>
+  <Mapping From="CSVWriterTests.InitDeinitNoWrite" To="CSVWriterTestDevice.initDeinitNoWrite.InitDeinitNoWrite"/>
+  <Mapping From="CSVWriterTests.closeNotOpenedFile" To="CSVWriterTestDevice.closeNotOpened.closeNotOpenedFile"/>
+  <Mapping From="CSVWriterTests.writeWithoutInit" To="CSVWriterTestDevice.writeWithoutInit.writeWithoutInit"/>
+  <Mapping From="CSVWriterTests.writeQIFalse" To="CSVWriterTestDevice.writeQIFalse.writeQIFalse"/>
+  <Mapping From="CSVWriterTests.NormalExecutionMultiple" To="CSVWriterTestDevice.normalExecutionMultiple.NormalExecutionMultiple"/>
+  <Mapping From="CSVWriterTests.noNameFile" To="CSVWriterTestDevice.noNameFile.noNameFile"/>
   <Segment Comment="" Name="Ethernet" Type="Ethernet" dx1="1500.0" x="3465.0" y="165.0">
     <Attribute Comment="color" Name="Color" Type="STRING" Value="161,223,137"/>
   </Segment>

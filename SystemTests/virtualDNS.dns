@@ -4,5 +4,9 @@
     <virtualDNSEntries name="intCommID1" value="239.192.0.2:61499"/>
     <virtualDNSEntries name="intCommID2" value="239.192.0.2:61500"/>
     <virtualDNSEntries name="dintValueToTest" value="DINT#26"/>
+    <virtualDNSEntries name="csvFileName" value="csvWriteTest.csv"/>
+    <virtualDNSEntries name="csvFirstValue" value="STRING#csvFirstValue"/>
+    <virtualDNSEntries name="csvSecondValue" value="1"/>
+    <virtualDNSEntries name="csvThirdValue" value="-4321"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
