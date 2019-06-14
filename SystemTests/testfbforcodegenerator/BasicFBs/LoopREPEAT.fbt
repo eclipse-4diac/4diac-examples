@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="LoopREPEAT">
+  <Identification Description="Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="EI" Type="Event">
+        <With Var="Iterations"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="O"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="Iterations" Type="INT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="O" Type="INT"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <InternalVars>
+      <VarDeclaration Comment="Internal Variable" InitialValue="0" Name="i" Type="INT"/>
+    </InternalVars>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="2860.0" y="650.0">
+        <ECAction Algorithm="REPEAT" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="EI" Destination="State" Source="START" x="2010.0" y="435.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1840.0" y="770.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="REPEAT">
+      <ST Text="REPEAT&#13;&#10;&#9;O := O+i;&#13;&#10;&#9;i:= i+1;&#13;&#10;UNTIL i &lt; Iterations&#13;&#10;END_REPEAT;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

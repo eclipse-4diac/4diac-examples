@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Lua Test FB for IF statement" Name="ConditionIF_ELSE">
+  <Identification Description="IF  is TRUE when a &gt; b &#13;&#10;IF_ELSE is TRUE when b &gt; c&#13;&#10;ELSE is TRUE when non of the above trigger&#13;&#10;&#13;&#10;Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="IF_ONLY" Type="Event"/>
+      <Event Comment="" Name="IF_ELSE" Type="Event"/>
+      <Event Comment="" Name="IF_ELSEIF" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="B_IF"/>
+        <With Var="B_IF_ELSE"/>
+        <With Var="B_IF_ELSEIF"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="a" Type="INT"/>
+      <VarDeclaration Comment="" Name="b" Type="INT"/>
+      <VarDeclaration Comment="" Name="c" Type="INT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="B_IF" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="B_IF_ELSE" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="B_IF_ELSEIF" Type="BOOL"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="IF" x="2765.0" y="395.0">
+        <ECAction Algorithm="SetToFalse"/>
+        <ECAction Algorithm="Only_IF" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="IF_ELSE" x="2390.0" y="1040.0">
+        <ECAction Algorithm="SetToFalse"/>
+        <ECAction Algorithm="IF_ELSE" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="IF_ELSEIF" x="1015.0" y="1515.0">
+        <ECAction Algorithm="SetToFalse"/>
+        <ECAction Algorithm="IF_ELSEIF_ELSE" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="IF_ONLY" Destination="IF" Source="START" x="1845.0" y="485.0"/>
+      <ECTransition Comment="" Condition="IF_ELSE" Destination="IF_ELSE" Source="START" x="1550.0" y="815.0"/>
+      <ECTransition Comment="" Condition="IF_ELSEIF" Destination="IF_ELSEIF" Source="START" x="875.0" y="1040.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="IF" x="1745.0" y="670.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="IF_ELSE" x="1590.0" y="1295.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="IF_ELSEIF" x="420.0" y="1390.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="Only_IF">
+      <ST Text="if a &gt; b then&#13;&#10;&#9;B_IF := true;&#13;&#10;end_if;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="IF_ELSE">
+      <ST Text="if a &gt; b then&#13;&#10;&#9;B_IF := true;&#13;&#10;elsif b &gt; c then&#13;&#10;&#9;B_IF_ELSEIF := true;&#13;&#10;end_if;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="IF_ELSEIF_ELSE">
+      <ST Text="if a &gt; b then&#13;&#10;&#9;B_IF := true;&#13;&#10;elsif b &gt; c then&#13;&#10;&#9;B_IF_ELSEIF := true;&#13;&#10;else&#13;&#10;&#9;B_IF_ELSE :=true;&#13;&#10;end_if;&#13;&#10;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="SetToFalse">
+      <ST Text="B_IF := false;&#13;&#10;B_IF_ELSEIF := false;&#13;&#10;B_IF_ELSE :=false;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

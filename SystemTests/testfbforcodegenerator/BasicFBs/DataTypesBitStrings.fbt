@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="DataTypesBitStrings">
+  <Identification Description="Normal just propagates the input to the output&#13;&#10;Internal: sets the output from inside&#13;&#10;&#13;&#10;Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="Normal" Type="Event">
+        <With Var="BOOL_I"/>
+        <With Var="WORD_I"/>
+        <With Var="DWORD_I"/>
+        <With Var="LWORD_I"/>
+        <With Var="BYTE_I"/>
+      </Event>
+      <Event Comment="" Name="Internal" Type="Event">
+        <With Var="BOOL_I"/>
+        <With Var="WORD_I"/>
+        <With Var="DWORD_I"/>
+        <With Var="LWORD_I"/>
+        <With Var="BYTE_I"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="BOOL_O"/>
+        <With Var="BYTE_O"/>
+        <With Var="WORD_O"/>
+        <With Var="DWORD_O"/>
+        <With Var="LWORD_O"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="BOOL_I" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="BYTE_I" Type="BYTE"/>
+      <VarDeclaration Comment="" Name="WORD_I" Type="WORD"/>
+      <VarDeclaration Comment="" Name="DWORD_I" Type="DWORD"/>
+      <VarDeclaration Comment="" Name="LWORD_I" Type="LWORD"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="BOOL_O" Type="SINT"/>
+      <VarDeclaration Comment="" Name="BYTE_O" Type="INT"/>
+      <VarDeclaration Comment="" Name="WORD_O" Type="DINT"/>
+      <VarDeclaration Comment="" Name="DWORD_O" Type="LINT"/>
+      <VarDeclaration Comment="" Name="LWORD_O" Type="USINT"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="2375.0" y="295.0">
+        <ECAction Algorithm="Normal" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_3" x="600.0" y="3000.0">
+        <ECAction Algorithm="Internal" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="Normal" Destination="State" Source="START" x="1605.0" y="380.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1645.0" y="605.0"/>
+      <ECTransition Comment="" Condition="Internal" Destination="State_3" Source="START" x="850.0" y="1460.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_3" x="135.0" y="1840.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="Normal">
+      <ST Text="BOOL_O:=BOOL_I;&#13;&#10;BYTE_O:=BYTE_I;&#13;&#10;WORD_O:=WORD_I;&#13;&#10;DWORD_O:=DWORD_I;&#13;&#10;LWORD_O:=LWORD_I;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Internal">
+      <ST Text="BOOL_O:=1;&#13;&#10;BYTE_O:=2;&#13;&#10;WORD_O:=35555;&#13;&#10;DWORD_O:=2147483648;&#13;&#10;LWORD_O:=2147483648;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

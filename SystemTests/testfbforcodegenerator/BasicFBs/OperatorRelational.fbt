@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="OperatorRelational">
+  <Identification Description="Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="EQUAL" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+      <Event Comment="" Name="LESS" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+      <Event Comment="" Name="LESSEQUAL" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+      <Event Comment="" Name="GRT" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+      <Event Comment="" Name="GRTEQ" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+      <Event Comment="" Name="NOTEQ" Type="Event">
+        <With Var="A"/>
+        <With Var="B"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="OUT"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="A" Type="INT"/>
+      <VarDeclaration Comment="" Name="B" Type="INT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="OUT" Type="BOOL"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="4300.0" y="1900.0"/>
+      <ECState Comment="" Name="State" x="2410.0" y="820.0">
+        <ECAction Algorithm="NOTEQ" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_1" x="4590.0" y="545.0">
+        <ECAction Algorithm="EQ" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_2" x="7055.0" y="1570.0">
+        <ECAction Algorithm="LESS" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_3" x="6220.0" y="2925.0">
+        <ECAction Algorithm="LESSEQ" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_4" x="4225.0" y="3050.0">
+        <ECAction Algorithm="GRT" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_5" x="2535.0" y="2620.0">
+        <ECAction Algorithm="GRTEQ" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_1" x="5135.0" y="1250.0"/>
+      <ECTransition Comment="" Condition="EQUAL" Destination="State_1" Source="START" x="4385.0" y="1185.0"/>
+      <ECTransition Comment="" Condition="LESS" Destination="State_2" Source="START" x="5945.0" y="1565.0"/>
+      <ECTransition Comment="" Condition="LESSEQUAL" Destination="State_3" Source="START" x="5770.0" y="2270.0"/>
+      <ECTransition Comment="" Condition="GRT" Destination="State_4" Source="START" x="4630.0" y="2545.0"/>
+      <ECTransition Comment="" Condition="GRTEQ" Destination="State_5" Source="START" x="3660.0" y="2540.0"/>
+      <ECTransition Comment="" Condition="NOTEQ" Destination="State" Source="START" x="3070.0" y="1845.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="3765.0" y="1170.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_5" x="3180.0" y="2005.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_4" x="4355.0" y="2535.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_3" x="5360.0" y="2460.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_2" x="6065.0" y="1905.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="EQ">
+      <ST Text="OUT:=A=B;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="LESS">
+      <ST Text="OUT:=A&lt;B;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="LESSEQ">
+      <ST Text="OUT:=A&lt;=B;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="GRT">
+      <ST Text="OUT:=A&gt;B;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="GRTEQ">
+      <ST Text="OUT:=A &gt;=B;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="NOTEQ">
+      <ST Text="OUT:=A &lt;&gt; B;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

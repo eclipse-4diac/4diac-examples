@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="DataTypesString">
+  <Identification Description="Normal just propagates the input to the output&#13;&#10;Internal: sets the output from inside &#13;&#10;&#13;&#10;Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="Normal" Type="Event">
+        <With Var="String_I"/>
+      </Event>
+      <Event Comment="" Name="Internal" Type="Event">
+        <With Var="String_I"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="String_O"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="String_I" Type="STRING"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="String_O" Type="STRING"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="2375.0" y="295.0">
+        <ECAction Algorithm="Normal" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_3" x="600.0" y="3000.0">
+        <ECAction Algorithm="Internal" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="Normal" Destination="State" Source="START" x="1605.0" y="380.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1645.0" y="605.0"/>
+      <ECTransition Comment="" Condition="Internal" Destination="State_3" Source="START" x="850.0" y="1460.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_3" x="135.0" y="1840.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="Normal">
+      <ST Text="STRING_O:=STRING_I;&#13;&#10;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Internal">
+      <ST Text="STRING_O:='Setting from Interal';"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

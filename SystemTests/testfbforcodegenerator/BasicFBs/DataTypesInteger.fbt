@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="DataTypesInteger">
+  <Identification Description="Normal just propagates the input to the output&#13;&#10;Max: sets to the highest possible value&#13;&#10;Min: sets to the lowest possible value&#13;&#10;Internal: sets the output from inside&#13;&#10;&#13;&#10;Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="Normal" Type="Event">
+        <With Var="S_INT_I"/>
+        <With Var="INT_I"/>
+        <With Var="DINT_I"/>
+        <With Var="LINT_I"/>
+        <With Var="USINT_I"/>
+        <With Var="UIN_I"/>
+        <With Var="UDINT_I"/>
+        <With Var="ULINT_I"/>
+      </Event>
+      <Event Comment="" Name="Internal" Type="Event">
+        <With Var="S_INT_I"/>
+        <With Var="INT_I"/>
+        <With Var="DINT_I"/>
+        <With Var="LINT_I"/>
+        <With Var="USINT_I"/>
+        <With Var="UIN_I"/>
+        <With Var="UDINT_I"/>
+        <With Var="ULINT_I"/>
+      </Event>
+      <Event Comment="" Name="Max" Type="Event">
+        <With Var="S_INT_I"/>
+        <With Var="INT_I"/>
+        <With Var="DINT_I"/>
+        <With Var="LINT_I"/>
+        <With Var="USINT_I"/>
+        <With Var="UIN_I"/>
+        <With Var="UDINT_I"/>
+        <With Var="ULINT_I"/>
+      </Event>
+      <Event Comment="" Name="Min" Type="Event">
+        <With Var="INT_I"/>
+        <With Var="S_INT_I"/>
+        <With Var="DINT_I"/>
+        <With Var="LINT_I"/>
+        <With Var="USINT_I"/>
+        <With Var="UIN_I"/>
+        <With Var="UDINT_I"/>
+        <With Var="ULINT_I"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="Event_1" Type="Event">
+        <With Var="SINT1"/>
+        <With Var="INT1"/>
+        <With Var="DINT1"/>
+        <With Var="LINT1"/>
+        <With Var="USINT1"/>
+        <With Var="UINT1"/>
+        <With Var="UDINT1"/>
+        <With Var="ULINT1"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="S_INT_I" Type="SINT"/>
+      <VarDeclaration Comment="" Name="INT_I" Type="INT"/>
+      <VarDeclaration Comment="" Name="DINT_I" Type="DINT"/>
+      <VarDeclaration Comment="" Name="LINT_I" Type="LINT"/>
+      <VarDeclaration Comment="" Name="USINT_I" Type="USINT"/>
+      <VarDeclaration Comment="" Name="UIN_I" Type="UINT"/>
+      <VarDeclaration Comment="" Name="UDINT_I" Type="UDINT"/>
+      <VarDeclaration Comment="" Name="ULINT_I" Type="ULINT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="SINT1" Type="SINT"/>
+      <VarDeclaration Comment="" Name="INT1" Type="INT"/>
+      <VarDeclaration Comment="" Name="DINT1" Type="DINT"/>
+      <VarDeclaration Comment="" Name="LINT1" Type="LINT"/>
+      <VarDeclaration Comment="" Name="USINT1" Type="USINT"/>
+      <VarDeclaration Comment="" Name="UINT1" Type="UINT"/>
+      <VarDeclaration Comment="" Name="UDINT1" Type="UDINT"/>
+      <VarDeclaration Comment="" Name="ULINT1" Type="ULINT"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="2375.0" y="295.0">
+        <ECAction Algorithm="Normal" Output="Event_1"/>
+      </ECState>
+      <ECState Comment="" Name="State_1" x="2900.0" y="1200.0">
+        <ECAction Algorithm="Max" Output="Event_1"/>
+      </ECState>
+      <ECState Comment="" Name="State_2" x="2700.0" y="3000.0">
+        <ECAction Algorithm="Min" Output="Event_1"/>
+      </ECState>
+      <ECState Comment="" Name="State_3" x="600.0" y="3000.0">
+        <ECAction Algorithm="Internal" Output="Event_1"/>
+      </ECState>
+      <ECTransition Comment="" Condition="Normal" Destination="State" Source="START" x="1605.0" y="380.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1645.0" y="605.0"/>
+      <ECTransition Comment="" Condition="Max" Destination="State_1" Source="START" x="1375.0" y="865.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_1" x="1490.0" y="1215.0"/>
+      <ECTransition Comment="" Condition="Min" Destination="State_2" Source="START" x="1075.0" y="1145.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_2" x="565.0" y="1720.0"/>
+      <ECTransition Comment="" Condition="Internal" Destination="State_3" Source="START" x="850.0" y="1460.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_3" x="135.0" y="1840.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="Normal">
+      <ST Text="SINT1 :=S_INT_I;&#13;&#10;INT1:=INT_I;&#13;&#10;DINT1:=DINT_I;&#13;&#10;LINT1:=LINT_I;&#13;&#10;USINT1:=USINT_I;&#13;&#10;UINT1:=UIN_I;&#13;&#10;UDINT1:=UDINT_I;&#13;&#10;ULINT1:=ULINT_I;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Max">
+      <ST Text="SINT1 :=127;&#13;&#10;INT1:=32767;&#13;&#10;DINT1:=2147483647;&#13;&#10;LINT1:=9223372036854775807;&#13;&#10;USINT1:=255;&#13;&#10;UINT1:=65535;&#13;&#10;UDINT1:=4294967295;&#13;&#10;ULINT1:=1;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Min">
+      <ST Text="SINT1 :=-128;&#13;&#10;INT1:=-32768;&#13;&#10;DINT1:=-2147483648;&#13;&#10;LINT1:=-9223372036854775808;&#13;&#10;USINT1:=0;&#13;&#10;UINT1:=0;&#13;&#10;UDINT1:=0;&#13;&#10;ULINT1:=0;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Internal">
+      <ST Text="SINT1 :=-10;&#13;&#10;INT1:=-20;&#13;&#10;DINT1:=-30;&#13;&#10;LINT1:=-40;&#13;&#10;USINT1:=50;&#13;&#10;UINT1:=60;&#13;&#10;UDINT1:=70;&#13;&#10;ULINT1:=80;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

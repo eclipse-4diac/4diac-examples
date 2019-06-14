@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="InternalVariables">
+  <Identification Description="Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="Jan Holzweber" Date="2019-06-10" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="A_PLUS" Type="Event"/>
+      <Event Comment="" Name="B_MINUS" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="A_O"/>
+        <With Var="B_O"/>
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="A_O" Type="INT"/>
+      <VarDeclaration Comment="" Name="B_O" Type="INT"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <InternalVars>
+      <VarDeclaration Comment="Internal Variable" InitialValue="0" Name="A" Type="INT"/>
+      <VarDeclaration Comment="Internal Variable" InitialValue="0" Name="B" Type="INT"/>
+    </InternalVars>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="3175.0" y="585.0">
+        <ECAction Algorithm="A_PLUS" Output="EO"/>
+      </ECState>
+      <ECState Comment="" Name="State_1" x="1230.0" y="1480.0">
+        <ECAction Algorithm="B_PLUS" Output="EO"/>
+      </ECState>
+      <ECTransition Comment="" Condition="A_PLUS" Destination="State" Source="START" x="2080.0" y="310.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1990.0" y="950.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_1" x="575.0" y="1240.0"/>
+      <ECTransition Comment="" Condition="B_MINUS" Destination="State_1" Source="START" x="1210.0" y="1010.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="A_PLUS">
+      <ST Text="A_O:=A;&#13;&#10;A:=A+1;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="B_PLUS">
+      <ST Text="B_O:=B;&#13;&#10;B:=B-1;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

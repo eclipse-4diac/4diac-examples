@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="DataTypesTime">
+  <Identification Description="Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="jholz" Date="2019-06-05" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="Normal" Type="Event"/>
+      <Event Comment="" Name="Internal" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event"/>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="TIME_I" Type="TIME"/>
+      <VarDeclaration Comment="" Name="DATE_I" Type="DATE"/>
+      <VarDeclaration Comment="" Name="TOD_I" Type="TIME_OF_DAY"/>
+      <VarDeclaration Comment="" Name="DAT_I" Type="DATE_AND_TIME"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="TIME_O" Type="TIME"/>
+      <VarDeclaration Comment="" Name="DATE_O" Type="DATE"/>
+      <VarDeclaration Comment="" Name="TOD_O" Type="TIME_OF_DAY"/>
+      <VarDeclaration Comment="" Name="DAT_O" Type="DATE_AND_TIME"/>
+    </OutputVars>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="" Name="State" x="4755.0" y="430.0">
+        <ECAction/>
+      </ECState>
+      <ECState Comment="" Name="State_1" x="1680.0" y="1775.0">
+        <ECAction/>
+      </ECState>
+      <ECTransition Comment="" Condition="Normal" Destination="State" Source="START" x="2775.0" y="465.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="2870.0" y="920.0"/>
+      <ECTransition Comment="" Condition="Internal" Destination="State_1" Source="START" x="1245.0" y="1150.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_1" x="760.0" y="1490.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="Normal">
+      <ST Text="TIME_O:=TIME_I;&#13;&#10;DATE_O:=DATE_I;&#13;&#10;TOD_O:=TOD_I;&#13;&#10;DAT_O:=DAT_I;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Internal">
+      <ST Text="TIME_O:=TIME#1m;&#13;&#10;DATE_O:=D#1996-08-12;&#13;&#10;TOD_O:=TOD#06:06:66;&#13;&#10;DAT_O:=DT#1989-06-15-13:56:14.77;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>
