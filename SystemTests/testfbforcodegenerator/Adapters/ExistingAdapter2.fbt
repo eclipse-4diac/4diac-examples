@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty basic function block" Name="ExistingAdapter2">
+  <Identification Description="Copyright (c) 2019 Jan Holzweber&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="Jan Holzweber" Date="2019-06-10" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="" Name="EI" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="EO" Type="Event">
+        <With Var="O"/>
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="O" Type="INT"/>
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="ATimeOut" Type="ATimeOut"/>
+    </Sockets>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="600.0" y="400.0"/>
+      <ECState Comment="" Name="State" x="3965.0" y="645.0">
+        <ECAction Algorithm="OUT"/>
+      </ECState>
+      <ECTransition Comment="" Condition="[TestAdapter.CNF]" Destination="State" Source="START" x="2405.0" y="585.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="2365.0" y="1120.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="OUT">
+      <ST Text="O:=ATimeOut.DT;&#13;&#10;ATimeOut.DT := T#20ms;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>
