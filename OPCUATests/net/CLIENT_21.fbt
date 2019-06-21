@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="4-Input,4-Output Client Interface" Name="CLIENT_21">
+  <Identification Classification="Communications" Standard="61499-1"/>
+  <VersionInfo Author="JHC" Date="2001-05-23" Organization="Rockwell Automation" Version="0.0"/>
+  <CompilerInfo header="package fb.rt.net;">
+    <Compiler Language="Java" Product="VisualAge" Vendor="IBM" Version="3.0"/>
+  </CompilerInfo>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Service Initialization" Name="INIT" Type="Event">
+        <With Var="QI"/>
+        <With Var="ID"/>
+      </Event>
+      <Event Comment="Service Request" Name="REQ" Type="Event">
+        <With Var="QI"/>
+        <With Var="SD_1"/>
+        <With Var="SD_2"/>
+        <With Var="SD_3"/>
+        <With Var="SD_4"/>
+        <With Var="SD_5"/>
+        <With Var="SD_6"/>
+		<With Var="SD_7"/>
+        <With Var="SD_8"/>
+        <With Var="SD_9"/>
+        <With Var="SD_10"/>
+        <With Var="SD_11"/>
+        <With Var="SD_12"/>
+		<With Var="SD_13"/>
+        <With Var="SD_14"/>
+        <With Var="SD_15"/>
+        <With Var="SD_16"/>
+        <With Var="SD_17"/>
+        <With Var="SD_18"/>
+		<With Var="SD_19"/>
+        <With Var="SD_20"/>
+        <With Var="SD_21"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Initialization Confirm" Name="INITO" Type="Event">
+        <With Var="QO"/>
+        <With Var="STATUS"/>
+      </Event>
+      <Event Comment="Service Confirmation" Name="CNF" Type="Event">
+        <With Var="QO"/>
+        <With Var="STATUS"/>
+        <With Var="RD_1"/>
+        <With Var="RD_2"/>
+        <With Var="RD_3"/>
+        <With Var="RD_4"/>
+        <With Var="RD_5"/>
+        <With Var="RD_6"/>
+		<With Var="RD_7"/>
+        <With Var="RD_8"/>
+        <With Var="RD_9"/>
+        <With Var="RD_10"/>
+        <With Var="RD_11"/>
+        <With Var="RD_12"/>
+		<With Var="RD_13"/>
+        <With Var="RD_14"/>
+        <With Var="RD_15"/>
+        <With Var="RD_16"/>
+        <With Var="RD_17"/>
+        <With Var="RD_18"/>
+		<With Var="RD_19"/>
+        <With Var="RD_20"/>
+        <With Var="RD_21"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Event Input Qualifier" Name="QI" Type="BOOL"/>
+      <VarDeclaration Comment="Connection Identifier" Name="ID" Type="WSTRING"/>
+      <VarDeclaration Comment="Data to Send" Name="SD_1" Type="ANY"/>
+      <VarDeclaration Comment="Data to Send" Name="SD_2" Type="ANY"/>
+      <VarDeclaration Comment="Data to Send" Name="SD_3" Type="ANY"/>
+      <VarDeclaration Comment="Data to Send" Name="SD_4" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_5" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_6" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_7" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_8" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_9" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_10" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_11" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_12" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_13" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_14" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_15" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_16" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_17" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_18" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_19" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_20" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_21" Type="ANY"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="Event Output Qualifier" Name="QO" Type="BOOL"/>
+      <VarDeclaration Comment="Service Status" Name="STATUS" Type="WSTRING"/>
+      <VarDeclaration Comment="Received Data" Name="RD_1" Type="ANY"/>
+      <VarDeclaration Comment="Received Data" Name="RD_2" Type="ANY"/>
+      <VarDeclaration Comment="Received Data" Name="RD_3" Type="ANY"/>
+      <VarDeclaration Comment="Received Data" Name="RD_4" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_5" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_6" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_7" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_8" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_9" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_10" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_11" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_12" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_13" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_14" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_15" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_16" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_17" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_18" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_19" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_20" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_21" Type="ANY"/>
+    </OutputVars>
+  </InterfaceList>
+</FBType>
