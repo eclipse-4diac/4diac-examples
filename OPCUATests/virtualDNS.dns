@@ -3,11 +3,6 @@
   <availableDNSCollections name="NormalTests">
     <virtualDNSEntries name="intCommID1" value="239.192.0.2:61499"/>
     <virtualDNSEntries name="intCommID2" value="239.192.0.2:61500"/>
-    <virtualDNSEntries name="dintValueToTest" value="DINT#26"/>
-    <virtualDNSEntries name="csvFileName" value="csvWriteTest.csv"/>
-    <virtualDNSEntries name="csvFirstValue" value="STRING#csvFirstValue"/>
-    <virtualDNSEntries name="csvSecondValue" value="1"/>
-    <virtualDNSEntries name="csvThirdValue" value="-4321"/>
     <virtualDNSEntries name="opcuaNoSemicolon" value="opc_ua[/Objects/test1]"/>
     <virtualDNSEntries name="opcuaEmptyAction" value="opc_ua[;/Objects/test1]"/>
     <virtualDNSEntries name="opcuaNoExistingAction" value="opc_ua[Read;/Objects/test1]"/>
@@ -94,5 +89,9 @@
     <virtualDNSEntries name="lrealValue" value="LREAL#3.21"/>
     <virtualDNSEntries name="stringValue" value="STRING#TestString"/>
     <virtualDNSEntries name="wstringValue" value="WSTRING#TestWString"/>
+    <virtualDNSEntries name="opcuaREADVariable" value="/Objects/IsolatedTests/READVariable"/>
+    <virtualDNSEntries name="opcuaWRITEVariable" value="/Objects/IsolatedTests/WRITEVariable"/>
+    <virtualDNSEntries name="opcuaNoFolder" value="/Objects/noNewFolder"/>
+    <virtualDNSEntries name="opcuaNoFolderMethod" value="/Objects/noNewFolderMethod"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
