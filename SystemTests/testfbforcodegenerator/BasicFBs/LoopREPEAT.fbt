@@ -34,7 +34,7 @@
       <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="1840.0" y="770.0"/>
     </ECC>
     <Algorithm Comment="new algorithm" Name="REPEAT">
-      <ST Text="REPEAT&#13;&#10;&#9;O := O+i;&#13;&#10;&#9;i:= i+1;&#13;&#10;UNTIL i &lt; Iterations&#13;&#10;END_REPEAT;"/>
+      <ST Text="REPEAT&#13;&#10;&#9;O := O+i;&#13;&#10;&#9;i:= i+1;&#13;&#10;UNTIL Iterations &lt; i&#13;&#10;END_REPEAT;"/>
     </Algorithm>
   </BasicFB>
 </FBType>
