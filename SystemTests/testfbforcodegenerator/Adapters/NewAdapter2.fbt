@@ -23,13 +23,18 @@
     <ECC>
       <ECState Comment="Initial State" Name="START" x="600.0" y="400.0"/>
       <ECState Comment="" Name="State" x="3965.0" y="645.0">
-        <ECAction Algorithm="OUT" Output="TestAdapter.EI"/>
+        <ECAction Algorithm="OUT" Output="EO"/>
       </ECState>
-      <ECTransition Comment="" Condition="[TestAdapter.CNF]" Destination="State" Source="START" x="2405.0" y="585.0"/>
+      <ECState Comment="" Name="State_1" x="1760.0" y="2145.0">
+        <ECAction Output="TestAdapter.EI"/>
+      </ECState>
+      <ECTransition Comment="" Condition="TestAdapter.EO" Destination="State" Source="START" x="2405.0" y="585.0"/>
       <ECTransition Comment="" Condition="1" Destination="START" Source="State" x="2365.0" y="1120.0"/>
+      <ECTransition Comment="" Condition="EI" Destination="State_1" Source="START" x="1300.0" y="1330.0"/>
+      <ECTransition Comment="" Condition="1" Destination="START" Source="State_1" x="835.0" y="1595.0"/>
     </ECC>
     <Algorithm Comment="new algorithm" Name="OUT">
-      <ST Text="O:= TestAdapter.D0;&#13;&#10;TestAdapter.DI:= 1 +D0;"/>
+      <ST Text="O:= TestAdapter.D0;&#13;&#10;TestAdapter.DI:= TestAdapter.D0;"/>
     </Algorithm>
   </BasicFB>
 </FBType>

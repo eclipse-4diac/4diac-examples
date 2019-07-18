@@ -15,10 +15,10 @@
       </Event>
     </EventOutputs>
     <InputVars>
-      <VarDeclaration Comment="Request Data from Socket" Name="DI" Type="WSTRING"/>
+      <VarDeclaration Comment="Request Data from Socket" Name="DI" Type="INT"/>
     </InputVars>
     <OutputVars>
-      <VarDeclaration Comment="Confirmation Data from Plug" Name="D0" Type="WSTRING"/>
+      <VarDeclaration Comment="Confirmation Data from Plug" Name="D0" Type="INT"/>
     </OutputVars>
   </InterfaceList>
   <Service Comment="Adapter Interface" LeftInterface="SOCKET" RightInterface="PLUG">
