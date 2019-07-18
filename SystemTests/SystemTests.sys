@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
 <System Comment="" Name="SystemTests">
+  <Identification/>
   <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
   <Application Comment="Small test application for measuring the execution time of a few fbs for evaluating runtime performance" Name="Timing">
     <SubAppNetwork>
@@ -31,11 +32,6 @@
           <FB Comment="" Name="E_CTU_1" Type="E_CTU" x="2700.0" y="300.0">
             <Parameter Name="PV" Value="65500"/>
           </FB>
-          <DataConnections>
-            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_CTU.Q"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_CTU_1.Q"/>
-            <Connection Comment="" Destination="E_CTU.PV" Source="iterations"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="E_CTU.CU" Source="E_CTU_1.RO"/>
             <Connection Comment="" Destination="E_CTU.R" Source="E_SWITCH_1.EO1" dx1="40.0" dx2="-305.0" dy="475.0"/>
@@ -47,18 +43,17 @@
             <Connection Comment="" Destination="E_CTU.CU" Source="Start" dx1="375.0"/>
             <Connection Comment="" Destination="Done" Source="E_CTU.RO"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_CTU.Q"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_CTU_1.Q"/>
+            <Connection Comment="" Destination="E_CTU.PV" Source="iterations"/>
+          </DataConnections>
         </SubAppNetwork>
         <Parameter Name="iterations" Value="100"/>
       </SubApp>
       <FB Comment="" Name="STEST_END" Type="STEST_END" x="4400.0" y="500.0"/>
       <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3800.0" y="500.0"/>
       <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1150.0"/>
-        <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
-        <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
-        <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="395.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="1620.0"/>
         <Connection Comment="" Destination="E_SWITCH_2.EI" Source="Iterations.CUO"/>
@@ -73,6 +68,12 @@
         <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="395.0"/>
         <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="60.0" dx2="60.0" dy="250.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1150.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
+        <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="395.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="Soft_Pass_Example">
@@ -84,16 +85,16 @@
       </FB>
       <FB Comment="" Name="F_NOT" Type="F_NOT" x="3155.0" y="960.0"/>
       <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="2210.0" y="665.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
-        <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="755.0"/>
-        <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="NOT_ZERO.REQ" Source="F_NOT.CNF" dx1="755.0"/>
         <Connection Comment="" Destination="STEST_END_0_1.REQ" Source="NOT_ZERO.CNF" dx1="230.0"/>
         <Connection Comment="" Destination="F_NOT.REQ" Source="BOOL2BOOL.CNF" dx1="285.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
+        <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="755.0"/>
+        <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="Fail_Example">
@@ -111,11 +112,6 @@
         <Parameter Name="IN" Value="true"/>
       </FB>
       <FB Comment="" Name="SHOULD_FAIL_2" Type="TEST_CONDITION" x="3475.0" y="1865.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="640.0"/>
-        <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
-        <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="640.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="SHOULD_FAIL_1.REQ" Source="BOOL2BOOL_1.CNF" dx1="640.0"/>
         <Connection Comment="" Destination="STEST_END_0.REQ" Source="SHOULD_FAIL_2.CNF" dx1="1500.0"/>
@@ -124,6 +120,11 @@
         <Connection Comment="" Destination="SHOULD_FAIL_2.REQ" Source="BOOL2BOOL_1_1_1.CNF" dx1="640.0"/>
         <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL_1_1.CNF" dx1="640.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="640.0"/>
+        <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
+        <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="640.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="Hard_Pass_Example">
@@ -133,13 +134,13 @@
         <Parameter Name="IN" Value="true"/>
       </FB>
       <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="6035.0" y="560.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL.CNF" dx1="420.0"/>
         <Connection Comment="" Destination="STEST_END.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="350.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="DeInitCommFB">
@@ -157,16 +158,6 @@
       <FB Comment="" Name="PUBLISH_0_3" Type="PUBLISH_0" x="3300.0" y="-2255.0"/>
       <FB Comment="" Name="PUBLISH_0_2" Type="SUBSCRIBE_0" x="3220.0" y="-220.0"/>
       <FB Comment="" Name="PUBLISH_0_1" Type="CLIENT_0" x="3010.0" y="1455.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="250.0"/>
-        <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="370.0"/>
-        <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="250.0"/>
-        <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="250.0"/>
-        <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="250.0"/>
-        <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="370.0"/>
-        <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="370.0"/>
-        <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="370.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="E_SWITCH.EI" Source="PUBLISH_0.INITO" dx1="300.0"/>
         <Connection Comment="" Destination="PUBLISH_0_3.INIT" Source="E_SR_3.EO" dx1="745.0"/>
@@ -185,6 +176,16 @@
         <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="560.0"/>
         <Connection Comment="" Destination="PUBLISH_0.INIT" Source="E_SR.EO" dx1="740.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="250.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="370.0"/>
+        <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="370.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="simpleCommunicationTest">
@@ -207,14 +208,6 @@
       </FB>
       <FB Comment="" Name="ReceivedDINTOK" Type="TEST_CONDITION" x="4370.0" y="255.0"/>
       <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="5865.0" y="730.0"/>
-      <DataConnections>
-        <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
-        <Connection Comment="" Destination="DINT2DINT_2.IN" Source="DINT2DINT_1.OUT" dx1="525.0"/>
-        <Connection Comment="" Destination="DINT2DINT_1.IN" Source="DINT2DINT.OUT" dx1="560.0"/>
-        <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="165.0"/>
-        <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="430.0"/>
-        <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="290.0"/>
-      </DataConnections>
       <EventConnections>
         <Connection Comment="" Destination="F_EQ_1.REQ" Source="DINT2DINT_1.CNF" dx1="525.0"/>
         <Connection Comment="" Destination="DINT2DINT_1.REQ" Source="DINT2DINT.CNF" dx1="560.0"/>
@@ -225,6 +218,14 @@
         <Connection Comment="" Destination="F_EQ.REQ" Source="DINT2DINT_2.CNF" dx1="290.0"/>
         <Connection Comment="" Destination="DINT2DINT.REQ" Source="WaitServer.EO" dx1="395.0"/>
       </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
+        <Connection Comment="" Destination="DINT2DINT_2.IN" Source="DINT2DINT_1.OUT" dx1="525.0"/>
+        <Connection Comment="" Destination="DINT2DINT_1.IN" Source="DINT2DINT.OUT" dx1="560.0"/>
+        <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="165.0"/>
+        <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="430.0"/>
+        <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="290.0"/>
+      </DataConnections>
     </SubAppNetwork>
   </Application>
   <Application Comment="" Name="CSVWriterTests">
@@ -249,15 +250,6 @@
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
           <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3640.0" y="1460.0"/>
           <FB Comment="" Name="E_SR" Type="E_SR" x="1130.0" y="340.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
-            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="writeNormal.REQ" Source="CSV_WRITER_1.CNF" dx1="1775.0"/>
             <Connection Comment="" Destination="E_SR.R" Source="writeNormal.CNF" dx1="60.0" dx2="60.0" dy="-545.0"/>
@@ -271,6 +263,15 @@
             <Connection Comment="" Destination="F_NOT.REQ" Source="E_SWITCH.EO0" dx1="255.0"/>
             <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="60.0" dx2="60.0" dy="490.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="DontClose" x="510.0" y="590.0">
@@ -308,12 +309,6 @@
           <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="4290.0" y="6155.0"/>
           <FB Comment="" Name="endNormal_1" Type="STEST_END" x="7090.0" y="7260.0"/>
           <FB Comment="" Name="DoubleInit2" Type="TEST_CONDITION" x="6195.0" y="7235.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="F_NOT_1.IN" Source="CSV_WRITER_1_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="DoubleInit2.check" Source="F_NOT_1.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="440.0"/>
-            <Connection Comment="" Destination="DoubleInit1.check" Source="CSV_WRITER_1_1.QO" dx1="1740.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="F_NOT_1.REQ" Source="E_SWITCH_1.EO0" dx1="610.0"/>
             <Connection Comment="" Destination="DoubleInit2.REQ" Source="F_NOT_1.CNF" dx1="155.0"/>
@@ -324,6 +319,12 @@
             <Connection Comment="" Destination="endNormal_1.REQ" Source="DoubleInit2.CNF" dx1="125.0"/>
             <Connection Comment="" Destination="E_SR_1.S" Source="Start" dx1="150.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="F_NOT_1.IN" Source="CSV_WRITER_1_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DoubleInit2.check" Source="F_NOT_1.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="DoubleInit1.check" Source="CSV_WRITER_1_1.QO" dx1="1740.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="InitDeinitNoWrite" x="420.0" y="1560.0">
@@ -345,14 +346,6 @@
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
           <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3640.0" y="1460.0"/>
           <FB Comment="" Name="E_SR" Type="E_SR" x="1130.0" y="340.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
-            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="440.0"/>
             <Connection Comment="" Destination="E_SWITCH.EI" Source="CSV_WRITER_1.INITO" dx1="220.0"/>
@@ -364,6 +357,14 @@
             <Connection Comment="" Destination="STRING2STRING.REQ" Source="Start" dx1="60.0" dx2="60.0" dy="490.0"/>
             <Connection Comment="" Destination="E_SR.R" Source="InitTest.CNF" dx1="60.0" dx2="60.0" dy="-1375.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="closeNotOpenedFile" x="420.0" y="2085.0">
@@ -381,16 +382,16 @@
           <FB Comment="" Name="endNormal" Type="STEST_END" x="7670.0" y="2140.0"/>
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4770.0" y="430.0"/>
           <FB Comment="" Name="STEST_END" Type="STEST_END" x="6655.0" y="470.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
             <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.INITO" dx1="995.0"/>
             <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="Start" dx1="1030.0"/>
             <Connection Comment="" Destination="STEST_END.REQ" Source="DeInitTest.CNF" dx1="175.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="writeWithoutInit" x="455.0" y="2570.0">
@@ -410,11 +411,6 @@
           <FB Comment="" Name="DeInitTest" Type="TEST_CONDITION" x="5595.0" y="330.0"/>
           <FB Comment="" Name="endNormal" Type="STEST_END" x="6490.0" y="355.0"/>
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4995.0" y="350.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="105.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="105.0"/>
             <Connection Comment="" Destination="endNormal.REQ" Source="DeInitTest.CNF" dx1="125.0"/>
@@ -422,6 +418,11 @@
             <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="STRING2STRING.CNF" dx1="465.0"/>
             <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.CNF" dx1="1775.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="105.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="writeQIFalse" x="370.0" y="3140.0">
@@ -443,14 +444,6 @@
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
           <FB Comment="" Name="E_SR" Type="E_SR" x="1000.0" y="285.0"/>
           <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="1565.0" y="205.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
-            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1550.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1545.0"/>
-            <Connection Comment="" Destination="writeQIFalse.check" Source="F_NOT.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="150.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="E_SR.S" Source="STRING2STRING.CNF" dx1="135.0"/>
             <Connection Comment="" Destination="writeQIFalse.REQ" Source="F_NOT.CNF" dx1="155.0"/>
@@ -463,6 +456,14 @@
             <Connection Comment="" Destination="E_SWITCH.EI" Source="E_SR.EO" dx1="150.0"/>
             <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.CNF" dx1="800.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1550.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1545.0"/>
+            <Connection Comment="" Destination="writeQIFalse.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="150.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="NormalExecutionMultiple" x="455.0" y="3765.0">
@@ -490,19 +491,6 @@
           <FB Comment="" Name="E_SR_2" Type="E_SR" x="-335.0" y="1620.0"/>
           <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="-1030.0" y="1595.0"/>
           <FB Comment="" Name="E_CTU" Type="E_CTU" x="380.0" y="2400.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
-            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
-            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
-            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="60.0" dx2="60.0" dy="845.0"/>
-            <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="60.0" dx2="60.0" dy="130.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_3" Source="E_CTU.CV" dx1="1465.0"/>
-            <Connection Comment="" Destination="CSV_WRITER_1.SD_2" Source="E_SR_2.Q" dx1="1505.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="InitTest.REQ" Source="E_SWITCH.EO1" dx1="170.0"/>
             <Connection Comment="" Destination="DeInitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
@@ -523,6 +511,19 @@
             <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_CTU.CUO" dx1="760.0"/>
             <Connection Comment="" Destination="E_CTU.CU" Source="E_SR_2.EO" dx1="230.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="DeInitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+            <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="235.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="440.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="STRING2STRING.OUT" dx1="515.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="CSV_WRITER_1.QO" dx1="1740.0"/>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="writeNormal.check" Source="CSV_WRITER_1.QO" dx1="1595.0"/>
+            <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="60.0" dx2="60.0" dy="845.0"/>
+            <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="60.0" dx2="60.0" dy="130.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_3" Source="E_CTU.CV" dx1="1465.0"/>
+            <Connection Comment="" Destination="CSV_WRITER_1.SD_2" Source="E_SR_2.Q" dx1="1505.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
       <SubApp Comment="" Name="noNameFile" x="505.0" y="4220.0">
@@ -538,16 +539,16 @@
           <FB Comment="" Name="InitTest" Type="TEST_CONDITION" x="5575.0" y="2145.0"/>
           <FB Comment="" Name="endNormal" Type="STEST_END" x="6470.0" y="2170.0"/>
           <FB Comment="" Name="F_NOT" Type="F_NOT" x="4975.0" y="2165.0"/>
-          <DataConnections>
-            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
-            <Connection Comment="" Destination="InitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
-          </DataConnections>
           <EventConnections>
             <Connection Comment="" Destination="InitTest.REQ" Source="F_NOT.CNF" dx1="155.0"/>
             <Connection Comment="" Destination="endNormal.REQ" Source="InitTest.CNF" dx1="125.0"/>
             <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="Start" dx1="1030.0"/>
             <Connection Comment="" Destination="F_NOT.REQ" Source="CSV_WRITER_1.INITO" dx1="1870.0"/>
           </EventConnections>
+          <DataConnections>
+            <Connection Comment="" Destination="F_NOT.IN" Source="CSV_WRITER_1.QO" dx1="1620.0"/>
+            <Connection Comment="" Destination="InitTest.check" Source="F_NOT.OUT" dx1="155.0"/>
+          </DataConnections>
         </SubAppNetwork>
       </SubApp>
     </SubAppNetwork>
@@ -583,12 +584,6 @@
         <FB Comment="" Name="STEST_END" Type="STEST_END" x="5300.0" y="500.0"/>
         <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="4700.0" y="500.0"/>
         <FB Comment="" Name="E_StopWatch" Type="E_STOPWATCH" x="1500.0" y="800.0"/>
-        <DataConnections>
-          <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1290.0"/>
-          <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
-          <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
-          <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="845.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="CSV_WRITER_1.INIT" Source="E_SR.EO" dx1="1290.0"/>
           <Connection Comment="" Destination="Iterations.R" Source="E_SWITCH_2.EO1" dx1="60.0" dx2="60.0" dy="120.0"/>
@@ -604,6 +599,12 @@
           <Connection Comment="" Destination="CSV_WRITER_1.REQ" Source="E_StopWatch.EO" dx1="845.0"/>
           <Connection Comment="" Destination="Iterations.CU" Source="CSV_WRITER_1.CNF" dx1="60.0" dx2="60.0" dy="250.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="CSV_WRITER_1.QI" Source="E_SR.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="Iterations.Q"/>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="CSV_WRITER_1.QO"/>
+          <Connection Comment="" Destination="CSV_WRITER_1.SD_1" Source="E_StopWatch.TD" dx1="845.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
     <Resource Comment="" Name="Hard_Pass_Example" Type="EMB_RES" x="0.0" y="0.0">
@@ -613,15 +614,15 @@
         <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="1805.0" y="550.0">
           <Parameter Name="IN" Value="true"/>
         </FB>
-        <DataConnections>
-          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="STEST_END.REQ" Source="SHOULD_NOT_FAIL.CNF" dx1="350.0"/>
           <Connection Comment="" Destination="SHOULD_NOT_FAIL.REQ" Source="BOOL2BOOL.CNF" dx1="420.0"/>
           <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.COLD" dx1="1185.0"/>
           <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.WARM" dx1="1185.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL.OUT" dx1="420.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
     <Resource Comment="" Name="Soft_Pass_Example" Type="EMB_RES" x="0.0" y="0.0">
@@ -633,11 +634,6 @@
         <FB Comment="" Name="F_MUX_2" Type="F_MUX_2" x="1315.0" y="560.0">
           <Parameter Name="K" Value="UINT#2"/>
         </FB>
-        <DataConnections>
-          <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="440.0"/>
-          <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
-          <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="NOT_ZERO.REQ" Source="F_NOT.CNF" dx1="440.0"/>
           <Connection Comment="" Destination="F_NOT.REQ" Source="BOOL2BOOL.CNF" dx1="280.0"/>
@@ -647,6 +643,11 @@
           <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.COLD" dx1="1590.0"/>
           <Connection Comment="" Destination="BOOL2BOOL.REQ" Source="START.WARM" dx1="1475.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="NOT_ZERO.check" Source="F_NOT.OUT" dx1="440.0"/>
+          <Connection Comment="" Destination="F_NOT.IN" Source="BOOL2BOOL.OUT" dx1="205.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.IN" Source="F_MUX_2.OUT" dx1="245.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
     <Resource Comment="" Name="Fail_Example" Type="EMB_RES" x="0.0" y="0.0">
@@ -664,11 +665,6 @@
         <FB Comment="" Name="SHOULD_FAIL_1" Type="TEST_CONDITION" x="3505.0" y="410.0"/>
         <FB Comment="" Name="SHOULD_FAIL_2" Type="TEST_CONDITION" x="3475.0" y="1865.0"/>
         <FB Comment="" Name="SHOULD_NOT_FAIL" Type="TEST_CONDITION" x="3525.0" y="1120.0"/>
-        <DataConnections>
-          <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
-          <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="575.0"/>
-          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="610.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="SHOULD_FAIL_1.REQ" Source="BOOL2BOOL_1.CNF" dx1="640.0"/>
           <Connection Comment="" Destination="BOOL2BOOL_1_1.REQ" Source="SHOULD_FAIL_1.CNF" dx1="60.0" dx2="60.0" dy="345.0"/>
@@ -679,6 +675,11 @@
           <Connection Comment="" Destination="BOOL2BOOL_1.REQ" Source="START.COLD" dx1="565.0"/>
           <Connection Comment="" Destination="BOOL2BOOL_1.REQ" Source="START.WARM" dx1="565.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="SHOULD_FAIL_1.check" Source="BOOL2BOOL_1.OUT" dx1="640.0"/>
+          <Connection Comment="" Destination="SHOULD_FAIL_2.check" Source="BOOL2BOOL_1_1_1.OUT" dx1="575.0"/>
+          <Connection Comment="" Destination="SHOULD_NOT_FAIL.check" Source="BOOL2BOOL_1_1.OUT" dx1="610.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
     <Resource Comment="" Name="DeInitCommFB" Type="EMB_RES" x="0.0" y="0.0">
@@ -696,16 +697,6 @@
         <FB Comment="" Name="PUBLISH_0_3" Type="PUBLISH_0" x="3300.0" y="-2255.0"/>
         <FB Comment="" Name="PUBLISH_0_2" Type="SUBSCRIBE_0" x="3250.0" y="-620.0"/>
         <FB Comment="" Name="PUBLISH_0_1" Type="CLIENT_0" x="2955.0" y="2025.0"/>
-        <DataConnections>
-          <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="510.0"/>
-          <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="745.0"/>
-          <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="1290.0"/>
-          <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="1290.0"/>
-          <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="1290.0"/>
-          <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="745.0"/>
-          <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="745.0"/>
-          <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="745.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="E_SWITCH.EI" Source="PUBLISH_0.INITO" dx1="330.0"/>
           <Connection Comment="" Destination="PUBLISH_0_3.INIT" Source="E_SR_3.EO" dx1="745.0"/>
@@ -726,6 +717,16 @@
           <Connection Comment="" Destination="STEST_END.REQ" Source="E_SWITCH.EO0" dx1="400.0"/>
           <Connection Comment="" Destination="PUBLISH_0.INIT" Source="E_SR.EO" dx1="745.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="510.0"/>
+          <Connection Comment="" Destination="PUBLISH_0.QI" Source="E_SR.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="E_SR_2.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="E_SWITCH_3.G" Source="E_SR_3.Q" dx1="1290.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_3.QI" Source="E_SR_3.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_2.QI" Source="E_SR_2.Q" dx1="745.0"/>
+          <Connection Comment="" Destination="PUBLISH_0_1.QI" Source="E_SR_1.Q" dx1="745.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
   </Device>
@@ -755,12 +756,6 @@
           <Parameter Name="IN" Value="%dintValueToTest%"/>
         </FB>
         <FB Comment="" Name="DINT2DINT_2" Type="DINT2DINT" x="6215.0" y="1250.0"/>
-        <DataConnections>
-          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT.OUT" dx1="565.0"/>
-          <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="330.0"/>
-          <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="865.0"/>
-          <Connection Comment="" Destination="DINT2DINT_2.IN" Source="SUBSCRIBE_1.RD_1" dx1="375.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="PUBLISH_1.INIT" Source="START.COLD" dx1="1725.0"/>
           <Connection Comment="" Destination="PUBLISH_1.INIT" Source="START.WARM" dx1="1605.0"/>
@@ -773,6 +768,12 @@
           <Connection Comment="" Destination="F_EQ.REQ" Source="DINT2DINT_2.CNF" dx1="865.0"/>
           <Connection Comment="" Destination="DINT2DINT_2.REQ" Source="SUBSCRIBE_1.IND" dx1="375.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT.OUT" dx1="565.0"/>
+          <Connection Comment="" Destination="ReturnetValueOK.check" Source="F_EQ.OUT" dx1="330.0"/>
+          <Connection Comment="" Destination="F_EQ.IN1" Source="DINT2DINT_2.OUT" dx1="865.0"/>
+          <Connection Comment="" Destination="DINT2DINT_2.IN" Source="SUBSCRIBE_1.RD_1" dx1="375.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
   </Device>
@@ -796,12 +797,6 @@
         <FB Comment="" Name="ReceivedDINTOK" Type="TEST_CONDITION" x="4285.0" y="1505.0"/>
         <FB Comment="" Name="DINT2DINT_1" Type="DINT2DINT" x="2390.0" y="965.0"/>
         <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="7900.0" y="315.0"/>
-        <DataConnections>
-          <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
-          <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="170.0"/>
-          <Connection Comment="" Destination="DINT2DINT_1.IN" Source="SUBSCRIBE_1.RD_1" dx1="230.0"/>
-          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT_1.OUT" dx1="1800.0"/>
-        </DataConnections>
         <EventConnections>
           <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="START.COLD" dx1="410.0"/>
           <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="START.WARM" dx1="410.0"/>
@@ -812,6 +807,12 @@
           <Connection Comment="" Destination="PUBLISH_1.REQ" Source="ReceivedDINTOK.CNF" dx1="750.0"/>
           <Connection Comment="" Destination="STEST_END_1.REQ" Source="PUBLISH_1.CNF" dx1="450.0"/>
         </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="ReceivedDINTOK.check" Source="F_EQ_1.OUT" dx1="165.0"/>
+          <Connection Comment="" Destination="F_EQ_1.IN1" Source="DINT2DINT_1.OUT" dx1="170.0"/>
+          <Connection Comment="" Destination="DINT2DINT_1.IN" Source="SUBSCRIBE_1.RD_1" dx1="230.0"/>
+          <Connection Comment="" Destination="PUBLISH_1.SD_1" Source="DINT2DINT_1.OUT" dx1="1800.0"/>
+        </DataConnections>
       </FBNetwork>
     </Resource>
   </Device>
