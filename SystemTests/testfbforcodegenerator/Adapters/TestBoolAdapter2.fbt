@@ -13,7 +13,7 @@
       </Event>
     </EventOutputs>
     <OutputVars>
-      <VarDeclaration Comment="" Name="D0" Type="BYTE"/>
+      <VarDeclaration Comment="" Name="D0" Type="BOOL"/>
     </OutputVars>
     <Sockets>
       <AdapterDeclaration Comment="" Name="ADP" Type="BoolAdapter"/>
