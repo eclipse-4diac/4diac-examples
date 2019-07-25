@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
 <System Comment="" Name="SystemTests">
-  <Identification/>
   <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
   <Application Comment="Small test application for measuring the execution time of a few fbs for evaluating runtime performance" Name="Timing">
     <SubAppNetwork>
