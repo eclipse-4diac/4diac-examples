@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Comment="21 RD/RD Server Interface" Name="SERVER_21">
+<FBType Comment="22 RD/RD Server Interface" Name="SERVER_22">
   <Identification Classification="Communications" Standard="61499-1"/>
   <VersionInfo Author="Jose Cabral" Date="2019-07-08" Organization="fortiss GmbH" Version="1.0"/>
   <InterfaceList>
@@ -32,7 +32,8 @@
 		<With Var="SD_19"/>
         <With Var="SD_20"/>
         <With Var="SD_21"/>
-	  </Event>
+		<With Var="SD_22"/>
+      </Event>
     </EventInputs>
     <EventOutputs>
       <Event Comment="" Name="INITO" Type="Event">
@@ -63,6 +64,7 @@
 		<With Var="RD_19"/>
         <With Var="RD_20"/>
         <With Var="RD_21"/>
+		<With Var="RD_22"/>
       </Event>
     </EventOutputs>
     <InputVars>
@@ -89,6 +91,7 @@
 	  <VarDeclaration Comment="Data to Send" Name="SD_19" Type="ANY"/>
 	  <VarDeclaration Comment="Data to Send" Name="SD_20" Type="ANY"/>
 	  <VarDeclaration Comment="Data to Send" Name="SD_21" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_22" Type="ANY"/>
     </InputVars>
     <OutputVars>
       <VarDeclaration Comment="" Name="QO" Type="BOOL"/>
@@ -114,6 +117,7 @@
 	  <VarDeclaration Comment="Received Data" Name="RD_19" Type="ANY"/>
 	  <VarDeclaration Comment="Received Data" Name="RD_20" Type="ANY"/>
 	  <VarDeclaration Comment="Received Data" Name="RD_21" Type="ANY"/>
+	  <VarDeclaration Comment="Received Data" Name="RD_22" Type="ANY"/>
     </OutputVars>
   </InterfaceList>
 </FBType>

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Comment="4-Input,4-Output Client Interface" Name="CLIENT_21">
+<FBType Comment="21-Input,21-Output Client Interface" Name="CLIENT_21">
   <Identification Classification="Communications" Standard="61499-1"/>
-  <VersionInfo Author="JHC" Date="2001-05-23" Organization="Rockwell Automation" Version="0.0"/>
-  <CompilerInfo header="package fb.rt.net;">
-    <Compiler Language="Java" Product="VisualAge" Vendor="IBM" Version="3.0"/>
-  </CompilerInfo>
+  <VersionInfo Author="Jose Cabral" Date="2019-07-08" Organization="fortiss GmbH" Version="1.0"/>
   <InterfaceList>
     <EventInputs>
       <Event Comment="Service Initialization" Name="INIT" Type="Event">

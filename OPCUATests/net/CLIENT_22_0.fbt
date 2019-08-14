@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Comment="21-Input,0-Output Client Interface" Name="CLIENT_21_0">
-  <Identification Classification="Communications" Standard="61499-1"/>
+<FBType Comment="22-Input,0-Output Client Interface" Name="CLIENT_22_0">
+  <Identification Classification="Communications" Standard="61499-2"/>
   <VersionInfo Author="Jose Cabral" Date="2019-07-08" Organization="fortiss GmbH" Version="1.0"/>
-  <InterfaceList>
-    <EventInputs>
+    <InterfaceList>
+      <EventInputs>
       <Event Comment="Service Initialization" Name="INIT" Type="Event">
         <With Var="QI"/>
         <With Var="ID"/>
@@ -32,6 +32,7 @@
         <With Var="SD_19"/>
         <With Var="SD_20"/>
         <With Var="SD_21"/>
+		<With Var="SD_22"/>
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -68,6 +69,7 @@
       <VarDeclaration Comment="Data to Send" Name="SD_19" Type="ANY"/>
       <VarDeclaration Comment="Data to Send" Name="SD_20" Type="ANY"/>
       <VarDeclaration Comment="Data to Send" Name="SD_21" Type="ANY"/>
+	  <VarDeclaration Comment="Data to Send" Name="SD_22" Type="ANY"/>
     </InputVars>
     <OutputVars>
       <VarDeclaration Comment="Event Output Qualifier" Name="QO" Type="BOOL"/>

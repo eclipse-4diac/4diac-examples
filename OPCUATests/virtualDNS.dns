@@ -67,7 +67,7 @@
     <virtualDNSEntries name="methodValidDelay" value="T#500ms"/>
     <virtualDNSEntries name="unknownEndpoint2" value="opc.tcp://192.168.0.101:4840#"/>
     <virtualDNSEntries name="opcuaTypeNode" value="/Objects/types/method"/>
-    <virtualDNSEntries name="opcuaTypeAll" value="/Objects/types/BOOL;/Objects/types/SINT;/Objects/types/INT;/Objects/types/DINT;/Objects/types/LINT;/Objects/types/USINT;/Objects/types/UINT;/Objects/types/UDINT;/Objects/types/ULINT;/Objects/types/BYTE;/Objects/types/WORD;/Objects/types/DWORD;/Objects/types/LWORD;/Objects/types/DATE;/Objects/types/TIME_OF_DAY;/Objects/types/DATE_AND_TIME;/Objects/types/TIME;/Objects/types/REAL;/Objects/types/LREAL;/Objects/types/STRING;/Objects/types/WSTRING"/>
+    <virtualDNSEntries name="opcuaTypeAll" value="/Objects/types/BOOL;/Objects/types/SINT;/Objects/types/INT;/Objects/types/DINT;/Objects/types/LINT;/Objects/types/USINT;/Objects/types/UINT;/Objects/types/UDINT;/Objects/types/ULINT;/Objects/types/BYTE;/Objects/types/WORD;/Objects/types/DWORD;/Objects/types/LWORD;/Objects/types/DATE;/Objects/types/TIME_OF_DAY;/Objects/types/DATE_AND_TIME;/Objects/types/TIME;/Objects/types/REAL;/Objects/types/LREAL;/Objects/types/STRING;/Objects/types/WSTRING;/Objects/types/LocalizedText"/>
     <virtualDNSEntries name="boolValue" value="BOOL#TRUE"/>
     <virtualDNSEntries name="sintValue" value="SINT#121"/>
     <virtualDNSEntries name="intValue" value="INT#234"/>
@@ -93,5 +93,13 @@
     <virtualDNSEntries name="opcuaWRITEVariable" value="/Objects/IsolatedTests/WRITEVariable"/>
     <virtualDNSEntries name="opcuaNoFolder" value="/Objects/noNewFolder"/>
     <virtualDNSEntries name="opcuaNoFolderMethod" value="/Objects/noNewFolderMethod"/>
+    <virtualDNSEntries name="opcuaDirectRead" value="/1:readVar/"/>
+    <virtualDNSEntries name="opcuaDirectWrite" value="/1:writeVar"/>
+    <virtualDNSEntries name="opcuaDirectMethod" value="/1:method"/>
+    <virtualDNSEntries name="opcuaDirectRead2" value="/1:folder2/readVar"/>
+    <virtualDNSEntries name="opcuaDirectWrite2" value="/1:folder2/writeVar"/>
+    <virtualDNSEntries name="opcuaDirectMethod2" value="/1:folder2/method"/>
+    <virtualDNSEntries name="localizedTextValue" value="(text:='JustAText',locale:='de-DE')"/>
+    <virtualDNSEntries name="waitConnectionTime" value="T#1s"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>

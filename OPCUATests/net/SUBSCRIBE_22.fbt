@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Comment="21-variable Subscriber" Name="SUBSCRIBE_21">
+<FBType Comment="22-variable Subscriber" Name="SUBSCRIBE_22">
   <Identification Classification="Communications" Standard="61499-1"/>
   <VersionInfo Author="Jose Cabral" Date="2019-07-08" Organization="fortiss GmbH" Version="1.0"/>
   <InterfaceList>
@@ -42,6 +42,7 @@
 		<With Var="RD_19"/>
         <With Var="RD_20"/>
         <With Var="RD_21"/>
+		<With Var="RD_22"/>
        </Event>
     </EventOutputs>
     <InputVars>
@@ -72,6 +73,7 @@
 	  <VarDeclaration Comment="Subscribed Data" Name="RD_19" Type="ANY"/>
 	  <VarDeclaration Comment="Subscribed Data" Name="RD_20" Type="ANY"/>
 	  <VarDeclaration Comment="Subscribed Data" Name="RD_21" Type="ANY"/>
+	  <VarDeclaration Comment="Subscribed Data" Name="RD_22" Type="ANY"/>
     </OutputVars>
   </InterfaceList>
 </FBType>
