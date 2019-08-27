@@ -2,7 +2,7 @@
 <!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
 <System Comment="" Name="OPCUATests">
   <VersionInfo Author="Alois Zoitl" Date="2018-08-29" Organization="Johannes Kepler University" Remarks="initial API and implementation and/or initial documentation" Version="1.0"/>
-  <Application Comment="" Name="OpcUWrongParameters">
+  <Application Comment="" Name="OpcUaWrongParameters">
     <SubAppNetwork>
       <FB Comment="" Name="STEST_END" Type="STEST_END" x="5115.0" y="11190.0"/>
       <SubApp Comment="" Name="NoSemicolon" x="2950.0" y="990.0">
@@ -11510,7 +11510,7 @@
       </DataConnections>
     </SubAppNetwork>
   </Application>
-  <Application Comment="" Name="OpcUADelayedWorking">
+  <Application Comment="" Name="OpcUaDelayedWorking">
     <SubAppNetwork>
       <FB Comment="" Name="E_SR" Type="E_SR" x="2625.0" y="1755.0"/>
       <FB Comment="" Name="E_DELAY" Type="E_DELAY" x="21825.0" y="5080.0">
@@ -18254,28 +18254,28 @@
         <Connection Comment="" Destination="AllTypes_2.WORD_I" Source="RemoteRead.RD_11" dx1="1070.0"/>
         <Connection Comment="" Destination="AllTypes_2.BYTE_I" Source="RemoteRead.RD_10" dx1="1070.0"/>
         <Connection Comment="" Destination="AllTypes_2.ULINT_I" Source="RemoteRead.RD_9" dx1="1070.0"/>
-        <Connection Comment="" Destination="AllTypes_3.LocalizedText_I" Source="RemoteCall.RD_22"/>
-        <Connection Comment="" Destination="AllTypes_3.WSTRING_I" Source="RemoteCall.RD_21"/>
-        <Connection Comment="" Destination="AllTypes_3.STRING_I" Source="RemoteCall.RD_20"/>
-        <Connection Comment="" Destination="AllTypes_3.LREAL_I" Source="RemoteCall.RD_19"/>
-        <Connection Comment="" Destination="AllTypes_3.REAL_I" Source="RemoteCall.RD_18"/>
-        <Connection Comment="" Destination="AllTypes_3.TIME_I" Source="RemoteCall.RD_17"/>
-        <Connection Comment="" Destination="AllTypes_3.DATE_AND_TIME_I_BOOL" Source="RemoteCall.RD_16"/>
-        <Connection Comment="" Destination="AllTypes_3.TIME_OF_DAY_I_BOOL" Source="RemoteCall.RD_15"/>
-        <Connection Comment="" Destination="AllTypes_3.DATE_I_BOOL" Source="RemoteCall.RD_14"/>
-        <Connection Comment="" Destination="AllTypes_3.LWORD_I" Source="RemoteCall.RD_13"/>
-        <Connection Comment="" Destination="AllTypes_3.DWORD_I" Source="RemoteCall.RD_12"/>
-        <Connection Comment="" Destination="AllTypes_3.WORD_I" Source="RemoteCall.RD_11"/>
-        <Connection Comment="" Destination="AllTypes_3.BYTE_I" Source="RemoteCall.RD_10"/>
-        <Connection Comment="" Destination="AllTypes_3.ULINT_I" Source="RemoteCall.RD_9"/>
-        <Connection Comment="" Destination="AllTypes_3.UDINT_I" Source="RemoteCall.RD_8"/>
-        <Connection Comment="" Destination="AllTypes_3.UINT_I" Source="RemoteCall.RD_7"/>
-        <Connection Comment="" Destination="AllTypes_3.USINT_I" Source="RemoteCall.RD_6"/>
-        <Connection Comment="" Destination="AllTypes_3.LINT_I" Source="RemoteCall.RD_5"/>
-        <Connection Comment="" Destination="AllTypes_3.DINT_I" Source="RemoteCall.RD_4"/>
-        <Connection Comment="" Destination="AllTypes_3.INT_I" Source="RemoteCall.RD_3"/>
-        <Connection Comment="" Destination="AllTypes_3.SINT_I" Source="RemoteCall.RD_2"/>
-        <Connection Comment="" Destination="AllTypes_3.BOOL_I" Source="RemoteCall.RD_1"/>
+        <Connection Comment="" Destination="AllTypes_3.LocalizedText_I" Source="RemoteCall.RD_22" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.WSTRING_I" Source="RemoteCall.RD_21" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.STRING_I" Source="RemoteCall.RD_20" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.LREAL_I" Source="RemoteCall.RD_19" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.REAL_I" Source="RemoteCall.RD_18" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.TIME_I" Source="RemoteCall.RD_17" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.DATE_AND_TIME_I_BOOL" Source="RemoteCall.RD_16" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.TIME_OF_DAY_I_BOOL" Source="RemoteCall.RD_15" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.DATE_I_BOOL" Source="RemoteCall.RD_14" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.LWORD_I" Source="RemoteCall.RD_13" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.DWORD_I" Source="RemoteCall.RD_12" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.WORD_I" Source="RemoteCall.RD_11" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.BYTE_I" Source="RemoteCall.RD_10" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.ULINT_I" Source="RemoteCall.RD_9" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.UDINT_I" Source="RemoteCall.RD_8" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.UINT_I" Source="RemoteCall.RD_7" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.USINT_I" Source="RemoteCall.RD_6" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.LINT_I" Source="RemoteCall.RD_5" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.DINT_I" Source="RemoteCall.RD_4" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.INT_I" Source="RemoteCall.RD_3" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.SINT_I" Source="RemoteCall.RD_2" dx1="870.0"/>
+        <Connection Comment="" Destination="AllTypes_3.BOOL_I" Source="RemoteCall.RD_1" dx1="870.0"/>
         <Connection Comment="" Destination="Method.SD_11" Source="AllTypes_1.WORD_O" dx1="60.0" dx2="60.0" dy="15.0"/>
         <Connection Comment="" Destination="AllTypes_1.LocalizedText_I" Source="Method.RD_22" dx1="600.0"/>
         <Connection Comment="" Destination="AllTypes_1.WSTRING_I" Source="Method.RD_21" dx1="600.0"/>
@@ -18830,6 +18830,104 @@
         <Connection Comment="" Destination="DINT2DINT_1_1_2_1.IN" Source="SUBSCRIBE_1_1_1.RD_1" dx1="205.0"/>
         <Connection Comment="" Destination="folderTestRemote.QI" Source="E_SR_1.Q" dx1="455.0"/>
         <Connection Comment="" Destination="folderTest.QI" Source="E_SR.Q" dx1="510.0"/>
+      </DataConnections>
+    </SubAppNetwork>
+  </Application>
+  <Application Comment="" Name="OpcUaFailAction">
+    <SubAppNetwork>
+      <FB Comment="" Name="ServerRead" Type="SUBSCRIBE_1" x="2100.0" y="500.0">
+        <Parameter Name="ID" Value="opc_ua[READ;%opcuaREADVariable%]"/>
+      </FB>
+      <FB Comment="" Name="ClientWrite" Type="CLIENT_1_0" x="7500.0" y="2000.0">
+        <Parameter Name="QI" Value="1"/>
+        <Parameter Name="ID" Value="opc_ua[WRITE;%serverEndpoint%;%opcuaREADVariable%]"/>
+      </FB>
+      <FB Comment="" Name="E_SR" Type="E_SR" x="800.0" y="1400.0"/>
+      <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="3400.0" y="2300.0"/>
+      <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="3400.0" y="700.0"/>
+      <FB Comment="" Name="BOOL2BOOL_1" Type="BOOL2BOOL" x="6500.0" y="2800.0"/>
+      <FB Comment="" Name="ServerMethod" Type="SERVER_0" x="2100.0" y="4100.0">
+        <Parameter Name="ID" Value="opc_ua[%localMethodAction%;%opcuaMethodCreation1%]"/>
+      </FB>
+      <FB Comment="" Name="ClientMethod" Type="CLIENT_0" x="7400.0" y="5100.0">
+        <Parameter Name="QI" Value="1"/>
+        <Parameter Name="ID" Value="opc_ua[%callMethodAction%;%serverEndpoint%;%opcuaMethodCreation1%]"/>
+      </FB>
+      <FB Comment="" Name="ServerWrite" Type="PUBLISH_1" x="2100.0" y="2800.0">
+        <Parameter Name="ID" Value="opc_ua[WRITE;%opcuaWRITEVariable%]"/>
+      </FB>
+      <FB Comment="" Name="BOOL2BOOL_2" Type="BOOL2BOOL" x="0.0" y="3500.0"/>
+      <FB Comment="" Name="WriteUninit" Type="TEST_CONDITION" x="9900.0" y="2100.0"/>
+      <FB Comment="" Name="F_NOT" Type="F_NOT" x="8750.0" y="2140.0"/>
+      <FB Comment="" Name="ReadUninit" Type="TEST_CONDITION" x="10200.0" y="4000.0"/>
+      <FB Comment="" Name="F_NOT_1" Type="F_NOT" x="9050.0" y="4040.0"/>
+      <FB Comment="" Name="F_NOT_1_1" Type="F_NOT" x="9000.0" y="5200.0"/>
+      <FB Comment="" Name="CallUninit" Type="TEST_CONDITION" x="10200.0" y="5300.0"/>
+      <FB Comment="" Name="STEST_END" Type="STEST_END" x="4900.0" y="3500.0"/>
+      <FB Comment="" Name="E_SR_1" Type="E_SR" x="5200.0" y="1400.0"/>
+      <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="11300.0" y="1100.0"/>
+      <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="13000.0" y="1100.0"/>
+      <FB Comment="" Name="ClientRead" Type="CLIENT_0_1" x="7765.0" y="3745.0">
+        <Parameter Name="QI" Value="1"/>
+        <Parameter Name="ID" Value="opc_ua[READ;%serverEndpoint%;%opcuaWRITEVariable%]"/>
+      </FB>
+      <FB Comment="" Name="BOOL2BOOL_1_1" Type="BOOL2BOOL" x="8500.0" y="4600.0"/>
+      <FB Comment="" Name="E_DELAY" Type="E_DELAY" x="4170.0" y="3120.0">
+        <Parameter Name="DT" Value="T#3s"/>
+      </FB>
+      <FB Comment="" Name="E_DELAY_1" Type="E_DELAY" x="8200.0" y="6100.0">
+        <Parameter Name="DT" Value="T#2s"/>
+      </FB>
+      <FB Comment="" Name="E_DELAY_2" Type="E_DELAY" x="4500.0" y="1000.0">
+        <Parameter Name="DT" Value="T#4s"/>
+      </FB>
+      <FB Comment="" Name="E_DELAY_2_2_1" Type="E_DELAY" x="12200.0" y="1100.0">
+        <Parameter Name="DT" Value="T#2s"/>
+      </FB>
+      <EventConnections>
+        <Connection Comment="" Destination="ServerRead.INIT" Source="E_SR.EO" dx1="520.0"/>
+        <Connection Comment="" Destination="ServerWrite.INIT" Source="ServerRead.INITO" dx1="60.0" dx2="60.0" dy="990.0"/>
+        <Connection Comment="" Destination="ServerMethod.INIT" Source="ServerWrite.INITO" dx1="60.0" dx2="60.0" dy="650.0"/>
+        <Connection Comment="" Destination="E_SWITCH.EI" Source="ServerMethod.INITO" dx1="590.0"/>
+        <Connection Comment="" Destination="ClientWrite.INIT" Source="E_SWITCH.EO1" dx1="2525.0"/>
+        <Connection Comment="" Destination="F_NOT.REQ" Source="ClientWrite.CNF" dx1="370.0"/>
+        <Connection Comment="" Destination="WriteUninit.REQ" Source="F_NOT.CNF" dx1="390.0"/>
+        <Connection Comment="" Destination="ReadUninit.REQ" Source="F_NOT_1.CNF" dx1="390.0"/>
+        <Connection Comment="" Destination="ClientMethod.REQ" Source="ReadUninit.CNF" dx1="60.0" dx2="490.0" dy="600.0"/>
+        <Connection Comment="" Destination="F_NOT_1_1.REQ" Source="ClientMethod.CNF"/>
+        <Connection Comment="" Destination="CallUninit.REQ" Source="F_NOT_1_1.CNF" dx1="390.0"/>
+        <Connection Comment="" Destination="E_SR_1.S" Source="E_SWITCH.EO0" dx1="1090.0"/>
+        <Connection Comment="" Destination="ClientWrite.REQ" Source="E_SR_1.EO" dx1="1020.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.EI" Source="CallUninit.CNF" dx1="150.0"/>
+        <Connection Comment="" Destination="ClientRead.INIT" Source="ClientWrite.INITO" dx1="60.0" dx2="60.0" dy="870.0"/>
+        <Connection Comment="" Destination="ClientRead.REQ" Source="WriteUninit.CNF" dx1="60.0" dx2="300.0" dy="870.0"/>
+        <Connection Comment="" Destination="ClientMethod.INIT" Source="ClientRead.INITO" dx1="60.0" dx2="60.0" dy="675.0"/>
+        <Connection Comment="" Destination="F_NOT_1.REQ" Source="ClientRead.CNF" dx1="385.0"/>
+        <Connection Comment="" Destination="E_DELAY.START" Source="E_SWITCH.EO0" dx1="160.0"/>
+        <Connection Comment="" Destination="STEST_END.REQ" Source="E_DELAY.EO" dx1="170.0"/>
+        <Connection Comment="" Destination="E_SR.R" Source="E_DELAY_1.EO" dx1="60.0" dx2="60.0" dy="800.0"/>
+        <Connection Comment="" Destination="E_DELAY_1.START" Source="ClientMethod.INITO" dx1="165.0"/>
+        <Connection Comment="" Destination="E_DELAY_2.START" Source="E_SWITCH_1.EO1" dx1="60.0" dx2="240.0" dy="-710.0"/>
+        <Connection Comment="" Destination="E_SR_1.R" Source="E_DELAY_2.EO" dx1="155.0"/>
+        <Connection Comment="" Destination="STEST_END_1.REQ" Source="E_DELAY_2_2_1.EO"/>
+        <Connection Comment="" Destination="E_DELAY_2_2_1.START" Source="E_SWITCH_1.EO0"/>
+      </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="ServerRead.QI" Source="E_SR.Q" dx1="850.0"/>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="905.0"/>
+        <Connection Comment="" Destination="BOOL2BOOL.IN" Source="ServerRead.RD_1" dx1="280.0"/>
+        <Connection Comment="" Destination="ClientWrite.SD_1" Source="BOOL2BOOL_1.OUT" dx1="235.0"/>
+        <Connection Comment="" Destination="ServerMethod.QI" Source="E_SR.Q" dx1="470.0"/>
+        <Connection Comment="" Destination="ServerWrite.QI" Source="E_SR.Q" dx1="520.0"/>
+        <Connection Comment="" Destination="ServerWrite.SD_1" Source="BOOL2BOOL_2.OUT" dx1="785.0"/>
+        <Connection Comment="" Destination="WriteUninit.check" Source="F_NOT.OUT" dx1="390.0"/>
+        <Connection Comment="" Destination="F_NOT.IN" Source="ClientWrite.QO" dx1="370.0"/>
+        <Connection Comment="" Destination="ReadUninit.check" Source="F_NOT_1.OUT" dx1="390.0"/>
+        <Connection Comment="" Destination="F_NOT_1_1.IN" Source="ClientMethod.QO"/>
+        <Connection Comment="" Destination="CallUninit.check" Source="F_NOT_1_1.OUT" dx1="390.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="3120.0"/>
+        <Connection Comment="" Destination="F_NOT_1.IN" Source="ClientRead.QO" dx1="385.0"/>
+        <Connection Comment="" Destination="BOOL2BOOL_1_1.IN" Source="ClientRead.RD_1" dx1="125.0"/>
       </DataConnections>
     </SubAppNetwork>
   </Application>
@@ -20703,6 +20801,67 @@
         </DataConnections>
       </FBNetwork>
     </Resource>
+    <Resource Comment="" Name="FailAction" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="E_SR" Type="E_SR" x="800.0" y="1400.0"/>
+        <FB Comment="" Name="ServerRead" Type="SUBSCRIBE_1" x="2100.0" y="500.0">
+          <Parameter Name="ID" Value="opc_ua[READ;%opcuaREADVariable%]"/>
+        </FB>
+        <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="6800.0" y="2100.0"/>
+        <FB Comment="" Name="BOOL2BOOL" Type="BOOL2BOOL" x="3200.0" y="610.0"/>
+        <FB Comment="" Name="ServerMethod" Type="SERVER_0" x="2000.0" y="3800.0">
+          <Parameter Name="ID" Value="opc_ua[%localMethodAction%;%opcuaMethodCreation1%]"/>
+        </FB>
+        <FB Comment="" Name="BOOL2BOOL_2" Type="BOOL2BOOL" x="0.0" y="3500.0"/>
+        <FB Comment="" Name="ServerWrite" Type="PUBLISH_1" x="2000.0" y="1900.0">
+          <Parameter Name="ID" Value="opc_ua[WRITE;%opcuaWRITEVariable%]"/>
+        </FB>
+        <FB Comment="" Name="STEST_END" Type="STEST_END" x="5500.0" y="3800.0"/>
+        <FB Comment="" Name="INIT" Type="CLIENT_0" x="8085.0" y="590.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%serverInitTCP%"/>
+        </FB>
+        <FB Comment="" Name="DEINIT" Type="CLIENT_0" x="8100.0" y="2400.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%serverDeinitTCP%"/>
+        </FB>
+        <FB Comment="" Name="SERVER_0_1" Type="SERVER_0" x="-100.0" y="1800.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%clientInitTCP%"/>
+        </FB>
+        <FB Comment="" Name="E_DELAY" Type="E_DELAY" x="4170.0" y="3120.0">
+          <Parameter Name="DT" Value="T#3s"/>
+        </FB>
+        <FB Comment="" Name="E_DELAY_1" Type="E_DELAY" x="7000.0" y="500.0">
+          <Parameter Name="DT" Value="T#2s"/>
+        </FB>
+        <EventConnections>
+          <Connection Comment="" Destination="ServerRead.INIT" Source="E_SR.EO" dx1="520.0"/>
+          <Connection Comment="" Destination="E_SWITCH.EI" Source="ServerMethod.INITO" dx1="1435.0"/>
+          <Connection Comment="" Destination="ServerWrite.INIT" Source="ServerRead.INITO" dx1="60.0" dx2="60.0" dy="700.0"/>
+          <Connection Comment="" Destination="ServerMethod.INIT" Source="ServerWrite.INITO" dx1="60.0" dx2="60.0" dy="150.0"/>
+          <Connection Comment="" Destination="DEINIT.INIT" Source="INIT.INITO" dx1="60.0" dx2="60.0" dy="905.0"/>
+          <Connection Comment="" Destination="INIT.REQ" Source="E_SWITCH.EO1" dx1="415.0"/>
+          <Connection Comment="" Destination="DEINIT.REQ" Source="E_SWITCH.EO0" dx1="520.0"/>
+          <Connection Comment="" Destination="SERVER_0_1.RSP" Source="SERVER_0_1.IND" dx1="60.0" dx2="60.0" dy="120.0"/>
+          <Connection Comment="" Destination="E_DELAY.START" Source="E_SWITCH.EO0" dx1="245.0" dx2="60.0" dy="510.0"/>
+          <Connection Comment="" Destination="STEST_END.REQ" Source="E_DELAY.EO" dx1="470.0"/>
+          <Connection Comment="" Destination="E_SR.R" Source="SERVER_0_1.IND" dx1="160.0"/>
+          <Connection Comment="" Destination="INIT.INIT" Source="E_DELAY_1.EO" dx1="345.0"/>
+          <Connection Comment="" Destination="E_DELAY_1.START" Source="SERVER_0_1.INITO" dx1="4435.0"/>
+          <Connection Comment="" Destination="E_SR.S" Source="DEINIT.INITO" dx1="225.0" dx2="60.0" dy="-2565.0"/>
+          <Connection Comment="" Destination="SERVER_0_1.INIT" Source="START.COLD" dx1="60.0" dx2="60.0" dy="850.0"/>
+        </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="ServerRead.QI" Source="E_SR.Q" dx1="625.0"/>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="E_SR.Q" dx1="2120.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL.IN" Source="ServerRead.RD_1" dx1="275.0"/>
+          <Connection Comment="" Destination="ServerMethod.QI" Source="E_SR.Q" dx1="470.0"/>
+          <Connection Comment="" Destination="ServerWrite.QI" Source="E_SR.Q" dx1="520.0"/>
+          <Connection Comment="" Destination="ServerWrite.SD_1" Source="BOOL2BOOL_2.OUT" dx1="780.0"/>
+        </DataConnections>
+      </FBNetwork>
+    </Resource>
   </Device>
   <Device Comment="" Name="OPCUACLient" Type="FORTE_PC" x="3890.0" y="1290.0">
     <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
@@ -21730,38 +21889,124 @@
         </DataConnections>
       </FBNetwork>
     </Resource>
+    <Resource Comment="" Name="FailAction" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="ClientWrite" Type="CLIENT_1_0" x="7700.0" y="0.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="opc_ua[WRITE;%serverEndpoint%;%opcuaREADVariable%]"/>
+        </FB>
+        <FB Comment="" Name="BOOL2BOOL_1" Type="BOOL2BOOL" x="9800.0" y="1300.0"/>
+        <FB Comment="" Name="ClientMethod" Type="CLIENT_0" x="7600.0" y="6100.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="opc_ua[%callMethodAction%;%serverEndpoint%;%opcuaMethodCreation1%]"/>
+        </FB>
+        <FB Comment="" Name="ReadUninit" Type="TEST_CONDITION" x="10200.0" y="4000.0"/>
+        <FB Comment="" Name="F_NOT_1_1" Type="F_NOT" x="8800.0" y="7200.0"/>
+        <FB Comment="" Name="WriteUninit" Type="TEST_CONDITION" x="10500.0" y="400.0"/>
+        <FB Comment="" Name="CallUninit" Type="TEST_CONDITION" x="10300.0" y="7100.0"/>
+        <FB Comment="" Name="F_NOT_1" Type="F_NOT" x="9050.0" y="4040.0"/>
+        <FB Comment="" Name="F_NOT" Type="F_NOT" x="9300.0" y="400.0"/>
+        <FB Comment="" Name="E_SR_1" Type="E_SR" x="5200.0" y="1400.0"/>
+        <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="11700.0" y="1100.0"/>
+        <FB Comment="" Name="STEST_END_1" Type="STEST_END" x="12480.0" y="1150.0"/>
+        <FB Comment="" Name="serverInit" Type="SERVER_0" x="3365.0" y="230.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%serverInitTCP%"/>
+        </FB>
+        <FB Comment="" Name="serverDeinit" Type="SERVER_0" x="3500.0" y="1700.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%serverDeinitTCP%"/>
+        </FB>
+        <FB Comment="" Name="CLIENT_0" Type="CLIENT_0" x="10700.0" y="6300.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="%clientInitTCP%"/>
+        </FB>
+        <FB Comment="" Name="ClientRead" Type="CLIENT_0_1" x="7765.0" y="3745.0">
+          <Parameter Name="QI" Value="1"/>
+          <Parameter Name="ID" Value="opc_ua[READ;%serverEndpoint%;%opcuaWRITEVariable%]"/>
+        </FB>
+        <FB Comment="" Name="BOOL2BOOL_1_1" Type="BOOL2BOOL" x="8500.0" y="4600.0"/>
+        <FB Comment="" Name="E_DELAY_1" Type="E_DELAY" x="8100.0" y="5200.0">
+          <Parameter Name="DT" Value="T#2s"/>
+        </FB>
+        <FB Comment="" Name="E_DELAY_2" Type="E_DELAY" x="4500.0" y="1000.0">
+          <Parameter Name="DT" Value="T#4s"/>
+        </FB>
+        <FB Comment="" Name="E_DELAY_2_2_1" Type="E_DELAY" x="12200.0" y="1400.0">
+          <Parameter Name="DT" Value="T#2s"/>
+        </FB>
+        <EventConnections>
+          <Connection Comment="" Destination="ClientMethod.REQ" Source="ReadUninit.CNF" dx1="60.0" dx2="610.0" dy="1100.0"/>
+          <Connection Comment="" Destination="F_NOT_1_1.REQ" Source="ClientMethod.CNF" dx1="515.0"/>
+          <Connection Comment="" Destination="CallUninit.REQ" Source="F_NOT_1_1.CNF" dx1="390.0"/>
+          <Connection Comment="" Destination="ReadUninit.REQ" Source="F_NOT_1.CNF" dx1="390.0"/>
+          <Connection Comment="" Destination="F_NOT.REQ" Source="ClientWrite.CNF" dx1="405.0"/>
+          <Connection Comment="" Destination="WriteUninit.REQ" Source="F_NOT.CNF"/>
+          <Connection Comment="" Destination="ClientWrite.REQ" Source="E_SR_1.EO" dx1="1440.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.EI" Source="CallUninit.CNF" dx1="400.0"/>
+          <Connection Comment="" Destination="serverDeinit.INIT" Source="serverInit.INITO" dx1="330.0" dx2="60.0" dy="635.0"/>
+          <Connection Comment="" Destination="serverInit.INIT" Source="START.COLD" dx1="1400.0"/>
+          <Connection Comment="" Destination="serverInit.RSP" Source="serverInit.IND" dx1="60.0" dx2="60.0" dy="120.0"/>
+          <Connection Comment="" Destination="E_SR_1.S" Source="serverDeinit.IND" dx1="640.0"/>
+          <Connection Comment="" Destination="serverDeinit.RSP" Source="serverDeinit.IND" dx1="60.0" dx2="60.0" dy="120.0"/>
+          <Connection Comment="" Destination="ClientRead.INIT" Source="ClientWrite.INITO" dx1="60.0" dx2="555.0" dy="1875.0"/>
+          <Connection Comment="" Destination="ClientRead.REQ" Source="WriteUninit.CNF" dx1="60.0" dx2="60.0" dy="2085.0"/>
+          <Connection Comment="" Destination="ClientMethod.INIT" Source="ClientRead.INITO" dx1="60.0" dx2="60.0" dy="1175.0"/>
+          <Connection Comment="" Destination="F_NOT_1.REQ" Source="ClientRead.CNF" dx1="400.0"/>
+          <Connection Comment="" Destination="ClientWrite.INIT" Source="serverInit.IND" dx1="1955.0"/>
+          <Connection Comment="" Destination="E_DELAY_1.START" Source="ClientMethod.INITO" dx1="60.0" dx2="60.0" dy="-450.0"/>
+          <Connection Comment="" Destination="E_DELAY_2.START" Source="E_SWITCH_1.EO1" dx1="60.0" dx2="60.0" dy="-100.0"/>
+          <Connection Comment="" Destination="E_SR_1.R" Source="E_DELAY_2.EO" dx1="155.0"/>
+          <Connection Comment="" Destination="E_DELAY_2_2_1.START" Source="E_SWITCH_1.EO0" dx1="60.0" dx2="60.0" dy="150.0"/>
+          <Connection Comment="" Destination="STEST_END_1.REQ" Source="E_DELAY_2_2_1.EO" dx1="60.0" dx2="60.0" dy="-125.0"/>
+          <Connection Comment="" Destination="CLIENT_0.INIT" Source="E_DELAY_1.EO" dx1="540.0"/>
+          <Connection Comment="" Destination="CLIENT_0.REQ" Source="CLIENT_0.INITO" dx1="60.0" dx2="60.0" dy="50.0"/>
+        </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="ClientWrite.SD_1" Source="BOOL2BOOL_1.OUT" dx1="60.0" dx2="60.0" dy="-500.0"/>
+          <Connection Comment="" Destination="F_NOT_1_1.IN" Source="ClientMethod.QO" dx1="260.0"/>
+          <Connection Comment="" Destination="CallUninit.check" Source="F_NOT_1_1.OUT" dx1="390.0"/>
+          <Connection Comment="" Destination="ReadUninit.check" Source="F_NOT_1.OUT" dx1="390.0"/>
+          <Connection Comment="" Destination="F_NOT.IN" Source="ClientWrite.QO" dx1="270.0"/>
+          <Connection Comment="" Destination="WriteUninit.check" Source="F_NOT.OUT"/>
+          <Connection Comment="" Destination="E_SWITCH_1.G" Source="E_SR_1.Q" dx1="3120.0"/>
+          <Connection Comment="" Destination="F_NOT_1.IN" Source="ClientRead.QO" dx1="400.0"/>
+          <Connection Comment="" Destination="BOOL2BOOL_1_1.IN" Source="ClientRead.RD_1" dx1="125.0"/>
+        </DataConnections>
+      </FBNetwork>
+    </Resource>
   </Device>
-  <Mapping From="OpcUWrongParameters.STEST_END" To="OPCUAServer.WrongParameters.STEST_END"/>
-  <Mapping From="OpcUWrongParameters.NoSemicolon" To="OPCUAServer.WrongParameters.NoSemicolon"/>
-  <Mapping From="OpcUWrongParameters.W2W" To="OPCUAServer.WrongParameters.W2W"/>
-  <Mapping From="OpcUWrongParameters.W2W_1" To="OPCUAServer.WrongParameters.W2W_1"/>
-  <Mapping From="OpcUWrongParameters.emptyAction" To="OPCUAServer.WrongParameters.emptyAction"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1" To="OPCUAServer.WrongParameters.W2W_1_1"/>
-  <Mapping From="OpcUWrongParameters.NoExistingAction" To="OPCUAServer.WrongParameters.NoExistingAction"/>
-  <Mapping From="OpcUWrongParameters.UnknownIdentifier" To="OPCUAServer.WrongParameters.UnknownIdentifier"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_1"/>
-  <Mapping From="OpcUWrongParameters.WrongIdentifier" To="OPCUAServer.WrongParameters.WrongIdentifier"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4" To="OPCUAServer.WrongParameters.W2W_1_1_4"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_2" To="OPCUAServer.WrongParameters.W2W_1_1_2"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_3" To="OPCUAServer.WrongParameters.W2W_1_1_3"/>
-  <Mapping From="OpcUWrongParameters.wrongNodeId" To="OPCUAServer.WrongParameters.wrongNodeId"/>
-  <Mapping From="OpcUWrongParameters.wrongPair" To="OPCUAServer.WrongParameters.wrongPair"/>
-  <Mapping From="OpcUWrongParameters.RemoteWithoutBrowseNameNorNodeId" To="OPCUAServer.WrongParameters.RemoteWithoutBrowseNameNorNodeId"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2" To="OPCUAServer.WrongParameters.W2W_1_1_4_2"/>
-  <Mapping From="OpcUWrongParameters.RemoteRead" To="OPCUAServer.WrongParameters.RemoteRead"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1"/>
-  <Mapping From="OpcUWrongParameters.LocalRead" To="OPCUAServer.WrongParameters.LocalRead"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1"/>
-  <Mapping From="OpcUWrongParameters.RemoteWrite" To="OPCUAServer.WrongParameters.RemoteWrite"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1"/>
-  <Mapping From="OpcUWrongParameters.LocalWrite" To="OPCUAServer.WrongParameters.LocalWrite"/>
-  <Mapping From="OpcUWrongParameters.CreateMethod" To="OPCUAServer.WrongParameters.CreateMethod"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1"/>
-  <Mapping From="OpcUWrongParameters.CallMethod" To="OPCUAServer.WrongParameters.CallMethod"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1_1"/>
-  <Mapping From="OpcUWrongParameters.Subscribe" To="OPCUAServer.WrongParameters.Subscribe"/>
-  <Mapping From="OpcUWrongParameters.W2W_1_1_4_2_1_1_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.STEST_END" To="OPCUAServer.WrongParameters.STEST_END"/>
+  <Mapping From="OpcUaWrongParameters.NoSemicolon" To="OPCUAServer.WrongParameters.NoSemicolon"/>
+  <Mapping From="OpcUaWrongParameters.W2W" To="OPCUAServer.WrongParameters.W2W"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1" To="OPCUAServer.WrongParameters.W2W_1"/>
+  <Mapping From="OpcUaWrongParameters.emptyAction" To="OPCUAServer.WrongParameters.emptyAction"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1" To="OPCUAServer.WrongParameters.W2W_1_1"/>
+  <Mapping From="OpcUaWrongParameters.NoExistingAction" To="OPCUAServer.WrongParameters.NoExistingAction"/>
+  <Mapping From="OpcUaWrongParameters.UnknownIdentifier" To="OPCUAServer.WrongParameters.UnknownIdentifier"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.WrongIdentifier" To="OPCUAServer.WrongParameters.WrongIdentifier"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4" To="OPCUAServer.WrongParameters.W2W_1_1_4"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_2" To="OPCUAServer.WrongParameters.W2W_1_1_2"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_3" To="OPCUAServer.WrongParameters.W2W_1_1_3"/>
+  <Mapping From="OpcUaWrongParameters.wrongNodeId" To="OPCUAServer.WrongParameters.wrongNodeId"/>
+  <Mapping From="OpcUaWrongParameters.wrongPair" To="OPCUAServer.WrongParameters.wrongPair"/>
+  <Mapping From="OpcUaWrongParameters.RemoteWithoutBrowseNameNorNodeId" To="OPCUAServer.WrongParameters.RemoteWithoutBrowseNameNorNodeId"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2" To="OPCUAServer.WrongParameters.W2W_1_1_4_2"/>
+  <Mapping From="OpcUaWrongParameters.RemoteRead" To="OPCUAServer.WrongParameters.RemoteRead"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1"/>
+  <Mapping From="OpcUaWrongParameters.LocalRead" To="OPCUAServer.WrongParameters.LocalRead"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.RemoteWrite" To="OPCUAServer.WrongParameters.RemoteWrite"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.LocalWrite" To="OPCUAServer.WrongParameters.LocalWrite"/>
+  <Mapping From="OpcUaWrongParameters.CreateMethod" To="OPCUAServer.WrongParameters.CreateMethod"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.CallMethod" To="OPCUAServer.WrongParameters.CallMethod"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1_1"/>
+  <Mapping From="OpcUaWrongParameters.Subscribe" To="OPCUAServer.WrongParameters.Subscribe"/>
+  <Mapping From="OpcUaWrongParameters.W2W_1_1_4_2_1_1_1_1_1_1_1" To="OPCUAServer.WrongParameters.W2W_1_1_4_2_1_1_1_1_1_1_1"/>
   <Mapping From="OpcUaLocalWorking.E_SR" To="OPCUAServer.foldersReadFirst.E_SR"/>
   <Mapping From="OpcUaLocalWorking.FoldersNoBrowseName" To="OPCUAServer.foldersReadFirst.FoldersNoBrowseName"/>
   <Mapping From="OpcUaLocalWorking.foldersWithNodeStringId" To="OPCUAServer.foldersReadFirst.foldersWithNodeStringId"/>
@@ -21801,8 +22046,8 @@
   <Mapping From="OpcUaBothWorking.E_SR_2" To="OPCUACLient.WorkingClient.E_SR_2"/>
   <Mapping From="OpcUaBothWorking.E_PERMIT" To="OPCUACLient.WorkingClient.E_PERMIT"/>
   <Mapping From="OpcUaBothWorking.E_DELAY" To="OPCUACLient.WorkingClient.E_DELAY"/>
-  <Mapping From="OpcUWrongParameters.W2W_2" To="OPCUAServer.WrongParameters.W2W_2"/>
-  <Mapping From="OpcUWrongParameters.GUIDIdentifier" To="OPCUAServer.WrongParameters.GUIDIdentifier"/>
+  <Mapping From="OpcUaWrongParameters.W2W_2" To="OPCUAServer.WrongParameters.W2W_2"/>
+  <Mapping From="OpcUaWrongParameters.GUIDIdentifier" To="OPCUAServer.WrongParameters.GUIDIdentifier"/>
   <Mapping From="OpcUaBothWorking.LocaMethods" To="OPCUAServer.WorkingServer.LocaMethods"/>
   <Mapping From="OpcUaBothWorking.RemoteMethods" To="OPCUACLient.WorkingClient.RemoteMethods"/>
   <Mapping From="OpcUaBothFailingCases.E_SWITCH_1" To="OPCUACLient.FailingClient.E_SWITCH_1"/>
@@ -21888,28 +22133,28 @@
   <Mapping From="OpcUaBothFailingCases.Timeoutmethod" To="OPCUAServer.FailingServer.Timeoutmethod"/>
   <Mapping From="OpcUaBothFailingCases.E_DELAY_1" To="OPCUAServer.FailingServer.E_DELAY_1"/>
   <Mapping From="OpcUaBothFailingCases.WrongInputOutput_1" To="OPCUACLient.FailingClient.WrongInputOutput_1"/>
-  <Mapping From="OpcUADelayedWorking.LocaMethods" To="OPCUAServer.delayedWorkingServer.LocaMethods"/>
-  <Mapping From="OpcUADelayedWorking.E_SR" To="OPCUAServer.delayedWorkingServer.E_SR"/>
-  <Mapping From="OpcUADelayedWorking.SUBSCRIBE_0_1" To="OPCUAServer.delayedWorkingServer.SUBSCRIBE_0_1"/>
-  <Mapping From="OpcUADelayedWorking.HandleInitLocal" To="OPCUAServer.delayedWorkingServer.HandleInitLocal"/>
-  <Mapping From="OpcUADelayedWorking.E_PERMIT" To="OPCUACLient.delayedWorkingClient.E_PERMIT"/>
-  <Mapping From="OpcUADelayedWorking.numericNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.numericNodeIdTestRemote"/>
-  <Mapping From="OpcUADelayedWorking.RemoteMethods" To="OPCUACLient.delayedWorkingClient.RemoteMethods"/>
-  <Mapping From="OpcUADelayedWorking.HandleInit" To="OPCUACLient.delayedWorkingClient.HandleInit"/>
-  <Mapping From="OpcUADelayedWorking.PUBLISH_0" To="OPCUACLient.delayedWorkingClient.PUBLISH_0"/>
-  <Mapping From="OpcUADelayedWorking.InitFinishedSignal" To="OPCUACLient.delayedWorkingClient.InitFinishedSignal"/>
-  <Mapping From="OpcUADelayedWorking.bytestringNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.bytestringNodeIdTestRemote"/>
-  <Mapping From="OpcUADelayedWorking.E_DELAY" To="OPCUACLient.delayedWorkingClient.E_DELAY"/>
-  <Mapping From="OpcUADelayedWorking.stringNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.stringNodeIdTestRemote"/>
-  <Mapping From="OpcUADelayedWorking.E_SR_1" To="OPCUACLient.delayedWorkingClient.E_SR_1"/>
-  <Mapping From="OpcUADelayedWorking.E_SR_2" To="OPCUACLient.delayedWorkingClient.E_SR_2"/>
-  <Mapping From="OpcUADelayedWorking.folderTestRemote" To="OPCUACLient.delayedWorkingClient.folderTestRemote"/>
-  <Mapping From="OpcUADelayedWorking.E_SWITCH" To="OPCUAServer.delayedWorkingServer.E_SWITCH"/>
-  <Mapping From="OpcUADelayedWorking.E_DELAY_1" To="OPCUAServer.delayedWorkingServer.E_DELAY_1"/>
-  <Mapping From="OpcUADelayedWorking.E_SPLIT" To="OPCUAServer.delayedWorkingServer.E_SPLIT"/>
-  <Mapping From="OpcUADelayedWorking.E_DELAY_1_1" To="OPCUAServer.delayedWorkingServer.E_DELAY_1_1"/>
-  <Mapping From="OpcUADelayedWorking.F_NOT" To="OPCUAServer.delayedWorkingServer.F_NOT"/>
-  <Mapping From="OpcUADelayedWorking.E_PERMIT_1" To="OPCUAServer.delayedWorkingServer.E_PERMIT_1"/>
+  <Mapping From="OpcUaDelayedWorking.LocaMethods" To="OPCUAServer.delayedWorkingServer.LocaMethods"/>
+  <Mapping From="OpcUaDelayedWorking.E_SR" To="OPCUAServer.delayedWorkingServer.E_SR"/>
+  <Mapping From="OpcUaDelayedWorking.SUBSCRIBE_0_1" To="OPCUAServer.delayedWorkingServer.SUBSCRIBE_0_1"/>
+  <Mapping From="OpcUaDelayedWorking.HandleInitLocal" To="OPCUAServer.delayedWorkingServer.HandleInitLocal"/>
+  <Mapping From="OpcUaDelayedWorking.E_PERMIT" To="OPCUACLient.delayedWorkingClient.E_PERMIT"/>
+  <Mapping From="OpcUaDelayedWorking.numericNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.numericNodeIdTestRemote"/>
+  <Mapping From="OpcUaDelayedWorking.RemoteMethods" To="OPCUACLient.delayedWorkingClient.RemoteMethods"/>
+  <Mapping From="OpcUaDelayedWorking.HandleInit" To="OPCUACLient.delayedWorkingClient.HandleInit"/>
+  <Mapping From="OpcUaDelayedWorking.PUBLISH_0" To="OPCUACLient.delayedWorkingClient.PUBLISH_0"/>
+  <Mapping From="OpcUaDelayedWorking.InitFinishedSignal" To="OPCUACLient.delayedWorkingClient.InitFinishedSignal"/>
+  <Mapping From="OpcUaDelayedWorking.bytestringNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.bytestringNodeIdTestRemote"/>
+  <Mapping From="OpcUaDelayedWorking.E_DELAY" To="OPCUACLient.delayedWorkingClient.E_DELAY"/>
+  <Mapping From="OpcUaDelayedWorking.stringNodeIdTestRemote" To="OPCUACLient.delayedWorkingClient.stringNodeIdTestRemote"/>
+  <Mapping From="OpcUaDelayedWorking.E_SR_1" To="OPCUACLient.delayedWorkingClient.E_SR_1"/>
+  <Mapping From="OpcUaDelayedWorking.E_SR_2" To="OPCUACLient.delayedWorkingClient.E_SR_2"/>
+  <Mapping From="OpcUaDelayedWorking.folderTestRemote" To="OPCUACLient.delayedWorkingClient.folderTestRemote"/>
+  <Mapping From="OpcUaDelayedWorking.E_SWITCH" To="OPCUAServer.delayedWorkingServer.E_SWITCH"/>
+  <Mapping From="OpcUaDelayedWorking.E_DELAY_1" To="OPCUAServer.delayedWorkingServer.E_DELAY_1"/>
+  <Mapping From="OpcUaDelayedWorking.E_SPLIT" To="OPCUAServer.delayedWorkingServer.E_SPLIT"/>
+  <Mapping From="OpcUaDelayedWorking.E_DELAY_1_1" To="OPCUAServer.delayedWorkingServer.E_DELAY_1_1"/>
+  <Mapping From="OpcUaDelayedWorking.F_NOT" To="OPCUAServer.delayedWorkingServer.F_NOT"/>
+  <Mapping From="OpcUaDelayedWorking.E_PERMIT_1" To="OPCUAServer.delayedWorkingServer.E_PERMIT_1"/>
   <Mapping From="OpcUaTypes.AllTypes" To="OPCUAServer.typesServer.AllTypes"/>
   <Mapping From="OpcUaTypes.TypeTest" To="OPCUAServer.typesServer.TypeTest"/>
   <Mapping From="OpcUaTypes.AllTypes_1" To="OPCUAServer.typesServer.AllTypes_1"/>
@@ -21934,10 +22179,10 @@
   <Mapping From="OpcUaBothWorking.stringNodeIdTest" To="OPCUAServer.WorkingServer.stringNodeIdTest"/>
   <Mapping From="OpcUaBothWorking.byteStringNodeIdTest" To="OPCUAServer.WorkingServer.byteStringNodeIdTest"/>
   <Mapping From="OpcUaBothWorking.numericNodeIdTest" To="OPCUAServer.WorkingServer.numericNodeIdTest"/>
-  <Mapping From="OpcUADelayedWorking.numericNodeIdTest" To="OPCUAServer.delayedWorkingServer.numericNodeIdTest"/>
-  <Mapping From="OpcUADelayedWorking.folderTest" To="OPCUAServer.delayedWorkingServer.folderTest"/>
-  <Mapping From="OpcUADelayedWorking.byteStringNodeIdTest" To="OPCUAServer.delayedWorkingServer.byteStringNodeIdTest"/>
-  <Mapping From="OpcUADelayedWorking.stringNodeIdTestt" To="OPCUAServer.delayedWorkingServer.stringNodeIdTestt"/>
+  <Mapping From="OpcUaDelayedWorking.numericNodeIdTest" To="OPCUAServer.delayedWorkingServer.numericNodeIdTest"/>
+  <Mapping From="OpcUaDelayedWorking.folderTest" To="OPCUAServer.delayedWorkingServer.folderTest"/>
+  <Mapping From="OpcUaDelayedWorking.byteStringNodeIdTest" To="OPCUAServer.delayedWorkingServer.byteStringNodeIdTest"/>
+  <Mapping From="OpcUaDelayedWorking.stringNodeIdTestt" To="OPCUAServer.delayedWorkingServer.stringNodeIdTestt"/>
   <Mapping From="OpcUaBothWorking.IsolatedCases" To="OPCUAServer.WorkingServer.IsolatedCases"/>
   <Mapping From="OpcUaBothWorking.RemoteIsolatedCases" To="OPCUACLient.WorkingClient.RemoteIsolatedCases"/>
   <Mapping From="OpcUaBothFailingCases.DINT2DINT_1_2" To="OPCUAServer.FailingServer.DINT2DINT_1_2"/>
@@ -21962,8 +22207,8 @@
   <Mapping From="OpcUaBothWorking.WorkingWithoutSubscription" To="OPCUACLient.WokingClientWithoutSubs.WorkingWithoutSubscription"/>
   <Mapping From="OpcUaBothWorking.CreateObjects" To="OPCUAServer.WorkingServer.CreateObjects"/>
   <Mapping From="OpcUaBothFailingCases.CreateDeleteObjects" To="OPCUAServer.FailingServer.CreateDeleteObjects"/>
-  <Mapping From="OpcUWrongParameters.createObject" To="OPCUAServer.WrongParameters.createObject"/>
-  <Mapping From="OpcUWrongParameters.deleteObject" To="OPCUAServer.WrongParameters.deleteObject"/>
+  <Mapping From="OpcUaWrongParameters.createObject" To="OPCUAServer.WrongParameters.createObject"/>
+  <Mapping From="OpcUaWrongParameters.deleteObject" To="OPCUAServer.WrongParameters.deleteObject"/>
   <Mapping From="ShortTests.SUBSCRIBE_1_1" To="OPCUAServer.TestServer.SUBSCRIBE_1_1"/>
   <Mapping From="ShortTests.DINT2DINT_1_1_2" To="OPCUAServer.TestServer.DINT2DINT_1_1_2"/>
   <Mapping From="OpcUaBothFailingCases.PUBLISH_1_1" To="OPCUAServer.FailingServer.PUBLISH_1_1"/>
@@ -21982,13 +22227,13 @@
   <Mapping From="ShortTests.DINT2DINT_1_1_2_1" To="OPCUAServer.TestServer.DINT2DINT_1_1_2_1"/>
   <Mapping From="OpcUaBothWorking.DirectRoot" To="OPCUAServer.WorkingServer.DirectRoot"/>
   <Mapping From="OpcUaBothWorking.DirectRootRemote" To="OPCUACLient.WorkingClient.DirectRootRemote"/>
-  <Mapping From="OpcUADelayedWorking.DirectRoot" To="OPCUAServer.delayedWorkingServer.DirectRoot"/>
-  <Mapping From="OpcUADelayedWorking.IsolatedCases" To="OPCUAServer.delayedWorkingServer.IsolatedCases"/>
-  <Mapping From="OpcUADelayedWorking.RemoteIsolatedCases" To="OPCUACLient.delayedWorkingClient.RemoteIsolatedCases"/>
-  <Mapping From="OpcUADelayedWorking.DirectRootRemote" To="OPCUACLient.delayedWorkingClient.DirectRootRemote"/>
+  <Mapping From="OpcUaDelayedWorking.DirectRoot" To="OPCUAServer.delayedWorkingServer.DirectRoot"/>
+  <Mapping From="OpcUaDelayedWorking.IsolatedCases" To="OPCUAServer.delayedWorkingServer.IsolatedCases"/>
+  <Mapping From="OpcUaDelayedWorking.RemoteIsolatedCases" To="OPCUACLient.delayedWorkingClient.RemoteIsolatedCases"/>
+  <Mapping From="OpcUaDelayedWorking.DirectRootRemote" To="OPCUACLient.delayedWorkingClient.DirectRootRemote"/>
   <Mapping From="OpcUaBothWorking.CreatedObjects" To="OPCUACLient.WorkingClient.CreatedObjects"/>
-  <Mapping From="OpcUADelayedWorking.CreateObjects" To="OPCUAServer.delayedWorkingServer.CreateObjects"/>
-  <Mapping From="OpcUADelayedWorking.CreatedObjects" To="OPCUACLient.delayedWorkingClient.CreatedObjects"/>
+  <Mapping From="OpcUaDelayedWorking.CreateObjects" To="OPCUAServer.delayedWorkingServer.CreateObjects"/>
+  <Mapping From="OpcUaDelayedWorking.CreatedObjects" To="OPCUACLient.delayedWorkingClient.CreatedObjects"/>
   <Mapping From="OpcUaBothFailingCases.testObject1Test" To="OPCUAServer.FailingServer.testObject1Test"/>
   <Mapping From="OpcUaBothFailingCases.DINT2DINT_2" To="OPCUAServer.FailingServer.DINT2DINT_2"/>
   <Mapping From="OpcUaBothFailingCases.F_NOT_3" To="OPCUAServer.FailingServer.F_NOT_3"/>
@@ -22035,8 +22280,34 @@
   <Mapping From="OpcUaBothFailingCases.CLIENT_0_1" To="OPCUAServer.FailingServer.CLIENT_0_1"/>
   <Mapping From="OpcUaBothFailingCases.CLIENT_0" To="OPCUAServer.FailingServer.CLIENT_0"/>
   <Mapping From="OpcUaBothFailingCases.DINT2DINT_5" To="OPCUAServer.FailingServer.DINT2DINT_5"/>
-  <Mapping From="OpcUADelayedWorking.UnkonwnServer" To="OPCUACLient.delayedWorkingClient.UnkonwnServer"/>
-  <Mapping From="OpcUADelayedWorking.UnknownServer2" To="OPCUACLient.delayedWorkingClient.UnknownServer2"/>
+  <Mapping From="OpcUaDelayedWorking.UnkonwnServer" To="OPCUACLient.delayedWorkingClient.UnkonwnServer"/>
+  <Mapping From="OpcUaDelayedWorking.UnknownServer2" To="OPCUACLient.delayedWorkingClient.UnknownServer2"/>
+  <Mapping From="OpcUaFailAction.E_SR" To="OPCUAServer.FailAction.E_SR"/>
+  <Mapping From="OpcUaFailAction.ServerRead" To="OPCUAServer.FailAction.ServerRead"/>
+  <Mapping From="OpcUaFailAction.E_SWITCH" To="OPCUAServer.FailAction.E_SWITCH"/>
+  <Mapping From="OpcUaFailAction.ClientWrite" To="OPCUACLient.FailAction.ClientWrite"/>
+  <Mapping From="OpcUaFailAction.BOOL2BOOL" To="OPCUAServer.FailAction.BOOL2BOOL"/>
+  <Mapping From="OpcUaFailAction.BOOL2BOOL_1" To="OPCUACLient.FailAction.BOOL2BOOL_1"/>
+  <Mapping From="OpcUaFailAction.ServerMethod" To="OPCUAServer.FailAction.ServerMethod"/>
+  <Mapping From="OpcUaFailAction.ClientMethod" To="OPCUACLient.FailAction.ClientMethod"/>
+  <Mapping From="OpcUaFailAction.BOOL2BOOL_2" To="OPCUAServer.FailAction.BOOL2BOOL_2"/>
+  <Mapping From="OpcUaFailAction.ServerWrite" To="OPCUAServer.FailAction.ServerWrite"/>
+  <Mapping From="OpcUaFailAction.STEST_END" To="OPCUAServer.FailAction.STEST_END"/>
+  <Mapping From="OpcUaFailAction.ReadUninit" To="OPCUACLient.FailAction.ReadUninit"/>
+  <Mapping From="OpcUaFailAction.F_NOT_1_1" To="OPCUACLient.FailAction.F_NOT_1_1"/>
+  <Mapping From="OpcUaFailAction.WriteUninit" To="OPCUACLient.FailAction.WriteUninit"/>
+  <Mapping From="OpcUaFailAction.CallUninit" To="OPCUACLient.FailAction.CallUninit"/>
+  <Mapping From="OpcUaFailAction.F_NOT_1" To="OPCUACLient.FailAction.F_NOT_1"/>
+  <Mapping From="OpcUaFailAction.F_NOT" To="OPCUACLient.FailAction.F_NOT"/>
+  <Mapping From="OpcUaFailAction.E_SR_1" To="OPCUACLient.FailAction.E_SR_1"/>
+  <Mapping From="OpcUaFailAction.E_SWITCH_1" To="OPCUACLient.FailAction.E_SWITCH_1"/>
+  <Mapping From="OpcUaFailAction.STEST_END_1" To="OPCUACLient.FailAction.STEST_END_1"/>
+  <Mapping From="OpcUaFailAction.ClientRead" To="OPCUACLient.FailAction.ClientRead"/>
+  <Mapping From="OpcUaFailAction.BOOL2BOOL_1_1" To="OPCUACLient.FailAction.BOOL2BOOL_1_1"/>
+  <Mapping From="OpcUaFailAction.E_DELAY" To="OPCUAServer.FailAction.E_DELAY"/>
+  <Mapping From="OpcUaFailAction.E_DELAY_1" To="OPCUACLient.FailAction.E_DELAY_1"/>
+  <Mapping From="OpcUaFailAction.E_DELAY_2" To="OPCUACLient.FailAction.E_DELAY_2"/>
+  <Mapping From="OpcUaFailAction.E_DELAY_2_2_1" To="OPCUACLient.FailAction.E_DELAY_2_2_1"/>
   <Segment Comment="" Name="Ethernet" Type="Ethernet" dx1="1500.0" x="2765.0" y="710.0">
     <Attribute Comment="color" Name="Color" Type="STRING" Value="211,52,209"/>
   </Segment>

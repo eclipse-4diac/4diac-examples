@@ -101,5 +101,9 @@
     <virtualDNSEntries name="opcuaDirectMethod2" value="/1:folder2/method"/>
     <virtualDNSEntries name="localizedTextValue" value="(text:='JustAText',locale:='de-DE')"/>
     <virtualDNSEntries name="waitConnectionTime" value="T#1s"/>
+    <virtualDNSEntries name="serverDeInitCommId" value="239.192.0.2:61502"/>
+    <virtualDNSEntries name="serverInitTCP" value="127.0.0.1:60100"/>
+    <virtualDNSEntries name="serverDeinitTCP" value="127.0.0.1:60101"/>
+    <virtualDNSEntries name="clientInitTCP" value="127.0.0.1:60102"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
