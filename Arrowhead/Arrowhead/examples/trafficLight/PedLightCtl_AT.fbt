@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Function block for controling the operation of a pedestrian trafic light with one red and one green light" Name="PedLightCtl_AT">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="4DIAC-IDE" Date="2014-07-11" Organization="4DIAC-Consortium" Version="0.0"/>
+  <CompilerInfo/>
+  <InterfaceList>
+    <EventOutputs>
+      <Event Comment="" Name="UpdateLights" Type="Event">
+        <With Var="green"/>
+        <With Var="red"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" Name="blinkTime" Type="TIME"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" InitialValue="" Name="red" Type="BOOL"/>
+      <VarDeclaration Comment="" InitialValue="" Name="green" Type="BOOL"/>
+    </OutputVars>
+    <Plugs>
+      <AdapterDeclaration Comment="" Name="timeOut" Type="ATimeOut"/>
+    </Plugs>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="traficLight" Type="ATraficLight"/>
+    </Sockets>
+  </InterfaceList>
+  <BasicFB>
+    <InternalVars>
+      <VarDeclaration Comment="Internal Variable" Name="blinkCount" Type="UINT"/>
+    </InternalVars>
+    <ECC>
+      <ECState Comment="" Name="OutOfService" x="1615.0" y="1235.0">
+        <ECAction Algorithm="AllOff" Output="UpdateLights"/>
+      </ECState>
+      <ECState Comment="" Name="Block" x="1140.0" y="2375.0">
+        <ECAction Algorithm="Stop" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Stopped"/>
+      </ECState>
+      <ECState Comment="" Name="Allowed" x="2755.0" y="2375.0">
+        <ECAction Algorithm="Go" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Allowed"/>
+      </ECState>
+      <ECState Comment="" Name="State" x="2660.0" y="3230.0">
+        <ECAction Algorithm="StartBlinking" Output="UpdateLights"/>
+        <ECAction Output="timeOut.START"/>
+      </ECState>
+      <ECState Comment="" Name="State_0" x="1805.0" y="3705.0">
+        <ECAction Algorithm="ToggleGreen" Output="UpdateLights"/>
+        <ECAction Output="timeOut.START"/>
+      </ECState>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="Block" Source="OutOfService" x="450.0" y="1670.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="OutOfService" Source="Block" x="1560.0" y="1895.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="Allowed" Source="Block" x="1960.0" y="2185.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="OutOfService" Source="Allowed" x="2335.0" y="1800.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="Allowed" Source="OutOfService" x="3810.0" y="1695.0"/>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="State" Source="Allowed" x="2845.0" y="2785.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="State_0" Source="State" x="2310.0" y="3505.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut[blinkCount = 10]" Destination="Block" Source="State_0" x="1535.0" y="3080.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="State_0" Source="State_0" x="1890.0" y="3980.0"/>
+    </ECC>
+    <Algorithm Comment="" Name="AllOff">
+      <ST Text="red := FALSE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in stop mode (i.e., red := true, green := false)" Name="Stop">
+      <ST Text="red := TRUE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in Walk mode (i.e., red := false, green := true)" Name="Go">
+      <ST Text="red := FALSE;&#10;green := TRUE;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="StartBlinking">
+      <ST Text="&#10;timeOut.DT := blinkTime;&#10;blinkCount := 0;&#10;green := FALSE;&#10;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="ToggleGreen">
+      <ST Text="&#10;green := NOT green;&#10;blinkCount := blinkCount + 1;&#10;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

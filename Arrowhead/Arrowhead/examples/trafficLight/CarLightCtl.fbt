@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Function block for controling the operation of a car trafic light following the rules of Germany" Name="CarLightCtl">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="4DIAC-IDE" Date="2014-07-11" Organization="4DIAC-Consortium" Version="0.0"/>
+  <InterfaceList>
+    <EventInputs/>
+    <EventOutputs>
+      <Event Comment="" Name="UpdateLights" Type="Event">
+        <With Var="green"/>
+        <With Var="red"/>
+        <With Var="yellow"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Cycle time for the yellow light blinking in out of service" Name="yellowBlinkTime" Type="TIME"/>
+      <VarDeclaration Comment="Time the yellow light is on when switching from red to green" Name="yellowOnTime" Type="TIME"/>
+      <VarDeclaration Comment="Time the yellow light is on when swithcing from green to red" Name="yellowOffTime" Type="TIME"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="red" Type="BOOL"/>
+      <VarDeclaration Name="yellow" Type="BOOL"/>
+      <VarDeclaration Comment="" InitialValue="" Name="green" Type="BOOL"/>
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="traficLight" Type="ATraficLight"/>
+    </Sockets>
+    <Plugs>
+      <AdapterDeclaration Name="timeOut" Type="ATimeOut"/>
+    </Plugs>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Name="START" x="190.0" y="570.0"/>
+      <ECState Name="OutOfService" x="1615.0" y="1235.0">
+        <ECAction Algorithm="setBlinkTimeOut" Output="timeOut.START"/>
+      </ECState>
+      <ECState Name="Block" x="665.0" y="2375.0">
+        <ECAction Algorithm="Stop" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Stopped"/>
+      </ECState>
+      <ECState Name="Open" x="2470.0" y="2375.0">
+        <ECAction Algorithm="Go" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Allowed"/>
+      </ECState>
+      <ECState Name="ToggleYellow" x="2280.0" y="570.0">
+        <ECAction Algorithm="ToggleYellow" Output="UpdateLights"/>
+      </ECState>
+      <ECState Name="EnteringOoS" x="190.0" y="1235.0">
+        <ECAction Algorithm="AllOff" Output="UpdateLights"/>
+        <ECAction Output="timeOut.STOP"/>
+      </ECState>
+      <ECState Name="Allowing" x="1900.0" y="1710.0">
+        <ECAction Algorithm="Allowing" Output="UpdateLights"/>
+        <ECAction Output="timeOut.START"/>
+      </ECState>
+      <ECState Name="Stopping" x="570.0" y="2945.0">
+        <ECAction Algorithm="stopping" Output="UpdateLights"/>
+        <ECAction Output="timeOut.START"/>
+      </ECState>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="Block" Source="OutOfService" x="1145.0" y="1870.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="ToggleYellow" Source="OutOfService" x="1925.0" y="910.0"/>
+      <ECTransition Comment="" Condition="1" Destination="OutOfService" Source="ToggleYellow" x="2375.0" y="1005.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="EnteringOoS" Source="START" x="300.0" y="950.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="EnteringOoS" Source="Block" x="360.0" y="1985.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="EnteringOoS" Source="Open" x="1075.0" y="3600.0"/>
+      <ECTransition Comment="" Condition="1" Destination="OutOfService" Source="EnteringOoS" x="1040.0" y="1040.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="Allowing" Source="Block" x="1675.0" y="2115.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="Open" Source="Allowing" x="2305.0" y="2120.0"/>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="Stopping" Source="Open" x="1750.0" y="2760.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="EnteringOoS" Source="Stopping" x="355.0" y="1975.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="Block" Source="Stopping" x="775.0" y="2735.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="EnteringOoS" Source="Allowing" x="360.0" y="1985.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="Open" Source="OutOfService" x="3465.0" y="1960.0"/>
+    </ECC>
+    <Algorithm Comment="" Name="AllOff">
+      <ST Text="red := FALSE;&#10;yellow := FALSE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in stop mode (i.e., red := true, green := false)" Name="Stop">
+      <ST Text="red := TRUE;&#10;yellow := FALSE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in Walk mode (i.e., red := false, green := true)" Name="Go">
+      <ST Text="red := FALSE;&#10;yellow := FALSE;&#10;green := TRUE;"/>
+    </Algorithm>
+    <Algorithm Comment="" Name="setBlinkTimeOut">
+      <ST Text="timeOut.DT := yellowBlinkTime;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="ToggleYellow">
+      <ST Text="yellow := NOT yellow;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="Allowing">
+      <ST Text="yellow := TRUE;&#10;timeOut.DT := yellowOnTime;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="stopping">
+      <ST Text="green := FALSE;&#10;yellow := TRUE;&#10;&#10;timeOut.DT := yellowOffTime;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

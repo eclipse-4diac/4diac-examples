@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Function block for controling the operation of a pedestrian trafic light with one red and one green light" Name="PedLightCtl">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="4DIAC-IDE" Date="2014-07-11" Organization="4DIAC-Consortium" Version="0.0"/>
+  <InterfaceList>
+    <EventInputs/>
+    <EventOutputs>
+      <Event Comment="" Name="UpdateLights" Type="Event">
+        <With Var="green"/>
+        <With Var="red"/>
+      </Event>
+    </EventOutputs>
+    <InputVars/>
+    <OutputVars>
+      <VarDeclaration Comment="" InitialValue="" Name="red" Type="BOOL"/>
+      <VarDeclaration Comment="" InitialValue="" Name="green" Type="BOOL"/>
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration Name="traficLight" Type="ATraficLight"/>
+    </Sockets>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Name="OutOfService" x="1615.0" y="1235.0">
+        <ECAction Algorithm="AllOff" Output="UpdateLights"/>
+      </ECState>
+      <ECState Name="Block" x="1140.0" y="2375.0">
+        <ECAction Algorithm="Stop" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Stopped"/>
+      </ECState>
+      <ECState Name="State" x="2755.0" y="2375.0">
+        <ECAction Algorithm="Go" Output="UpdateLights"/>
+        <ECAction Output="traficLight.Allowed"/>
+      </ECState>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="Block" Source="OutOfService" x="975.0" y="1695.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="OutOfService" Source="Block" x="1560.0" y="1895.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="State" Source="Block" x="1960.0" y="2185.0"/>
+      <ECTransition Comment="" Condition="traficLight.Stop" Destination="Block" Source="State" x="1640.0" y="2960.0"/>
+      <ECTransition Comment="" Condition="traficLight.OutOfService" Destination="OutOfService" Source="State" x="2335.0" y="1800.0"/>
+      <ECTransition Comment="" Condition="traficLight.Allow" Destination="State" Source="OutOfService" x="2805.0" y="1705.0"/>
+    </ECC>
+    <Algorithm Comment="" Name="AllOff">
+      <ST Text="red := FALSE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in stop mode (i.e., red := true, green := false)" Name="Stop">
+      <ST Text="red := TRUE;&#10;green := FALSE;"/>
+    </Algorithm>
+    <Algorithm Comment="Put lights in Walk mode (i.e., red := false, green := true)" Name="Go">
+      <ST Text="red := FALSE;&#10;green := TRUE;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

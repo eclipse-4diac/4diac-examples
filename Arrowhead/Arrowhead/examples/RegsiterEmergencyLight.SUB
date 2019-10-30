@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE SubAppType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<SubAppType Comment="Subapplication Type" Name="RegsiterEmergencyLight">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="cabral" Date="2018-11-28" Version="1.0"/>
+  <SubAppInterfaceList>
+    <SubAppEventInputs>
+      <SubAppEvent Comment="" Name="Register" Type="Event"/>
+      <SubAppEvent Comment="" Name="Unregister" Type="Event"/>
+    </SubAppEventInputs>
+    <SubAppEventOutputs>
+      <SubAppEvent Comment="" Name="RegisterDone" Type="Event"/>
+      <SubAppEvent Comment="" Name="UnregisterDone" Type="Event"/>
+    </SubAppEventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="" InitialValue="WSTRING#wsnGateway144-mediator-0" Name="systemName" Type="WSTRING"/>
+      <VarDeclaration Comment="" InitialValue="WSTRING#%localIP%" Name="ipAddress" Type="WSTRING"/>
+    </InputVars>
+    <OutputVars/>
+  </SubAppInterfaceList>
+  <SubAppNetwork>
+    <FB Comment="" Name="FieldsToArrowheadService" Type="FieldsToArrowheadService" x="1200.0" y="200.0">
+      <Parameter Name="serviceDefinition" Value="WSTRING#%serviceName%"/>
+      <Parameter Name="interfaces" Value="[&quot;plaintext&quot;]"/>
+    </FB>
+    <FB Comment="" Name="FieldsToArrowheadSystem" Type="FieldsToArrowheadSystem" x="1200.0" y="1600.0">
+      <Parameter Name="port" Value="8080"/>
+    </FB>
+    <FB Comment="" Name="RegisterServiceHTTP" Type="RegisterServiceHTTP" x="6700.0" y="1700.0">
+      <Parameter Name="serviceRegistryAddress" Value="%serviceRegistryAddress%"/>
+    </FB>
+    <FB Comment="" Name="E_REND" Type="E_REND" x="5800.0" y="-400.0"/>
+    <FB Comment="" Name="E_REND_1" Type="E_REND" x="5800.0" y="800.0"/>
+    <FB Comment="" Name="RegisterService" Type="RegisterService" x="6600.0" y="-200.0"/>
+    <FB Comment="" Name="FieldsToServiceRegistryEntry" Type="FieldsToServiceRegistryEntry" x="3600.0" y="1500.0">
+      <Parameter Name="serviceURI" Value="WSTRING#values"/>
+      <Parameter Name="version" Value="1"/>
+      <Parameter Name="udp" Value="FALSE"/>
+    </FB>
+    <DataConnections>
+      <Connection Comment="" Destination="FieldsToArrowheadSystem.address" Source="ipAddress" dx1="280.0"/>
+      <Connection Comment="" Destination="FieldsToArrowheadSystem.systemName" Source="systemName" dx1="425.0"/>
+      <Connection Comment="" Destination="FieldsToServiceRegistryEntry.providedService" Source="FieldsToArrowheadService.arrowheadService" dx1="185.0"/>
+      <Connection Comment="" Destination="FieldsToServiceRegistryEntry.provider" Source="FieldsToArrowheadSystem.arrowheadSystem" dx1="615.0"/>
+      <Connection Comment="" Destination="RegisterService.serviceRegistryEntry" Source="FieldsToServiceRegistryEntry.serviceRegistryEntry" dx1="410.0"/>
+    </DataConnections>
+    <EventConnections>
+      <Connection Comment="" Destination="FieldsToArrowheadSystem.REQ" Source="FieldsToArrowheadService.CNF" dx1="385.0" dx2="60.0" dy="825.0"/>
+      <Connection Comment="" Destination="FieldsToArrowheadService.REQ" Source="Register" dx1="580.0"/>
+      <Connection Comment="" Destination="FieldsToArrowheadService.REQ" Source="Unregister" dx1="580.0"/>
+      <Connection Comment="" Destination="E_REND.EI1" Source="Register" dx1="2515.0"/>
+      <Connection Comment="" Destination="E_REND.R" Source="E_REND_1.EO" dx1="60.0" dx2="60.0" dy="-300.0"/>
+      <Connection Comment="" Destination="E_REND_1.R" Source="E_REND.EO" dx1="60.0" dx2="180.0" dy="490.0"/>
+      <Connection Comment="" Destination="E_REND_1.EI1" Source="Unregister" dx1="5180.0"/>
+      <Connection Comment="" Destination="RegisterService.registerService" Source="E_REND.EO" dx1="315.0"/>
+      <Connection Comment="" Destination="RegisterService.unregisterService" Source="E_REND_1.EO" dx1="315.0"/>
+      <Connection Comment="" Destination="UnregisterDone" Source="RegisterService.doneUnregister" dx1="695.0"/>
+      <Connection Comment="" Destination="RegisterDone" Source="RegisterService.doneRegister" dx1="695.0"/>
+      <Connection Comment="" Destination="E_REND_1.EI2" Source="FieldsToServiceRegistryEntry.CNF" dx1="170.0"/>
+      <Connection Comment="" Destination="E_REND.EI2" Source="FieldsToServiceRegistryEntry.CNF" dx1="260.0"/>
+      <Connection Comment="" Destination="FieldsToServiceRegistryEntry.REQ" Source="FieldsToArrowheadSystem.CNF" dx1="615.0"/>
+    </EventConnections>
+    <AdapterConnections>
+      <Connection Comment="" Destination="RegisterServiceHTTP.registerServiceAdapter" Source="RegisterService.registerServiceAdapter" dx1="60.0" dx2="60.0" dy="585.0"/>
+    </AdapterConnections>
+  </SubAppNetwork>
+</SubAppType>

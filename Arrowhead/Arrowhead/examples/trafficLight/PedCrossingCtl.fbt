@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Basic Function Block Type" Name="PedCrossingCtl">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="4DIAC-IDE" Date="2014-07-14" Organization="4DIAC-Consortium" Version="0.0"/>
+  <CompilerInfo/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialization Request" Name="INIT" Type="Event"/>
+      <Event Comment="" Name="UpdateEnabled" Type="Event">
+        <With Var="enabled"/>
+      </Event>
+      <Event Comment="" Name="PedRequest" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="" Name="INITO" Type="Event"/>
+      <Event Comment="" Name="UpdatePedReq" Type="Event">
+        <With Var="pedRequestPending"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="determines if this crossing is enabled, if currently the pedestrian walk is green the pedestrian cycle will be finished before a full disable of the crossing is performed" Name="enabled" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="PedRequestDelay" Type="TIME"/>
+      <VarDeclaration Comment="" Name="PedOnTime" Type="TIME"/>
+      <VarDeclaration Comment="" Name="PedCarInterleave" Type="TIME"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="pedRequestPending" Type="BOOL"/>
+    </OutputVars>
+    <Plugs>
+      <AdapterDeclaration Comment="" Name="CarLight" Type="ATraficLight"/>
+      <AdapterDeclaration Comment="" Name="PedLight" Type="ATraficLight"/>
+      <AdapterDeclaration Comment="" Name="timeOut" Type="ATimeOut"/>
+    </Plugs>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="550.0" y="425.0"/>
+      <ECState Comment="Initialization" Name="Disabled" x="1235.0" y="1045.0">
+        <ECAction Output="PedLight.OutOfService"/>
+        <ECAction Output="CarLight.OutOfService"/>
+      </ECState>
+      <ECState Comment="" Name="Stopped" x="3040.0" y="1045.0">
+        <ECAction Output="PedLight.Stop"/>
+      </ECState>
+      <ECState Comment="" Name="StartCar" x="3040.0" y="1995.0">
+        <ECAction Output="CarLight.Allow"/>
+      </ECState>
+      <ECState Comment="" Name="Enabled" x="1900.0" y="1995.0"/>
+      <ECState Comment="" Name="PedRequest" x="1900.0" y="2375.0">
+        <ECAction Algorithm="setPedRequestDelay" Output="timeOut.START"/>
+        <ECAction Algorithm="setPedRequest" Output="UpdatePedReq"/>
+      </ECState>
+      <ECState Comment="" Name="StopCar" x="1900.0" y="2755.0">
+        <ECAction Output="CarLight.Stop"/>
+      </ECState>
+      <ECState Comment="" Name="StartPed" x="1900.0" y="3610.0">
+        <ECAction Output="PedLight.Allow"/>
+      </ECState>
+      <ECState Comment="" Name="WaitOnTime" x="1900.0" y="3990.0">
+        <ECAction Algorithm="setPedLightOnDelay" Output="timeOut.START"/>
+        <ECAction Algorithm="clearPedRequest" Output="UpdatePedReq"/>
+      </ECState>
+      <ECState Comment="" Name="CarPedSaftyTime" x="1900.0" y="3135.0">
+        <ECAction Algorithm="setPedCarInterleaveTimeOut" Output="timeOut.START"/>
+      </ECState>
+      <ECState Comment="" Name="PedCarSafetyTime" x="2565.0" y="1615.0">
+        <ECAction Algorithm="setPedCarInterleaveTimeOut" Output="timeOut.START"/>
+      </ECState>
+      <ECState Comment="" Name="Initilalize" x="1330.0" y="380.0">
+        <ECAction Output="INITO"/>
+      </ECState>
+      <ECState Comment="" Name="State" x="0.0" y="1900.0">
+        <ECAction Algorithm="clearPedRequest" Output="UpdatePedReq"/>
+        <ECAction Output="timeOut.STOP"/>
+      </ECState>
+      <ECTransition Comment="" Condition="UpdateEnabled[enabled]" Destination="Stopped" Source="Disabled" x="2185.0" y="855.0"/>
+      <ECTransition Comment="" Condition="CarLight.Allowed" Destination="Enabled" Source="StartCar" x="2600.0" y="2070.0"/>
+      <ECTransition Comment="" Condition="[NOT enabled]" Destination="Disabled" Source="Enabled" x="1655.0" y="1765.0"/>
+      <ECTransition Comment="" Condition="PedRequest" Destination="PedRequest" Source="Enabled" x="2115.0" y="2245.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="StopCar" Source="PedRequest" x="2130.0" y="2570.0"/>
+      <ECTransition Comment="" Condition="PedLight.Allowed" Destination="WaitOnTime" Source="StartPed" x="2060.0" y="3805.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="Stopped" Source="WaitOnTime" x="5470.0" y="2425.0"/>
+      <ECTransition Comment="" Condition="CarLight.Stopped" Destination="CarPedSaftyTime" Source="StopCar" x="2145.0" y="3025.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="StartPed" Source="CarPedSaftyTime" x="2155.0" y="3410.0"/>
+      <ECTransition Comment="" Condition="PedLight.Stopped" Destination="PedCarSafetyTime" Source="Stopped" x="3130.0" y="1390.0"/>
+      <ECTransition Comment="" Condition="timeOut.TimeOut" Destination="StartCar" Source="PedCarSafetyTime" x="3210.0" y="1855.0"/>
+      <ECTransition Comment="" Condition="INIT" Destination="Initilalize" Source="START" x="975.0" y="445.0"/>
+      <ECTransition Comment="" Condition="1" Destination="Disabled" Source="Initilalize" x="1370.0" y="740.0"/>
+      <ECTransition Comment="" Condition="[NOT enabled]" Destination="State" Source="PedRequest" x="320.0" y="2335.0"/>
+      <ECTransition Comment="" Condition="1" Destination="Disabled" Source="State" x="565.0" y="1375.0"/>
+    </ECC>
+    <Algorithm Comment="Initialization algorithm" Name="setPedRequestDelay">
+      <ST Text="timeOut.DT := PedRequestDelay;"/>
+    </Algorithm>
+    <Algorithm Comment="Normally executed algorithm" Name="setPedLightOnDelay">
+      <ST Text="timeOut.DT := PedOnTime;"/>
+    </Algorithm>
+    <Algorithm Comment="" Name="setPedCarInterleaveTimeOut">
+      <ST Text="timeOut.DT := PedCarInterleave;"/>
+    </Algorithm>
+    <Algorithm Comment="set the ped Requst pending bit to true" Name="setPedRequest">
+      <ST Text="pedRequestPending := TRUE;"/>
+    </Algorithm>
+    <Algorithm Comment="new algorithm" Name="clearPedRequest">
+      <ST Text="pedRequestPending := FALSE;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

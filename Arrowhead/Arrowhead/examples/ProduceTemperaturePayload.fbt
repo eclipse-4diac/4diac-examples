@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Produce IndoorTemperature payload" Name="ProduceTemperaturePayload">
+  <Identification Description="Copyright (c) 2018 fortiss GmbH&#13;&#10; &#13;&#10;This program and the accompanying materials are made&#13;&#10;available under the terms of the Eclipse Public License 2.0&#13;&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#13;&#10;&#13;&#10;SPDX-License-Identifier: EPL-2.0" Standard="61499-2"/>
+  <VersionInfo Author="Jose Cabral" Date="2018-09-21" Organization="fortiss GmbH" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Produce Payload" Name="REQ" Type="Event">
+        <With Var="bu"/>
+        <With Var="v"/>
+        <With Var="t"/>
+        <With Var="n"/>
+        <With Var="bt"/>
+        <With Var="bn"/>
+        <With Var="ver"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Payload produced" Name="CNF" Type="Event">
+        <With Var="output"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Base Name, this field stores the name of the ArrowheadSystem" Name="bn" Type="WSTRING"/>
+      <VarDeclaration Comment="Base Time, this field contains the unix timestamp of the sensor readout" Name="bt" Type="LINT"/>
+      <VarDeclaration Comment="Base Unit of the sensor readout" Name="bu" Type="WSTRING"/>
+      <VarDeclaration Comment="Version identifier" Name="ver" Type="DINT"/>
+      <VarDeclaration Comment="Name of the temperature" Name="n" Type="WSTRING"/>
+      <VarDeclaration Comment="time of the value" Name="t" Type="LINT"/>
+      <VarDeclaration Comment="value" Name="v" Type="REAL"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="Result payload" Name="output" Type="STRING"/>
+    </OutputVars>
+  </InterfaceList>
+</FBType>
