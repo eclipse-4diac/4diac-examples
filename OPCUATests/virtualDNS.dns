@@ -105,5 +105,6 @@
     <virtualDNSEntries name="serverInitTCP" value="127.0.0.1:60100"/>
     <virtualDNSEntries name="serverDeinitTCP" value="127.0.0.1:60101"/>
     <virtualDNSEntries name="clientInitTCP" value="127.0.0.1:60102"/>
+    <virtualDNSEntries name="avoidManyEventsDelay" value="T#1000ms"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
