@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<virtualDNS:VirtualDNSManagement xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:virtualDNS="org.eclipse.fordiac.ide.virtualDNS">
+<virtualDNS:VirtualDNSManagement xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:virtualDNS="org.eclipse.fordiac.ide.virtualDNS" activeVirtualDNS="//@availableDNSCollections.1">
   <availableDNSCollections name="arrowheadTests">
     <virtualDNSEntries name="serviceRegistryAddress" value="WSTRING#127.0.0.1:8442/serviceregistry"/>
     <virtualDNSEntries name="testAddress" value="localhost"/>
