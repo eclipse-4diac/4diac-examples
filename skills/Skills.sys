@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<System Comment="" Name="Skills">
+  <Identification/>
+  <VersionInfo Author="dorofeev" Date="2019-10-15" Version="1.0"/>
+  <Application Comment="" Name="SkillsApp">
+    <SubAppNetwork>
+      <FB Comment="" Name="IAS_Skill_Full" Type="IAS_Skill_Full" x="2600.0" y="200.0"/>
+      <SubApp Comment="" Name="QX_sim" Type="QX_sim" x="4570.0" y="390.0">
+        <Parameter Name="QI" Value="1"/>
+      </SubApp>
+      <FB Comment="" Name="E_SR" Type="E_SR" x="4100.0" y="600.0"/>
+      <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="1900.0" y="500.0"/>
+      <FB Comment="" Name="IAS_Skill_Full_1" Type="IAS_Skill_Full" x="2600.0" y="1700.0"/>
+      <FB Comment="" Name="E_SR_1" Type="E_SR" x="4100.0" y="2100.0"/>
+      <SubApp Comment="" Name="QX_sim_1" Type="QX_sim" x="4570.0" y="1890.0">
+        <Parameter Name="QI" Value="1"/>
+      </SubApp>
+      <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="1900.0" y="2000.0"/>
+      <FB Comment="" Name="IAS_Skill_Full_2" Type="IAS_Skill_Full" x="2600.0" y="3200.0"/>
+      <FB Comment="" Name="E_SR_2" Type="E_SR" x="4100.0" y="3600.0"/>
+      <SubApp Comment="" Name="QX_sim_2" Type="QX_sim" x="4570.0" y="3390.0">
+        <Parameter Name="QI" Value="1"/>
+      </SubApp>
+      <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="1900.0" y="3500.0"/>
+      <FB Comment="" Name="E_TimeOut" Type="E_TimeOut" x="-100.0" y="2500.0"/>
+      <FB Comment="" Name="OrchestratorExample" Type="OrchestratorExample" x="-1600.0" y="1400.0"/>
+      <SubApp Comment="" Name="SServer_3" Type="SServer" x="-2900.0" y="1400.0">
+        <Parameter Name="skillName" Value="blinkingLight"/>
+      </SubApp>
+      <EventConnections>
+        <Connection Comment="" Destination="E_SR.S" Source="IAS_Skill_Full.start"/>
+        <Connection Comment="" Destination="E_SR.R" Source="IAS_Skill_Full.stop"/>
+        <Connection Comment="" Destination="QX_sim.REQ" Source="E_SR.EO" dx1="85.0"/>
+        <Connection Comment="" Destination="E_SWITCH.EI" Source="QX_sim.CNF" dx1="60.0" dx2="60.0" dy="-540.0"/>
+        <Connection Comment="" Destination="IAS_Skill_Full.StopEventInternal" Source="E_SWITCH.EO0" dx1="110.0"/>
+        <Connection Comment="" Destination="IAS_Skill_Full.StartEventInternal" Source="E_SWITCH.EO1" dx1="110.0"/>
+        <Connection Comment="" Destination="E_SR_1.S" Source="IAS_Skill_Full_1.start"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_1.StopEventInternal" Source="E_SWITCH_1.EO0" dx1="110.0"/>
+        <Connection Comment="" Destination="E_SR_1.R" Source="IAS_Skill_Full_1.stop"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_1.StartEventInternal" Source="E_SWITCH_1.EO1" dx1="110.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.EI" Source="QX_sim_1.CNF" dx1="60.0" dx2="60.0" dy="-540.0"/>
+        <Connection Comment="" Destination="QX_sim_1.REQ" Source="E_SR_1.EO" dx1="85.0"/>
+        <Connection Comment="" Destination="E_SR_2.S" Source="IAS_Skill_Full_2.start"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_2.StopEventInternal" Source="E_SWITCH_2.EO0" dx1="110.0"/>
+        <Connection Comment="" Destination="E_SR_2.R" Source="IAS_Skill_Full_2.stop"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_2.StartEventInternal" Source="E_SWITCH_2.EO1" dx1="110.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.EI" Source="QX_sim_2.CNF" dx1="60.0" dx2="60.0" dy="-540.0"/>
+        <Connection Comment="" Destination="QX_sim_2.REQ" Source="E_SR_2.EO" dx1="85.0"/>
+        <Connection Comment="" Destination="OrchestratorExample.INIT" Source="SServer_3.INITO"/>
+      </EventConnections>
+      <DataConnections>
+        <Connection Comment="" Destination="QX_sim.OUT" Source="E_SR.Q" dx1="85.0"/>
+        <Connection Comment="" Destination="E_SWITCH.G" Source="QX_sim.QO" dx1="60.0" dx2="60.0" dy="660.0"/>
+        <Connection Comment="" Destination="QX_sim_1.OUT" Source="E_SR_1.Q" dx1="85.0"/>
+        <Connection Comment="" Destination="E_SWITCH_1.G" Source="QX_sim_1.QO" dx1="60.0" dx2="60.0" dy="660.0"/>
+        <Connection Comment="" Destination="QX_sim_2.OUT" Source="E_SR_2.Q" dx1="85.0"/>
+        <Connection Comment="" Destination="E_SWITCH_2.G" Source="QX_sim_2.QO" dx1="60.0" dx2="60.0" dy="660.0"/>
+      </DataConnections>
+      <AdapterConnections>
+        <Connection Comment="" Destination="E_TimeOut.TimeOutSocket" Source="OrchestratorExample.ATimeOut" dx1="280.0"/>
+        <Connection Comment="" Destination="OrchestratorExample.blinkingLight" Source="SServer_3.IAS_Skill"/>
+        <Connection Comment="" Destination="IAS_Skill_Full.IAS_Skill" Source="OrchestratorExample.Lamp1" dx1="1520.0"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_1.IAS_Skill" Source="OrchestratorExample.Lamp2" dx1="1735.0"/>
+        <Connection Comment="" Destination="IAS_Skill_Full_2.IAS_Skill" Source="OrchestratorExample.Lamp3" dx1="1520.0"/>
+      </AdapterConnections>
+    </SubAppNetwork>
+  </Application>
+  <Application Comment="" Name="test">
+    <SubAppNetwork>
+      <FB Comment="" Name="PUBLISH_1" Type="PUBLISH_1" x="3440.0" y="1885.0">
+        <Parameter Name="QI" Value="1"/>
+        <Parameter Name="ID" Value="opc_ua[WRITE;/Objects/IsolatedTests/WRITEVariable]"/>
+      </FB>
+      <FB Comment="" Name="DINT2DINT_1" Type="DINT2DINT" x="2155.0" y="2625.0">
+        <Parameter Name="IN" Value="DINT#12"/>
+      </FB>
+    </SubAppNetwork>
+  </Application>
+  <Device Comment="" Name="skillConsumer" Type="FORTE_PC" x="1855.0" y="1360.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="201,144,38"/>
+    <Resource Comment="" Name="EMB_RES" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="E_TimeOut" Type="E_TimeOut" x="300.0" y="2500.0"/>
+        <FB Comment="" Name="OrchestratorExample" Type="OrchestratorExample" x="-1600.0" y="1400.0"/>
+        <SubApp Comment="" Name="SServer_3" Type="SServer" x="-2900.0" y="1600.0">
+          <Parameter Name="skillName" Value="blinkingLight"/>
+        </SubApp>
+        <SubApp Comment="" Name="SClient_2_1" Type="SClient" x="2600.0" y="2400.0">
+          <Parameter Name="remoteIPandPort" Value="localhost:4843"/>
+          <Parameter Name="IAS_Namespace" Value="STRING#4"/>
+          <Parameter Name="skillStateMachineNodeBrowsePath" Value="STRING#4:skills/4:Lamp3/4:StateMachine/"/>
+        </SubApp>
+        <SubApp Comment="" Name="SClient_3" Type="SClient" x="2600.0" y="600.0">
+          <Parameter Name="remoteIPandPort" Value="localhost:4841"/>
+          <Parameter Name="IAS_Namespace" Value="STRING#4"/>
+          <Parameter Name="skillStateMachineNodeBrowsePath" Value="STRING#4:skills/4:Lamp1/4:StateMachine/"/>
+        </SubApp>
+        <SubApp Comment="" Name="SClient_1_1" Type="SClient" x="2600.0" y="1500.0">
+          <Parameter Name="remoteIPandPort" Value="localhost:4842"/>
+          <Parameter Name="IAS_Namespace" Value="STRING#4"/>
+          <Parameter Name="skillStateMachineNodeBrowsePath" Value="STRING#4:skills/4:Lamp2/4:StateMachine/"/>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="OrchestratorExample.INIT" Source="SServer_3.INITO" dx1="165.0"/>
+          <Connection Comment="" Destination="SServer_3.INIT" Source="START.COLD" dx1="60.0" dx2="60.0" dy="530.0"/>
+          <Connection Comment="" Destination="SServer_3.INIT" Source="START.WARM" dx1="60.0" dx2="60.0" dy="345.0"/>
+          <Connection Comment="" Destination="SClient_2_1.INIT" Source="SClient_1_1.INITO" dx1="60.0" dx2="60.0" dy="695.0"/>
+          <Connection Comment="" Destination="SClient_1_1.INIT" Source="SClient_3.INITO" dx1="60.0" dx2="60.0" dy="685.0"/>
+          <Connection Comment="" Destination="SClient_3.INIT" Source="START.COLD" dx1="990.0"/>
+          <Connection Comment="" Destination="SClient_3.INIT" Source="START.WARM" dx1="990.0"/>
+        </EventConnections>
+        <AdapterConnections>
+          <Connection Comment="" Destination="E_TimeOut.TimeOutSocket" Source="OrchestratorExample.ATimeOut" dx1="370.0"/>
+          <Connection Comment="" Destination="OrchestratorExample.blinkingLight" Source="SServer_3.IAS_Skill" dx1="165.0"/>
+          <Connection Comment="" Destination="SClient_2_1.IAS_Skill" Source="OrchestratorExample.Lamp3" dx1="1520.0"/>
+          <Connection Comment="" Destination="SClient_1_1.IAS_Skill" Source="OrchestratorExample.Lamp2" dx1="1520.0"/>
+          <Connection Comment="" Destination="SClient_3.IAS_Skill" Source="OrchestratorExample.Lamp1" dx1="1520.0"/>
+        </AdapterConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Device Comment="" Name="skillProvider1" Type="FORTE_PC" x="3960.0" y="1365.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61500&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="147,115,206"/>
+    <Resource Comment="" Name="EMB_RES" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="IAS_Skill_Full" Type="IAS_Skill_Full" x="6500.0" y="1200.0"/>
+        <SubApp Comment="" Name="QX_sim" Type="QX_sim" x="8470.0" y="1390.0">
+          <Parameter Name="QI" Value="1"/>
+        </SubApp>
+        <FB Comment="" Name="E_SWITCH" Type="E_SWITCH" x="9300.0" y="1500.0"/>
+        <FB Comment="" Name="E_SR" Type="E_SR" x="8000.0" y="1600.0"/>
+        <SubApp Comment="" Name="SServer_1" Type="SServer" x="4700.0" y="1600.0">
+          <Parameter Name="skillName" Value="Lamp1"/>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="E_SWITCH.EI" Source="QX_sim.CNF" dx1="95.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full.StopEventInternal" Source="E_SWITCH.EO0" dx1="60.0" dx2="60.0" dy="-50.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full.StartEventInternal" Source="E_SWITCH.EO1" dx1="60.0" dx2="60.0" dy="-50.0"/>
+          <Connection Comment="" Destination="E_SR.S" Source="IAS_Skill_Full.start"/>
+          <Connection Comment="" Destination="E_SR.R" Source="IAS_Skill_Full.stop"/>
+          <Connection Comment="" Destination="QX_sim.REQ" Source="E_SR.EO" dx1="85.0"/>
+          <Connection Comment="" Destination="SServer_1.INIT" Source="START.COLD" dx1="2040.0"/>
+          <Connection Comment="" Destination="SServer_1.INIT" Source="START.WARM" dx1="2040.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full.INIT" Source="SServer_1.INITO" dx1="415.0"/>
+        </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="E_SWITCH.G" Source="QX_sim.QO" dx1="95.0"/>
+          <Connection Comment="" Destination="QX_sim.OUT" Source="E_SR.Q" dx1="85.0"/>
+        </DataConnections>
+        <AdapterConnections>
+          <Connection Comment="" Destination="IAS_Skill_Full.IAS_Skill" Source="SServer_1.IAS_Skill" dx1="415.0"/>
+        </AdapterConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Device Comment="" Name="skillProvider2" Type="FORTE_PC" x="4900.0" y="900.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61501&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="229,120,189"/>
+    <Resource Comment="" Name="EMB_RES" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="IAS_Skill_Full_1" Type="IAS_Skill_Full" x="6500.0" y="1700.0"/>
+        <FB Comment="" Name="E_SR_1" Type="E_SR" x="8000.0" y="2100.0"/>
+        <SubApp Comment="" Name="QX_sim_1" Type="QX_sim" x="8470.0" y="1890.0">
+          <Parameter Name="QI" Value="1"/>
+        </SubApp>
+        <FB Comment="" Name="E_SWITCH_1" Type="E_SWITCH" x="5800.0" y="2000.0"/>
+        <SubApp Comment="" Name="SServer_1_1" Type="SServer" x="4100.0" y="1800.0">
+          <Parameter Name="skillName" Value="Lamp2"/>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="E_SR_1.S" Source="IAS_Skill_Full_1.start"/>
+          <Connection Comment="" Destination="E_SR_1.R" Source="IAS_Skill_Full_1.stop"/>
+          <Connection Comment="" Destination="QX_sim_1.REQ" Source="E_SR_1.EO" dx1="85.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.EI" Source="QX_sim_1.CNF" dx1="60.0" dx2="60.0" dy="5.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_1.StopEventInternal" Source="E_SWITCH_1.EO0" dx1="110.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_1.StartEventInternal" Source="E_SWITCH_1.EO1" dx1="110.0"/>
+          <Connection Comment="" Destination="SServer_1_1.INIT" Source="START.COLD" dx1="1740.0"/>
+          <Connection Comment="" Destination="SServer_1_1.INIT" Source="START.WARM" dx1="1740.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_1.INIT" Source="SServer_1_1.INITO" dx1="715.0"/>
+        </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="QX_sim_1.OUT" Source="E_SR_1.Q" dx1="85.0"/>
+          <Connection Comment="" Destination="E_SWITCH_1.G" Source="QX_sim_1.QO" dx1="60.0" dx2="60.0" dy="55.0"/>
+        </DataConnections>
+        <AdapterConnections>
+          <Connection Comment="" Destination="IAS_Skill_Full_1.IAS_Skill" Source="SServer_1_1.IAS_Skill" dx1="470.0"/>
+        </AdapterConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Device Comment="" Name="skillProvider3" Type="FORTE_PC" x="5900.0" y="1400.0">
+    <Parameter Name="MGR_ID" Value="&quot;localhost:61502&quot;"/>
+    <Attribute Comment="device profile" Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="93,218,229"/>
+    <Resource Comment="" Name="EMB_RES" Type="EMB_RES" x="0.0" y="0.0">
+      <FBNetwork>
+        <FB Comment="" Name="E_SWITCH_2" Type="E_SWITCH" x="5800.0" y="3500.0"/>
+        <FB Comment="" Name="E_SR_2" Type="E_SR" x="8000.0" y="3600.0"/>
+        <SubApp Comment="" Name="QX_sim_2" Type="QX_sim" x="8470.0" y="3390.0">
+          <Parameter Name="QI" Value="1"/>
+        </SubApp>
+        <FB Comment="" Name="IAS_Skill_Full_2" Type="IAS_Skill_Full" x="6500.0" y="3200.0"/>
+        <SubApp Comment="" Name="SServer_2_1" Type="SServer" x="3900.0" y="3500.0">
+          <Parameter Name="skillName" Value="Lamp3"/>
+        </SubApp>
+        <EventConnections>
+          <Connection Comment="" Destination="QX_sim_2.REQ" Source="E_SR_2.EO" dx1="85.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.EI" Source="QX_sim_2.CNF" dx1="60.0" dx2="60.0" dy="5.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_2.StopEventInternal" Source="E_SWITCH_2.EO0" dx1="110.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_2.StartEventInternal" Source="E_SWITCH_2.EO1" dx1="110.0"/>
+          <Connection Comment="" Destination="E_SR_2.S" Source="IAS_Skill_Full_2.start"/>
+          <Connection Comment="" Destination="E_SR_2.R" Source="IAS_Skill_Full_2.stop"/>
+          <Connection Comment="" Destination="SServer_2_1.INIT" Source="START.COLD" dx1="1640.0"/>
+          <Connection Comment="" Destination="SServer_2_1.INIT" Source="START.WARM" dx1="1640.0"/>
+          <Connection Comment="" Destination="IAS_Skill_Full_2.INIT" Source="SServer_2_1.INITO" dx1="815.0"/>
+        </EventConnections>
+        <DataConnections>
+          <Connection Comment="" Destination="QX_sim_2.OUT" Source="E_SR_2.Q" dx1="85.0"/>
+          <Connection Comment="" Destination="E_SWITCH_2.G" Source="QX_sim_2.QO" dx1="60.0" dx2="60.0" dy="55.0"/>
+        </DataConnections>
+        <AdapterConnections>
+          <Connection Comment="" Destination="IAS_Skill_Full_2.IAS_Skill" Source="SServer_2_1.IAS_Skill" dx1="815.0"/>
+        </AdapterConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Mapping From="SkillsApp.IAS_Skill_Full" To="skillProvider1.EMB_RES.IAS_Skill_Full"/>
+  <Mapping From="SkillsApp.QX_sim" To="skillProvider1.EMB_RES.QX_sim"/>
+  <Mapping From="SkillsApp.E_SWITCH" To="skillProvider1.EMB_RES.E_SWITCH"/>
+  <Mapping From="SkillsApp.E_SR" To="skillProvider1.EMB_RES.E_SR"/>
+  <Mapping From="SkillsApp.IAS_Skill_Full_1" To="skillProvider2.EMB_RES.IAS_Skill_Full_1"/>
+  <Mapping From="SkillsApp.E_SR_1" To="skillProvider2.EMB_RES.E_SR_1"/>
+  <Mapping From="SkillsApp.QX_sim_1" To="skillProvider2.EMB_RES.QX_sim_1"/>
+  <Mapping From="SkillsApp.E_SWITCH_1" To="skillProvider2.EMB_RES.E_SWITCH_1"/>
+  <Mapping From="SkillsApp.E_SWITCH_2" To="skillProvider3.EMB_RES.E_SWITCH_2"/>
+  <Mapping From="SkillsApp.E_SR_2" To="skillProvider3.EMB_RES.E_SR_2"/>
+  <Mapping From="SkillsApp.QX_sim_2" To="skillProvider3.EMB_RES.QX_sim_2"/>
+  <Mapping From="SkillsApp.IAS_Skill_Full_2" To="skillProvider3.EMB_RES.IAS_Skill_Full_2"/>
+  <Mapping From="SkillsApp.E_TimeOut" To="skillConsumer.EMB_RES.E_TimeOut"/>
+  <Mapping From="SkillsApp.OrchestratorExample" To="skillConsumer.EMB_RES.OrchestratorExample"/>
+  <Mapping From="SkillsApp.SServer_3" To="skillConsumer.EMB_RES.SServer_3"/>
+  <Segment Comment="" Name="Ethernet" Type="Ethernet" dx1="1500.0" x="2645.0" y="585.0">
+    <Attribute Comment="color" Name="Color" Type="STRING" Value="192,175,111"/>
+  </Segment>
+  <Link CommResource="skillConsumer" Comment="" SegmentName="Ethernet"/>
+  <Link CommResource="skillProvider1" Comment="" SegmentName="Ethernet"/>
+  <Link CommResource="skillProvider2" Comment="" SegmentName="Ethernet"/>
+  <Link CommResource="skillProvider3" Comment="" SegmentName="Ethernet"/>
+</System>

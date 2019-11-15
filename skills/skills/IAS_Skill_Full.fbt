@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Composite Function Block Type" Name="IAS_Skill_Full">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="4DIAC-IDE" Date="2018-04-30" Organization="4DIAC-Consortium" Version="0.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialization Request" Name="INIT" Type="Event"/>
+      <Event Comment="" Name="ErrorEventInternal" Type="Event"/>
+      <Event Comment="" Name="StopEventInternal" Type="Event"/>
+      <Event Comment="" Name="StartEventInternal" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Initialization Confirm" Name="INITO" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="Execution Confirmation" Name="cleanUp" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="lock" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="reset" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="start" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="stop" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="suspend" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+      <Event Comment="" Name="unsuspend" Type="Event">
+        <With Var="currentState"/>
+      </Event>
+    </EventOutputs>
+    <OutputVars>
+      <VarDeclaration Comment="" Name="currentState" Type="STRING"/>
+    </OutputVars>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="IAS_Skill" Type="IAS_Skill" x="1400.0" y="100.0"/>
+    </Sockets>
+  </InterfaceList>
+  <FBNetwork>
+    <FB Comment="" Name="IAS_Skill_StateModel" Type="IAS_Skill_StateModel" x="4000.0" y="0.0"/>
+    <EventConnections>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.INIT" Source="INIT" dx1="1680.0"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.cleanUp" Source="IAS_Skill.cleanUp"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.lock" Source="IAS_Skill.lock"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.reset" Source="IAS_Skill.reset"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.start" Source="IAS_Skill.start"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.stop" Source="IAS_Skill.stop"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.suspend" Source="IAS_Skill.suspend"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.unsuspend" Source="IAS_Skill.unsuspend"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.ErrorEvent" Source="ErrorEventInternal" dx1="1680.0"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.StopEvent" Source="StopEventInternal" dx1="1680.0"/>
+      <Connection Comment="" Destination="IAS_Skill_StateModel.StartEvent" Source="StartEventInternal" dx1="1680.0"/>
+      <Connection Comment="" Destination="INITO" Source="IAS_Skill_StateModel.INITO" dx1="1890.0"/>
+      <Connection Comment="" Destination="cleanUp" Source="IAS_Skill_StateModel.cleanUpO" dx1="1890.0"/>
+      <Connection Comment="" Destination="lock" Source="IAS_Skill_StateModel.lockO" dx1="1890.0"/>
+      <Connection Comment="" Destination="reset" Source="IAS_Skill_StateModel.resetO" dx1="1890.0"/>
+      <Connection Comment="" Destination="start" Source="IAS_Skill_StateModel.startO" dx1="1890.0"/>
+      <Connection Comment="" Destination="stop" Source="IAS_Skill_StateModel.stopO" dx1="1890.0"/>
+      <Connection Comment="" Destination="suspend" Source="IAS_Skill_StateModel.suspendO" dx1="1890.0"/>
+      <Connection Comment="" Destination="unsuspend" Source="IAS_Skill_StateModel.unsupendO" dx1="1890.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.cleanUpO" dx1="60.0" dx2="60.0" dy="-50.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.lockO" dx1="60.0" dx2="60.0" dy="-100.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.resetO" dx1="60.0" dx2="60.0" dy="-150.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.startO" dx1="60.0" dx2="60.0" dy="-200.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.stopO" dx1="60.0" dx2="60.0" dy="-250.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.suspendO" dx1="60.0" dx2="60.0" dy="-300.0"/>
+      <Connection Comment="" Destination="IAS_Skill.RSP" Source="IAS_Skill_StateModel.unsupendO" dx1="60.0" dx2="60.0" dy="-350.0"/>
+    </EventConnections>
+    <DataConnections>
+      <Connection Comment="" Destination="IAS_Skill.currentState" Source="IAS_Skill_StateModel.CurrentStatus" dx1="60.0" dx2="60.0" dy="-150.0"/>
+      <Connection Comment="" Destination="IAS_Skill.lastTransition" Source="IAS_Skill_StateModel.LastTransition" dx1="60.0" dx2="60.0" dy="-150.0"/>
+      <Connection Comment="" Destination="currentState" Source="IAS_Skill_StateModel.CurrentStatus" dx1="1890.0"/>
+    </DataConnections>
+  </FBNetwork>
+</FBType>

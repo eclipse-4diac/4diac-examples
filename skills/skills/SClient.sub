@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE SubAppType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<SubAppType Comment="Subapplication Type" Name="SClient">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="dorofeev" Date="2019-07-03" Version="1.0"/>
+  <SubAppInterfaceList>
+    <SubAppEventInputs>
+      <SubAppEvent Comment="Initialization Request" Name="INIT" Type="Event"/>
+    </SubAppEventInputs>
+    <SubAppEventOutputs>
+      <SubAppEvent Comment="Initialization Confirm" Name="INITO" Type="Event"/>
+    </SubAppEventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Input event qualifier" Name="remoteIPandPort" Type="STRING"/>
+      <VarDeclaration Comment="" Name="IAS_Namespace" Type="STRING"/>
+      <VarDeclaration Comment="" Name="skillStateMachineNodeBrowsePath" Type="STRING"/>
+    </InputVars>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="IAS_Skill" Type="IAS_Skill"/>
+    </Sockets>
+  </SubAppInterfaceList>
+  <SubAppNetwork>
+    <FB Comment="" Name="APPEND_STRING_3" Type="APPEND_STRING_3" x="2600.0" y="0.0">
+      <Parameter Name="IN_1" Value="STRING#opc_ua[CALL_METHOD;opc.tcp://"/>
+      <Parameter Name="IN_3" Value="STRING##;/Objects/"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_1" Type="APPEND_STRING_3" x="3800.0" y="100.0"/>
+    <FB Comment="" Name="APPEND_STRING_3_2" Type="APPEND_STRING_2" x="5400.0" y="300.0">
+      <Parameter Name="IN_2" Value="STRING#:lock]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_1" Type="APPEND_STRING_2" x="5400.0" y="900.0">
+      <Parameter Name="IN_2" Value="STRING#:reset]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_2" Type="APPEND_STRING_2" x="5400.0" y="1600.0">
+      <Parameter Name="IN_2" Value="STRING#:start]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_3" Type="APPEND_STRING_2" x="5400.0" y="2300.0">
+      <Parameter Name="IN_2" Value="STRING#:stop]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_4" Type="APPEND_STRING_2" x="5400.0" y="2900.0">
+      <Parameter Name="IN_2" Value="STRING#:suspend]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_5" Type="APPEND_STRING_2" x="5400.0" y="3500.0">
+      <Parameter Name="IN_2" Value="STRING#:unsuspend]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_2_6" Type="APPEND_STRING_2" x="5400.0" y="-300.0">
+      <Parameter Name="IN_2" Value="STRING#:cleanUp]"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0" Type="CLIENT_0" x="8400.0" y="-400.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_1" Type="CLIENT_0" x="8400.0" y="300.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_2" Type="CLIENT_0" x="8400.0" y="1000.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_3" Type="CLIENT_0" x="8400.0" y="1700.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_4" Type="CLIENT_0" x="8400.0" y="2400.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_5" Type="CLIENT_0" x="8400.0" y="3100.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="CLIENT_0_6" Type="CLIENT_0" x="8400.0" y="3800.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="F_STRING_TO_WSTRING" Type="F_STRING_TO_WSTRING" x="6800.0" y="-300.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_1" Type="F_STRING_TO_WSTRING" x="6800.0" y="300.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_2" Type="F_STRING_TO_WSTRING" x="6800.0" y="900.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_3" Type="F_STRING_TO_WSTRING" x="6800.0" y="1700.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_4" Type="F_STRING_TO_WSTRING" x="6800.0" y="2300.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_5" Type="F_STRING_TO_WSTRING" x="6800.0" y="3000.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_6" Type="F_STRING_TO_WSTRING" x="6800.0" y="3600.0"/>
+    <FB Comment="" Name="SUBSCRIBE_1" Type="SUBSCRIBE_1" x="4100.0" y="800.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="SUBSCRIBE_1_1" Type="SUBSCRIBE_1" x="4100.0" y="1600.0">
+      <Parameter Name="QI" Value="1"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_3" Type="APPEND_STRING_3" x="200.0" y="900.0">
+      <Parameter Name="IN_1" Value="STRING#opc_ua[SUBSCRIBE;opc.tcp://"/>
+      <Parameter Name="IN_3" Value="STRING##;/Objects/"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_1_1" Type="APPEND_STRING_3" x="1400.0" y="1000.0">
+      <Parameter Name="IN_3" Value="STRING#0:CurrentState]"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_4" Type="APPEND_STRING_3" x="100.0" y="1600.0">
+      <Parameter Name="IN_1" Value="STRING#opc_ua[SUBSCRIBE;opc.tcp://"/>
+      <Parameter Name="IN_3" Value="STRING##;/Objects/"/>
+    </FB>
+    <FB Comment="" Name="APPEND_STRING_3_1_2" Type="APPEND_STRING_3" x="1300.0" y="1700.0">
+      <Parameter Name="IN_3" Value="STRING#0:LastTransition]"/>
+    </FB>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_7" Type="F_STRING_TO_WSTRING" x="2900.0" y="1100.0"/>
+    <FB Comment="" Name="F_STRING_TO_WSTRING_7_1" Type="F_STRING_TO_WSTRING" x="2900.0" y="1800.0"/>
+    <FB Comment="" Name="STRING2STRING" Type="STRING2STRING" x="1400.0" y="500.0"/>
+    <FB Comment="" Name="IAS_Skill_DEMUX" Type="IAS_Skill_DEMUX" x="2600.0" y="2500.0"/>
+    <FB Comment="" Name="GET_STRUCT_VALUE" Type="GET_STRUCT_VALUE" x="730.0" y="2600.0">
+      <Parameter Name="member" Value="text"/>
+    </FB>
+    <FB Comment="" Name="GET_STRUCT_VALUE_1" Type="GET_STRUCT_VALUE" x="865.0" y="3400.0">
+      <Parameter Name="member" Value="text"/>
+    </FB>
+    <FB Comment="" Name="LocalizedText2LocalizedText_1" Type="LocalizedText2LocalizedText" x="-865.0" y="3400.0"/>
+    <FB Comment="" Name="LocalizedText2LocalizedText" Type="LocalizedText2LocalizedText" x="-1000.0" y="2600.0"/>
+    <EventConnections>
+      <Connection Comment="" Destination="APPEND_STRING_3_1.REQ" Source="APPEND_STRING_3.CNF" dx1="230.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_6.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_1.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_2.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_3.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_4.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_5.REQ" Source="APPEND_STRING_3_1.CNF" dx1="425.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING.REQ" Source="APPEND_STRING_3_2_6.CNF"/>
+      <Connection Comment="" Destination="CLIENT_0.INIT" Source="F_STRING_TO_WSTRING.CNF" dx1="350.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_1.REQ" Source="APPEND_STRING_3_2.CNF"/>
+      <Connection Comment="" Destination="CLIENT_0_1.INIT" Source="F_STRING_TO_WSTRING_1.CNF"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_2.REQ" Source="APPEND_STRING_3_2_1.CNF"/>
+      <Connection Comment="" Destination="CLIENT_0_2.INIT" Source="F_STRING_TO_WSTRING_2.CNF" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_3.REQ" Source="APPEND_STRING_3_2_2.CNF" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_3.INIT" Source="F_STRING_TO_WSTRING_3.CNF"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_4.REQ" Source="APPEND_STRING_3_2_3.CNF"/>
+      <Connection Comment="" Destination="CLIENT_0_4.INIT" Source="F_STRING_TO_WSTRING_4.CNF" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_5.REQ" Source="APPEND_STRING_3_2_4.CNF" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_5.INIT" Source="F_STRING_TO_WSTRING_5.CNF" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_6.REQ" Source="APPEND_STRING_3_2_5.CNF" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_6.INIT" Source="F_STRING_TO_WSTRING_6.CNF" dx1="340.0"/>
+      <Connection Comment="" Destination="INITO" Source="CLIENT_0_6.INITO" dx1="375.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_1.REQ" Source="APPEND_STRING_3_3.CNF" dx1="230.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_2.REQ" Source="APPEND_STRING_3_4.CNF" dx1="230.0"/>
+      <Connection Comment="" Destination="SUBSCRIBE_1.INIT" Source="F_STRING_TO_WSTRING_7.CNF" dx1="140.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_7.REQ" Source="APPEND_STRING_3_1_1.CNF" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_7_1.REQ" Source="APPEND_STRING_3_1_2.CNF" dx1="390.0"/>
+      <Connection Comment="" Destination="SUBSCRIBE_1_1.INIT" Source="F_STRING_TO_WSTRING_7_1.CNF" dx1="105.0"/>
+      <Connection Comment="" Destination="STRING2STRING.REQ" Source="INIT" dx1="60.0" dx2="60.0" dy="305.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3.REQ" Source="STRING2STRING.CNF" dx1="335.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_3.REQ" Source="STRING2STRING.CNF" dx1="60.0" dx2="60.0" dy="200.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_4.REQ" Source="STRING2STRING.CNF" dx1="60.0" dx2="60.0" dy="550.0"/>
+      <Connection Comment="" Destination="CLIENT_0.REQ" Source="IAS_Skill_DEMUX.cleanUp" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_1.REQ" Source="IAS_Skill_DEMUX.lock" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_2.REQ" Source="IAS_Skill_DEMUX.reset" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_3.REQ" Source="IAS_Skill_DEMUX.start" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_4.REQ" Source="IAS_Skill_DEMUX.stop" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_5.REQ" Source="IAS_Skill_DEMUX.suspend" dx1="2515.0"/>
+      <Connection Comment="" Destination="CLIENT_0_6.REQ" Source="IAS_Skill_DEMUX.unsuspend" dx1="2515.0"/>
+      <Connection Comment="" Destination="GET_STRUCT_VALUE_1.REQ" Source="LocalizedText2LocalizedText_1.CNF"/>
+      <Connection Comment="" Destination="GET_STRUCT_VALUE.REQ" Source="LocalizedText2LocalizedText.CNF"/>
+      <Connection Comment="" Destination="LocalizedText2LocalizedText_1.REQ" Source="SUBSCRIBE_1_1.IND" dx1="60.0" dx2="60.0" dy="850.0"/>
+      <Connection Comment="" Destination="LocalizedText2LocalizedText.REQ" Source="SUBSCRIBE_1.IND" dx1="60.0" dx2="60.0" dy="850.0"/>
+      <Connection Comment="" Destination="IAS_Skill_DEMUX.RSP" Source="GET_STRUCT_VALUE.CNF" dx1="515.0"/>
+      <Connection Comment="" Destination="IAS_Skill_DEMUX.RSP" Source="GET_STRUCT_VALUE_1.CNF" dx1="450.0"/>
+    </EventConnections>
+    <DataConnections>
+      <Connection Comment="" Destination="APPEND_STRING_3_1.IN_1" Source="APPEND_STRING_3.OUT" dx1="230.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1.IN_2" Source="skillStateMachineNodeBrowsePath" dx1="1525.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1.IN_3" Source="IAS_Namespace" dx1="1305.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_6.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_1.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_2.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_3.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_4.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_2_5.IN_1" Source="APPEND_STRING_3_1.OUT" dx1="425.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING.IN" Source="APPEND_STRING_3_2_6.OUT"/>
+      <Connection Comment="" Destination="CLIENT_0.ID" Source="F_STRING_TO_WSTRING.OUT" dx1="350.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_1.IN" Source="APPEND_STRING_3_2.OUT"/>
+      <Connection Comment="" Destination="CLIENT_0_1.ID" Source="F_STRING_TO_WSTRING_1.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_2.IN" Source="APPEND_STRING_3_2_1.OUT"/>
+      <Connection Comment="" Destination="CLIENT_0_2.ID" Source="F_STRING_TO_WSTRING_2.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_3.IN" Source="APPEND_STRING_3_2_2.OUT" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_3.ID" Source="F_STRING_TO_WSTRING_3.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_4.IN" Source="APPEND_STRING_3_2_3.OUT"/>
+      <Connection Comment="" Destination="CLIENT_0_4.ID" Source="F_STRING_TO_WSTRING_4.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_5.IN" Source="APPEND_STRING_3_2_4.OUT" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_5.ID" Source="F_STRING_TO_WSTRING_5.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_6.IN" Source="APPEND_STRING_3_2_5.OUT" dx1="285.0"/>
+      <Connection Comment="" Destination="CLIENT_0_6.ID" Source="F_STRING_TO_WSTRING_6.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_1.IN_1" Source="APPEND_STRING_3_3.OUT" dx1="230.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_2.IN_1" Source="APPEND_STRING_3_4.OUT" dx1="230.0"/>
+      <Connection Comment="" Destination="SUBSCRIBE_1.ID" Source="F_STRING_TO_WSTRING_7.OUT" dx1="140.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_7.IN" Source="APPEND_STRING_3_1_1.OUT" dx1="340.0"/>
+      <Connection Comment="" Destination="F_STRING_TO_WSTRING_7_1.IN" Source="APPEND_STRING_3_1_2.OUT" dx1="390.0"/>
+      <Connection Comment="" Destination="SUBSCRIBE_1_1.ID" Source="F_STRING_TO_WSTRING_7_1.OUT"/>
+      <Connection Comment="" Destination="STRING2STRING.IN" Source="remoteIPandPort" dx1="60.0" dx2="60.0" dy="380.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3.IN_2" Source="STRING2STRING.OUT" dx1="335.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_3.IN_2" Source="STRING2STRING.OUT" dx1="60.0" dx2="60.0" dy="235.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_4.IN_2" Source="STRING2STRING.OUT" dx1="60.0" dx2="60.0" dy="585.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_1.IN_2" Source="skillStateMachineNodeBrowsePath" dx1="60.0" dx2="60.0" dy="580.0"/>
+      <Connection Comment="" Destination="APPEND_STRING_3_1_2.IN_2" Source="skillStateMachineNodeBrowsePath" dx1="60.0" dx2="60.0" dy="930.0"/>
+      <Connection Comment="" Destination="GET_STRUCT_VALUE.in_struct" Source="LocalizedText2LocalizedText.OUT"/>
+      <Connection Comment="" Destination="GET_STRUCT_VALUE_1.in_struct" Source="LocalizedText2LocalizedText_1.OUT"/>
+      <Connection Comment="" Destination="LocalizedText2LocalizedText_1.IN" Source="SUBSCRIBE_1_1.RD_1" dx1="60.0" dx2="60.0" dy="750.0"/>
+      <Connection Comment="" Destination="LocalizedText2LocalizedText.IN" Source="SUBSCRIBE_1.RD_1" dx1="60.0" dx2="60.0" dy="750.0"/>
+      <Connection Comment="" Destination="IAS_Skill_DEMUX.currentState" Source="GET_STRUCT_VALUE.output" dx1="515.0"/>
+      <Connection Comment="" Destination="IAS_Skill_DEMUX.lastTransition" Source="GET_STRUCT_VALUE_1.output" dx1="450.0"/>
+    </DataConnections>
+    <AdapterConnections>
+      <Connection Comment="" Destination="IAS_Skill_DEMUX.IAS_Skill" Source="IAS_Skill" dx1="655.0"/>
+    </AdapterConnections>
+  </SubAppNetwork>
+</SubAppType>
