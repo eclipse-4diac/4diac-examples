@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for a simple Basic Function Block Type" Name="OrchestratorExample">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="dorofeev" Date="2019-11-08" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialization Request" Name="INIT" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Initialization Confirm" Name="INITO" Type="Event"/>
+    </EventOutputs>
+    <Plugs>
+      <AdapterDeclaration Comment="" Name="Lamp1" Type="IAS_Skill"/>
+      <AdapterDeclaration Comment="" Name="Lamp2" Type="IAS_Skill"/>
+      <AdapterDeclaration Comment="" Name="Lamp3" Type="IAS_Skill"/>
+      <AdapterDeclaration Comment="" Name="ATimeOut" Type="ATimeOut"/>
+    </Plugs>
+    <Sockets>
+      <AdapterDeclaration Comment="" Name="blinkingLight" Type="IAS_Skill"/>
+    </Sockets>
+  </InterfaceList>
+  <BasicFB>
+    <ECC>
+      <ECState Comment="Initial State" Name="START" x="3700.0" y="300.0"/>
+      <ECState Comment="" Name="BlinkOn" x="4525.0" y="1430.0">
+        <ECAction Output="Lamp1.start"/>
+        <ECAction Output="Lamp2.start"/>
+        <ECAction Output="Lamp3.start"/>
+        <ECAction Algorithm="setTime" Output="ATimeOut.START"/>
+      </ECState>
+      <ECState Comment="" Name="BlinkOff" x="4220.0" y="2110.0">
+        <ECAction Output="Lamp1.stop"/>
+        <ECAction Output="Lamp2.stop"/>
+        <ECAction Output="Lamp3.stop"/>
+        <ECAction Algorithm="setTime" Output="ATimeOut.START"/>
+      </ECState>
+      <ECState Comment="" Name="INIT" x="3825.0" y="785.0">
+        <ECAction Output="INITO"/>
+        <ECAction Output="Lamp1.stop"/>
+        <ECAction Output="Lamp2.stop"/>
+        <ECAction Output="Lamp3.stop"/>
+      </ECState>
+      <ECTransition Comment="" Condition="ATimeOut.TimeOut" Destination="BlinkOff" Source="BlinkOn" x="3445.0" y="1760.0"/>
+      <ECTransition Comment="" Condition="ATimeOut.TimeOut" Destination="BlinkOn" Source="BlinkOff" x="4495.0" y="1810.0"/>
+      <ECTransition Comment="" Condition="blinkingLight.start" Destination="BlinkOn" Source="INIT" x="4270.0" y="1155.0"/>
+      <ECTransition Comment="" Condition="blinkingLight.stop" Destination="INIT" Source="BlinkOff" x="3735.0" y="1390.0"/>
+      <ECTransition Comment="" Condition="1" Destination="INIT" Source="START" x="3935.0" y="635.0"/>
+      <ECTransition Comment="" Condition="blinkingLight.stop" Destination="INIT" Source="BlinkOn" x="5280.0" y="1160.0"/>
+    </ECC>
+    <Algorithm Comment="new algorithm" Name="setTime">
+      <ST Text="ATimeOut.DT := T#5s;&#10;"/>
+    </Algorithm>
+  </BasicFB>
+</FBType>

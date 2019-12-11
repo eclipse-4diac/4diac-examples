@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE SubAppType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<SubAppType Comment="Subapplication Type" Name="QX_sim">
+  <Identification Standard="61499-2"/>
+  <VersionInfo Author="dorofeev" Date="2019-11-08" Version="1.0"/>
+  <SubAppInterfaceList>
+    <SubAppEventInputs>
+      <SubAppEvent Comment="Initialization Request" Name="INIT" Type="Event">
+        <With Var="QI"/>
+        <With Var="PARAMS"/>
+      </SubAppEvent>
+      <SubAppEvent Comment="Normal Execution Request" Name="REQ" Type="Event">
+        <With Var="QI"/>
+        <With Var="OUT"/>
+      </SubAppEvent>
+    </SubAppEventInputs>
+    <SubAppEventOutputs>
+      <SubAppEvent Comment="Initialization Confirm" Name="INITO" Type="Event">
+        <With Var="QO"/>
+        <With Var="STATUS"/>
+      </SubAppEvent>
+      <SubAppEvent Comment="Execution Confirmation" Name="CNF" Type="Event">
+        <With Var="QO"/>
+        <With Var="STATUS"/>
+      </SubAppEvent>
+    </SubAppEventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Input event qualifier" Name="QI" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="PARAMS" Type="STRING"/>
+      <VarDeclaration Comment="" Name="OUT" Type="BOOL"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="Output event qualifier" Name="QO" Type="BOOL"/>
+      <VarDeclaration Comment="" Name="STATUS" Type="STRING"/>
+    </OutputVars>
+  </SubAppInterfaceList>
+  <SubAppNetwork>
+    <EventConnections>
+      <Connection Comment="" Destination="INITO" Source="INIT"/>
+      <Connection Comment="" Destination="CNF" Source="REQ"/>
+    </EventConnections>
+    <DataConnections>
+      <Connection Comment="" Destination="QO" Source="OUT" dx1="4215.0"/>
+    </DataConnections>
+  </SubAppNetwork>
+</SubAppType>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd" >
+<FBType Name="LocalizedText2LocalizedText" Comment="Function Block to set a connection to the LocalizedText type" >
+  <Identification Standard="61499-2" />
+  <VersionInfo Organization="fortiss GmbH" Version="1.0" Author="TS" Date="2019-07-08" />
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="REQ" Comment="Normal Execution Request" >
+        <With Var="IN" />
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="CNF" Comment="Execution Confirmation" >
+        <With Var="OUT" />
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="IN" Type="LocalizedText" Comment="Input event qualifier" />
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="OUT" Type="LocalizedText" Comment="Output event qualifier" />
+    </OutputVars>
+  </InterfaceList>
+  <Service Comment="Helper FB to set the connection to the LocalizedText type" LeftInterface="APPLICATION" RightInterface="RESOURCE"/>
+</FBType>
