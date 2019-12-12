@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<!--
+ Copyright (c) 2019 fortiss GmbH
+  
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License 2.0 which is available at
+ http://www.eclipse.org/legal/epl-2.0.
+
+ SPDX-License-Identifier: EPL-2.0
+ 
+ Contributors:
+   Kirill Dorofeev
+     - initial API and implementation and/or initial documentation
+-->
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>IAS skills with IEC 61499 Tutorial</title>
+	<link rel="stylesheet" type="text/css" href="../help.css">
+</head>
+<body>
+<h1 id="topOfPage">IAS skills with IEC 61499 Tutorial</h1>
+<p>The IAS skill is tutorial shows how you can use <a href="https://www.researchgate.net/publication/334164202_Skill-based_Engineering_and_Control_on_Field-Device-Level_with_OPC_UA" target="_blank">IAS skills</a> in an IEC 61499 Application.</p>
+
+<h2 id="skill">IAS skill</h2>
+
+<h3 id="variables_flipflop">Skill-Based Engineering and Control</h3>
+
+<p>Skills represent the data exchanges and function invocations that constitute a system operation. The main purpose of defining a skill is to design the automation systems based on the required skills for each step of a production process, instead of identifying actual production resources. This way, the required skills can be defined very early, during a design phase, and can thus be used in the subsequent engineering steps. In addition, suppliers can focus on resources that are capable of fulfilling the required skills for the production process. This allows interchangeability of the resources within and between manufacturers and more variance in the systems' configuration.</p>
+
+<p>The other advantage of using skills on control level is that they generilize and define the execution semantics of any PLC functionality. Skills are thereby not only used in the phase of engineering for a simplified description and configuration of the production processes, but also for directly controlling the automation system. Instead of generating proprietary commands, which are sent over a variety of different communication standards, this approach uses OPC UA for production control on the field device level and not only in a data collection aspect. It, therefore, describes and provides generic executable skills within the OPC UA information model of each device.</p>
+
+<h3 id="variables_flipflop">Skills Function Blocks in 4diac</h3>
+
+<p> In order to use skills you'll need to compile your own 4diac FORTE. To do that, follow these <a href="../../html/installation/install.html#ownFORTE"> steps</a> and in CMake set the variables <span class="specificText">FORTE_COM_OPC_UA</span> to TRUE.</p>
+
+<p>Additionally, you'll need to compile the following skills FBs:</p>
+
+<ul>
+	<li>IAS_Skill: An adapter to create a skill connection between a skill provider and a skill consumer</li>
+	<li>IAS_Skill_DEMUX: A helper FB to translate a skill adapter to separate events and data i/o's</li>
+	<li>IAS_Skill_Full: A generic skill FB that implements the skill model and wraps the PLC functionality in form of a skill</li>
+	<li>IAS_Skill_MUX: A helper FB to translate separate events and data i/o's to a skill adapter</li>
+	<li>IAS_Skill_StateModel: A FB implementing the skill state machine</li>
+	<li>SClient: A FB implementing the skill communication in OPC UA from consumer's side</li>
+	<li>SServer: A FB implementing the skill communication in OPC UA from server's side</li>
+</ul>
+
+<h2>Example</h2>
+
+<div><img src="arrowheadExample.png" alt="Sub-application for registering a service using HTTP"></div>
+
+<p>To see some examples on how the Function Blocks are used, you can check the <a href="https://git.eclipse.org/c/4diac/org.eclipse.4diac.examples.git" target="_blank">examples respository</a>. The FBs are not directly to be found in the IDE, but you'll find them in the example repository.</p>
+
+<p>The example shows three servers providing their skills. In this case, we only show a simple skill (turning on/off a lamp) which requires only start/stop methods from the skill model. When connecting the skills via SClient and SServer FBs (those are modeled directly in corresponding resource), the skill consumer - OrchestratorExample FB - can be programmed in a simple way using the skills interface.</p>
+
+<p class="goToTop">Or <a href="#topOfPage">Go to top</a></p>
+
+</body>
+</html>
