@@ -7,7 +7,7 @@
   <StructuredType >
 	  <VarDeclaration Name="service" Type="ArrowheadService" Comment="The Arrowhead Service object that is looked for (SD and supported IDD-s)" />
 	  <VarDeclaration Name="metadataSearch" Type="BOOL" Comment="True, if service metadata shall be taken into account during query." />
-    <VarDeclaration Name="pingProviders" Type="BOOL" Comment="True, if the selected (query fitting) Application Systems shall be pinged to see if they’re alive." />
+    <VarDeclaration Name="pingProviders" Type="BOOL" Comment="True, if the selected (query fitting) Application Systems shall be pinged to see if they are alive." />
     <VarDeclaration Name="version" Type="DINT" Comment="The minimum version of the Service we are looking for." />
   </StructuredType>
 </DataType>
