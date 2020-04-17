@@ -8,5 +8,7 @@
     <virtualDNSEntries name="csvFirstValue" value="STRING#csvFirstValue"/>
     <virtualDNSEntries name="csvSecondValue" value="1"/>
     <virtualDNSEntries name="csvThirdValue" value="-4321"/>
+    <virtualDNSEntries name="intCommID3" value="239.192.0.2:61501"/>
+    <virtualDNSEntries name="intCommID4" value="239.192.0.2:61502"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
