@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubAppType Name="WaitForConnection" Comment="Subapplication Type">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 fortiss GmbH This program and the accompanying materials are made SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Organization="fortiss GmbH" Version="1.0" Author="Jose Cabral" Date="2020-04-15">
+	</VersionInfo>
+	<SubAppInterfaceList>
+		<SubAppEventInputs>
+			<SubAppEvent Name="REQ" Type="Event" Comment="">
+			</SubAppEvent>
+		</SubAppEventInputs>
+		<SubAppEventOutputs>
+			<SubAppEvent Name="CNF" Type="Event" Comment="">
+			</SubAppEvent>
+		</SubAppEventOutputs>
+	</SubAppInterfaceList>
+	<SubAppNetwork>
+		<FB Name="E_SWITCH_2" Type="E_SWITCH" Comment="" x="2726.086956521739" y="660.8695652173913">
+		</FB>
+		<FB Name="DINT2DINT_6" Type="STRING2STRING" Comment="" x="1695.6521739130435" y="1304.3478260869565">
+		</FB>
+		<FB Name="E_DELAY_2" Type="E_DELAY" Comment="" x="3600.0" y="665.2173913043478">
+			<Parameter Name="DT" Value="T#1s"/>
+		</FB>
+		<FB Name="WaitForConnection" Type="SUBSCRIBE_1" Comment="" x="652.1739130434783" y="347.82608695652175">
+			<Parameter Name="QI" Value="1"/>
+			<Parameter Name="ID" Value="opc_ua[SUBSCRIBE;%serverEndpoint%; %connectionTesterNode%]"/>
+		</FB>
+		<EventConnections>
+			<Connection Source="E_SWITCH_2.EO0" Destination="E_DELAY_2.START" Comment="" dx1="113.04347826086956"/>
+			<Connection Source="E_SWITCH_2.EO1" Destination="CNF" Comment="" dx1="2860.869565217391"/>
+			<Connection Source="REQ" Destination="WaitForConnection.INIT" Comment="" dx1="291.30434782608694"/>
+			<Connection Source="WaitForConnection.IND" Destination="E_SWITCH_2.EI" Comment="" dx1="678.2608695652174"/>
+		</EventConnections>
+		<DataConnections>
+			<Connection Source="WaitForConnection.QO" Destination="E_SWITCH_2.G" Comment="" dx1="691.3043478260869"/>
+			<Connection Source="WaitForConnection.RD_1" Destination="DINT2DINT_6.IN" Comment="" dx1="273.9130434782609"/>
+		</DataConnections>
+	</SubAppNetwork>
+</SubAppType>

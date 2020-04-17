@@ -106,5 +106,8 @@
     <virtualDNSEntries name="serverDeinitTCP" value="127.0.0.1:60101"/>
     <virtualDNSEntries name="clientInitTCP" value="127.0.0.1:60102"/>
     <virtualDNSEntries name="avoidManyEventsDelay" value="T#1000ms"/>
+    <virtualDNSEntries name="opcuaFirstResourceINIT" value="WSTRING#opcuaFirstResourceINIT"/>
+    <virtualDNSEntries name="opcuaTenVars" value="/Objects/folder1/var1;/Objects/folder1/var2;/Objects/folder1/var3;/Objects/folder1/var4;/Objects/folder1/var5;/Objects/folder1/var6;/Objects/folder1/var7;/Objects/folder1/var8;/Objects/folder1/var9;/Objects/folder1/var10"/>
+    <virtualDNSEntries name="connectionTesterNode" value=",0:i=2261"/>
   </availableDNSCollections>
 </virtualDNS:VirtualDNSManagement>
