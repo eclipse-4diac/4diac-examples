@@ -8,7 +8,7 @@ In this folder, we collect projects that demonstrate features of the standard IE
 - examples demonstrating hierarchical groupings in IEC 61499
 
 ## Contents
-Each examples is commented with expected behavior in response to a certain trigger event.
+Each example is commented with expected behavior in response to a certain trigger event.
 
 ## Contributing
 We are looking for
