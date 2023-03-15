@@ -13,7 +13,7 @@ the terms of [Eclipse Contributor Agreement](http://www.eclipse.org/legal/ECA.ph
 
 ## Using 4diac Examples
 
-These example projects can be importet into 4diac IDE using the File -> Import -> Existing projects into Workspace feature from 4diac IDE. 
+These example projects can be imported into 4diac IDE using the File -> Import -> Existing projects into Workspace feature from 4diac IDE. 
 
 After that you can either open the contained system files or the types.
 
