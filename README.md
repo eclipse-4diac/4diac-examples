@@ -27,6 +27,12 @@ In order to run them for most of the examples the FBs have to be exported to 4di
 * [Mailing list](https://dev.eclipse.org/mailman/listinfo/4diac-dev)
 * [Wiki](https://wiki.eclipse.org/Eclipse_4diac_Wiki)
 
+## External Links: 
+
+* [4diac_training1 from Meisterschulen am Ostbahnhof, München]([https://www.eclipse.org/4diac](https://github.com/Meisterschulen-am-Ostbahnhof-Munchen/4diac_training1))
+
+
+
 ## Issue/bug trackers
 
 * [Eclipse.org Bugzilla](https://bugs.eclipse.org/bugs/buglist.cgi?product=4diac)
