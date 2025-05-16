@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalConstants Name="virtuals" Comment="Global constants">
+	<Identification Standard="61499-1">
+	</Identification>
+	<VersionInfo Version="1.0" Author="mow" Date="2025-05-16">
+	</VersionInfo>
+	<CompilerInfo>
+	</CompilerInfo>
+	<GlobalConstants>
+		<VarDeclaration Name="local" Type="WSTRING" InitialValue="&quot;xquery[127.0.0.1:1984; BaSys_PalletSystem_Model; test; test]&quot;"/>
+	</GlobalConstants>
+	<OriginalSource><![CDATA[GLOBALCONSTANTS virtuals
+	VAR_GLOBAL CONSTANT
+		local : WSTRING := "xquery[127.0.0.1:1984; BaSys_PalletSystem_Model; test; test]";
+	END_VAR
+END_GLOBALCONSTANTS
+]]></OriginalSource>
+</GlobalConstants>

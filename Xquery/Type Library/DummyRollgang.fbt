@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="DummyRollgang" Comment="Demonstrate self initialize with data from an XML database by Xquery">
+	<Identification Standard="61499-2" Description="Copyright (c) 2025 Monika Wenger&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Monika Wenger" Date="2025-05-18">
+	</VersionInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="INIT" Type="Event" Comment="Initialization Request">
+				<With Var="QI"/>
+				<With Var="name"/>
+			</Event>
+			<Event Name="INITxq" Type="Event">
+				<With Var="vMax"/>
+				<With Var="successor"/>
+				<With Var="predecessor"/>
+			</Event>
+			<Event Name="REQ" Type="Event" Comment="Normal Execution Request">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="INITO" Type="Event" Comment="Initialization Confirm">
+				<With Var="QO"/>
+				<With Var="xVMax"/>
+				<With Var="xSuccessor"/>
+				<With Var="xPredecessor"/>
+			</Event>
+			<Event Name="INITOxq" Type="Event">
+			</Event>
+			<Event Name="CNF" Type="Event" Comment="Execution Confirmation">
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="QI" Type="BOOL" Comment="Input event qualifier"/>
+			<VarDeclaration Name="name" Type="STRING" Comment="name of this Rollgang"/>
+			<VarDeclaration Name="vMax" Type="REAL" Comment="maximal velocity"/>
+			<VarDeclaration Name="successor" Type="STRING" Comment="name of the successor Rollgang"/>
+			<VarDeclaration Name="predecessor" Type="STRING" Comment="name of the predecessor Rollgang"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="QO" Type="BOOL" Comment="Output event qualifier"/>
+			<VarDeclaration Name="xVMax" Type="STRING" Comment="Xquery to get maximal velocity"/>
+			<VarDeclaration Name="xSuccessor" Type="STRING" Comment="Xquery to get name of the successor Rollgang"/>
+			<VarDeclaration Name="xPredecessor" Type="STRING" Comment="Xquery to get name of the predecessor Rollgang"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="282.35" y="1411.76">
+			</ECState>
+			<ECState Name="Init" Comment="Initialization" x="1623.53" y="917.65">
+				<ECAction Algorithm="QI"/>
+				<ECAction Algorithm="getMax"/>
+				<ECAction Algorithm="getPredecessor"/>
+				<ECAction Algorithm="getSuccessor" Output="INITO"/>
+			</ECState>
+			<ECState Name="Initialized" x="1623.53" y="1976.47">
+				<ECAction Output="INITOxq"/>
+			</ECState>
+			<ECState Name="Reqest" x="1623.53" y="2752.94">
+				<ECAction Algorithm="job" Output="CNF"/>
+			</ECState>
+			<ECState Name="Waiting" x="1623.53" y="2329.41">
+			</ECState>
+			<ECState Name="Deinitialize" x="141.18" y="2329.41">
+				<ECAction Algorithm="deinit" Output="INITO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="Init" Condition="INIT[TRUE = QI]" Comment="" x="1082.35" y="858.82"/>
+			<ECTransition Source="Init" Destination="Initialized" Condition="INITxq[vMax &lt;&gt; 0.0 AND successor &lt;&gt; '' AND predecessor &lt;&gt; '']" Comment="" x="1917.65" y="1741.18"/>
+			<ECTransition Source="Initialized" Destination="Waiting" Condition="1" Comment="" x="1947.06" y="2229.41"/>
+			<ECTransition Source="Waiting" Destination="Reqest" Condition="REQ" Comment="" x="1905.88" y="2605.88"/>
+			<ECTransition Source="Reqest" Destination="Waiting" Condition="1" Comment="" x="1729.41" y="2588.24"/>
+			<ECTransition Source="Waiting" Destination="Deinitialize" Condition="INIT[FALSE = QI]" Comment="" x="1170.59" y="2170.59"/>
+			<ECTransition Source="Deinitialize" Destination="START" Condition="1" Comment="" x="347.06" y="1888.24"/>
+		</ECC>
+		<Algorithm Name="QI">
+			<ST><![CDATA[ALGORITHM QI
+QO := QI;
+END_ALGORITHM]]></ST>
+		</Algorithm>
+		<Algorithm Name="deinit">
+			<ST><![CDATA[
+
+ALGORITHM deinit
+QO := FALSE;
+END_ALGORITHM]]></ST>
+		</Algorithm>
+		<Algorithm Name="getMax">
+			<ST><![CDATA[
+
+ALGORITHM getMax
+xVMax := CONCAT('xquery ', STRING#'let $$name := $'', name, STRING#'$' ',
+	'let $$component := //InstanceHierarchy/*/InternalElement[@Name=$$name] ',
+	'let $$compType := tokenize($$component/RoleRequirements/@RefBaseRoleClassPath/data(),$'/$')[last()] ',
+	'let $$rollerTable :=  $$component/InternalElement/RoleRequirements[contains(@RefBaseRoleClassPath,$'RollConveyor$')]/.. ',
+	'let $$rollDiameter := $$rollerTable/Attribute[@Name=$'RollDiameter$']/Value/data() ',
+	'let $$link := tokenize($$component/InternalLink/@RefPartnerSideA/data(),$':$')[1] ',
+	'let $$motor := //InternalElement[@ID=$$link]/RoleRequirements[contains(@RefBaseRoleClassPath,$'ElectricMotor$')]/.. ',
+	'let $$gearFactor := $$motor/Attribute[@Name=$'Gearfactor$']/Value/data() ',
+	'let $$rotSpeed := $$motor/Attribute[@Name=$'Rotational Speed$']/Value/data() ',
+	STRING#'let $$linSpeed :=  $$rotSpeed div (60.0 * $$gearFactor) * (2.0 * 3.1416 * 0.5 * $$rollDiameter) ',
+	STRING#'return round-half-to-even($$linSpeed, 3)');
+END_ALGORITHM]]></ST>
+		</Algorithm>
+		<Algorithm Name="getPredecessor">
+			<ST><![CDATA[
+
+ALGORITHM getPredecessor
+xPredecessor := CONCAT(STRING#'xquery ', STRING#'let $$name := $'', name, STRING#'$' ',
+	STRING#'let $$links := //InstanceHierarchy/InternalElement/InternalLink ',
+	STRING#'let $$cp := //InstanceHierarchy/*/InternalElement[@Name=$$name] ', STRING#'let $$id := $$cp/@ID/data() ',
+	STRING#'let $$succId := tokenize($$links[contains(@RefPartnerSideB, $$id)]/@RefPartnerSideA, $':$')[1] ',
+	STRING#'let $$successor := //InstanceHierarchy/*/InternalElement[@ID=$$succId] ',
+	STRING# 'return $$successor/@Name/data() ');
+END_ALGORITHM]]></ST>
+		</Algorithm>
+		<Algorithm Name="getSuccessor">
+			<ST><![CDATA[
+
+ALGORITHM getSuccessor
+xSuccessor := CONCAT('xquery ', STRING#'let $$name := $'', name, STRING#'$' ',
+	STRING#'let $$links := //InstanceHierarchy/InternalElement/InternalLink ',
+	STRING#'let $$cp := //InstanceHierarchy/*/InternalElement[@Name=$$name] ', STRING#'let $$id := $$cp/@ID/data() ',
+	STRING#'let $$succId := tokenize($$links[contains(@RefPartnerSideA, $$id)]/@RefPartnerSideB, $':$')[1] ',
+	STRING#'let $$successor := //InstanceHierarchy/*/InternalElement[@ID=$$succId] ',
+	STRING# 'return $$successor/@Name/data() ');
+END_ALGORITHM]]></ST>
+		</Algorithm>
+		<Algorithm Name="job">
+			<ST><![CDATA[
+
+ALGORITHM job
+// do my job
+END_ALGORITHM
+
+]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

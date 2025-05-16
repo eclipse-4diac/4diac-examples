@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System Name="Xquery">
+	<VersionInfo Version="1.0" Author="anubis" Date="2022-12-14">
+	</VersionInfo>
+	<Application Name="selfInitializationApp">
+		<SubAppNetwork>
+			<FB Name="DummyRollgang" Type="DummyRollgang" x="2823.53" y="1058.82">
+				<Parameter Name="name" Value="'RG031'"/>
+			</FB>
+			<FB Name="FetchSpeed" Type="CLIENT_1" x="588.24" y="0">
+				<Parameter Name="QI" Value="1"/>
+				<Parameter Name="ID" Value="virtuals::local"/>
+			</FB>
+			<FB Name="FetchSuccessor" Type="CLIENT_1" x="588.24" y="1294.12">
+				<Parameter Name="ID" Value="virtuals::local"/>
+			</FB>
+			<FB Name="FetchPredecessor" Type="CLIENT_1" x="588.24" y="2470.59">
+				<Parameter Name="ID" Value="virtuals::local"/>
+			</FB>
+			<EventConnections>
+				<Connection Source="FetchSpeed.INITO" Destination="FetchSuccessor.INIT" dx1="70.59" dx2="70.59" dy="805.88"/>
+				<Connection Source="FetchSuccessor.INITO" Destination="FetchPredecessor.INIT" dx1="64.71" dx2="152.94" dy="805.88"/>
+				<Connection Source="FetchPredecessor.INITO" Destination="DummyRollgang.INIT" dx1="994.12"/>
+				<Connection Source="FetchPredecessor.CNF" Destination="DummyRollgang.INITxq" dx1="788.24"/>
+				<Connection Source="FetchSpeed.CNF" Destination="FetchSuccessor.REQ" dx1="70.59" dx2="70.59" dy="647.06"/>
+				<Connection Source="FetchSuccessor.CNF" Destination="FetchPredecessor.REQ" dx1="70.59" dx2="70.59" dy="588.24"/>
+				<Connection Source="DummyRollgang.INITO" Destination="FetchSpeed.REQ" dx1="70.59" dx2="70.59" dy="-1494.12"/>
+			</EventConnections>
+			<DataConnections>
+				<Connection Source="FetchSpeed.QO" Destination="FetchSuccessor.QI" dx1="70.59" dx2="323.53" dy="647.06"/>
+				<Connection Source="FetchSpeed.RD_1" Destination="DummyRollgang.vMax" dx1="835.29"/>
+				<Connection Source="FetchSuccessor.RD_1" Destination="DummyRollgang.successor" dx1="241.18"/>
+				<Connection Source="FetchPredecessor.RD_1" Destination="DummyRollgang.predecessor" dx1="1247.06"/>
+				<Connection Source="FetchPredecessor.QO" Destination="DummyRollgang.QI" dx1="788.24"/>
+				<Connection Source="DummyRollgang.xVMax" Destination="FetchSpeed.SD_1" dx1="464.71" dx2="464.71" dy="1829.41"/>
+				<Connection Source="DummyRollgang.xSuccessor" Destination="FetchSuccessor.SD_1" dx1="352.94" dx2="352.94" dy="1664.71"/>
+				<Connection Source="DummyRollgang.xPredecessor" Destination="FetchPredecessor.SD_1" dx1="241.18" dx2="241.18" dy="1470.59"/>
+				<Connection Source="FetchSuccessor.QO" Destination="FetchPredecessor.QI" dx1="70.59" dx2="70.59" dy="588.24"/>
+			</DataConnections>
+		</SubAppNetwork>
+	</Application>
+	<Device Name="FORTE_PC" Type="FORTE_PC" x="864.71" y="476.47">
+		<Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;" Comment="Device manager socket ID"/>
+		<Attribute Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+		<Attribute Name="Color" Type="STRING" Value="255,190,111"/>
+		<Resource Name="Rollgang" Type="EMB_RES" x="0" y="0">
+			<FBNetwork>
+				<EventConnections>
+					<Connection Source="START.WARM" Destination="selfInitializationApp.FetchSpeed.INIT" dx1="723.53"/>
+					<Connection Source="START.COLD" Destination="selfInitializationApp.FetchSpeed.INIT" dx1="788.24"/>
+				</EventConnections>
+			</FBNetwork>
+		</Resource>
+	</Device>
+	<Mapping From="selfInitializationApp.DummyRollgang" To="FORTE_PC.Rollgang"/>
+	<Mapping From="selfInitializationApp.FetchSpeed" To="FORTE_PC.Rollgang"/>
+	<Mapping From="selfInitializationApp.FetchSuccessor" To="FORTE_PC.Rollgang"/>
+	<Mapping From="selfInitializationApp.FetchPredecessor" To="FORTE_PC.Rollgang"/>
+</System>
