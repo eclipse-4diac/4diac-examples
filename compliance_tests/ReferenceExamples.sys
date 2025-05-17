@@ -396,6 +396,65 @@
 		<SubAppNetwork>
 			<Group Name="__Group01" Comment="connection to the interface" x="1093.3333333333335" y="573.3333333333334" width="1333.3333333333335" height="666.6666666666667">
 			</Group>
+			<SubApp Name="DelayedTree" x="2000" y="1300">
+				<SubAppInterfaceList>
+					<SubAppEventInputs>
+						<SubAppEvent Name="Start" Type="Event">
+						</SubAppEvent>
+						<SubAppEvent Name="Stop" Type="Event">
+						</SubAppEvent>
+					</SubAppEventInputs>
+				</SubAppInterfaceList>
+				<SubAppNetwork>
+					<FB Name="L10" Type="E_PERMIT" x="1800" y="500">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="E_CYCLE_1" Type="E_CYCLE" x="0" y="1500">
+						<Parameter Name="DT" Value="T#10ms"/>
+					</FB>
+					<FB Name="L23" Type="E_PERMIT" x="3400" y="1900">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="L11" Type="E_PERMIT" x="1800" y="1500">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="L20" Type="E_PERMIT" x="3400" y="0">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="E_CYCLE" Type="E_CYCLE" x="0" y="900">
+						<Parameter Name="DT" Value="T#5ms"/>
+					</FB>
+					<FB Name="L21" Type="E_PERMIT" x="3400" y="700">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="L22" Type="E_PERMIT" x="3400" y="1200">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="L0" Type="E_PERMIT" x="900" y="900">
+						<Parameter Name="PERMIT" Value="TRUE"/>
+					</FB>
+					<FB Name="E_DELAY" Type="E_DELAY" x="2700" y="1200">
+						<Parameter Name="DT" Value="T#3ms"/>
+					</FB>
+					<EventConnections>
+						<Connection Source="L0.EO" Destination="L10.EI" dx1="168.42"/>
+						<Connection Source="L10.EO" Destination="L20.EI" dx1="221.05"/>
+						<Connection Source="L10.EO" Destination="L21.EI" dx1="221.05"/>
+						<Connection Source="E_CYCLE_1.EO" Destination="L11.EI"/>
+						<Connection Source="L11.EO" Destination="L23.EI" dx1="105.26"/>
+						<Connection Source="L0.EO" Destination="L11.EI" dx1="168.42"/>
+						<Connection Source="L11.EO" Destination="E_DELAY.START" dx1="100"/>
+						<Connection Source="E_CYCLE.EO" Destination="L0.EI"/>
+						<Connection Source="E_DELAY.EO" Destination="L22.EI"/>
+						<Connection Source="Start" Destination="E_CYCLE.START" dx1="2289.47"/>
+						<Connection Source="Start" Destination="E_CYCLE_1.START" dx1="1373.68"/>
+						<Connection Source="Stop" Destination="E_CYCLE.STOP" dx1="1973.68"/>
+						<Connection Source="Stop" Destination="E_CYCLE_1.STOP" dx1="1115.79"/>
+					</EventConnections>
+				</SubAppNetwork>
+				<Attribute Name="width" Type="LREAL" Value="200"/>
+				<Attribute Name="height" Type="LREAL" Value="100"/>
+			</SubApp>
 		</SubAppNetwork>
 	</Application>
 	<Application Name="_06_CompositeFBs" Comment="">
