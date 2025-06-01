@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Xquery</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.fordiac.ide.export.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.fordiac.ide.systemmanagement.FordiacNature</nature>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>External Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/core</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/core-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/devices</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/devices-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/events</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/events-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/iec61131-3</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/iec61131-3-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/net</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/net-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/resources</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/resources-1.0.0/typelib</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/core/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/core-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/devices/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/devices-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/events/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/events-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/iec61131-3/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/iec61131-3-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/net/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/net-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+		<link>
+			<name>Standard Libraries/resources/MANIFEST.MF</name>
+			<type>1</type>
+			<locationURI>ECLIPSE_HOME/typelibrary/resources-1.0.0/MANIFEST.MF</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
