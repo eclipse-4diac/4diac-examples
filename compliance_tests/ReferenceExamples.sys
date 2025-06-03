@@ -396,7 +396,7 @@
 		<SubAppNetwork>
 			<Group Name="__Group01" Comment="connection to the interface" x="1093.3333333333335" y="573.3333333333334" width="1333.3333333333335" height="666.6666666666667">
 			</Group>
-			<SubApp Name="DelayedTree" x="2000" y="1300">
+			<SubApp Name="DelayedTree" Comment="Three tier tree with 2 cycles with overlapping periods, and a non-overlapping delay at different levesl of the tree. The subapplication is intended to achieve different sequence of events evey run, when left running for a certain amount of time" x="2000" y="1300">
 				<SubAppInterfaceList>
 					<SubAppEventInputs>
 						<SubAppEvent Name="Start" Type="Event">
