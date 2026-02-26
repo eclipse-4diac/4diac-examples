@@ -26,7 +26,7 @@ Once in the Node-RED interface (http://127.0.0.1:1880 if it's running on your co
 * The identifiers of the tags have to be updated: You can use your favorite OPC UA client or the `OPC UA Browser` to find the identifier of the 3 tags (ns=1;i=number). 
 ![How to retreive the identifiers](./Identifiers.png)
 * Update the 3 `OPC UA Item` according to these identifiers and deploy again.
-![Configure the OPC UA Items](./Identifiers2.png)
+![Configure the OPC UA Items](./identifiers2.png)
 
 ## Preview of the Dashboard
 To access the Dashboard : http://127.0.0.1:1880/dashboard
