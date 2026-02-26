@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System Name="PubSubTest">
+	<VersionInfo Version="1.0" Author="Administrateur" Date="2026-02-25">
+	</VersionInfo>
+	<CompilerInfo>
+	</CompilerInfo>
+	<Application Name="PubSubTestApp">
+		<SubAppNetwork>
+			<FB Name="E_CYCLE" Type="iec61499::events::E_CYCLE" x="2900" y="100">
+				<Parameter Name="DT" Value="T#2s"/>
+			</FB>
+			<FB Name="E_CTU" Type="iec61499::events::E_CTU" x="3800" y="100">
+				<Parameter Name="PV" Value="100"/>
+			</FB>
+			<FB Name="PUBLISH_1" Type="iec61499::net::PUBLISH_1" x="5800" y="200">
+				<Parameter Name="QI" Value="TRUE"/>
+				<Parameter Name="ID" Value="&quot;opc_ua[WRITE;/Objects/Counter]&quot;"/>
+			</FB>
+			<FB Name="SUBSCRIBE_1" Type="iec61499::net::SUBSCRIBE_1" x="800" y="-300">
+				<Parameter Name="QI" Value="TRUE"/>
+				<Parameter Name="ID" Value="&quot;opc_ua[READ;/Objects/Start]&quot;"/>
+			</FB>
+			<FB Name="E_PERMIT" Type="iec61499::events::E_PERMIT" x="1900" y="-100">
+			</FB>
+			<FB Name="SUBSCRIBE_2" Type="iec61499::net::SUBSCRIBE_1" x="300" y="900">
+				<Parameter Name="QI" Value="TRUE"/>
+				<Parameter Name="ID" Value="&quot;opc_ua[READ;/Objects/Stop]&quot;"/>
+			</FB>
+			<FB Name="E_PERMIT_1" Type="iec61499::events::E_PERMIT" x="2000" y="1100">
+			</FB>
+			<FB Name="E_PERMIT_2" Type="iec61499::events::E_PERMIT" x="3700" y="-600">
+			</FB>
+			<EventConnections>
+				<Connection Source="E_CYCLE.EO" Destination="E_CTU.CU"/>
+				<Connection Source="E_CTU.CUO" Destination="PUBLISH_1.REQ" dx1="186.67"/>
+				<Connection Source="SUBSCRIBE_1.IND" Destination="E_PERMIT.EI" dx1="100"/>
+				<Connection Source="E_PERMIT.EO" Destination="E_CYCLE.START" dx1="166.67"/>
+				<Connection Source="E_PERMIT_1.EO" Destination="E_CYCLE.STOP" dx1="120"/>
+				<Connection Source="SUBSCRIBE_2.IND" Destination="E_PERMIT_1.EI" dx1="146.67"/>
+				<Connection Source="SUBSCRIBE_1.INITO" Destination="SUBSCRIBE_2.INIT" dx1="80" dx2="80" dy="700"/>
+				<Connection Source="SUBSCRIBE_2.INITO" Destination="PUBLISH_1.INIT" dx1="1300"/>
+				<Connection Source="E_CTU.CUO" Destination="E_PERMIT_2.EI" dx1="80" dx2="80" dy="400"/>
+				<Connection Source="E_PERMIT_2.EO" Destination="E_CTU.R" dx1="80" dx2="80" dy="-346.67"/>
+			</EventConnections>
+			<DataConnections>
+				<Connection Source="E_CTU.CV" Destination="PUBLISH_1.SD_1" dx1="186.67"/>
+				<Connection Source="SUBSCRIBE_1.RD_1" Destination="E_PERMIT.PERMIT" dx1="100"/>
+				<Connection Source="SUBSCRIBE_2.RD_1" Destination="E_PERMIT_1.PERMIT" dx1="146.67"/>
+				<Connection Source="E_CTU.Q" Destination="E_PERMIT_2.PERMIT" dx1="80" dx2="80" dy="346.67"/>
+			</DataConnections>
+		</SubAppNetwork>
+	</Application>
+	<Device Name="FORTE_PC" Type="iec61499::system::FORTE_PC" x="2180" y="853.33">
+		<Parameter Name="MGR_ID" Value="&quot;localhost:61499&quot;" Comment="Device manager socket ID"/>
+		<Attribute Name="Profile" Type="STRING" Value="HOLOBLOC"/>
+		<Attribute Name="Color" Type="STRING" Value="255,190,111"/>
+		<Resource Name="EMB_RES" Type="iec61499::system::EMB_RES" x="0" y="0">
+			<FBNetwork>
+				<EventConnections>
+					<Connection Source="START.WARM" Destination="PubSubTestApp.SUBSCRIBE_1.INIT" dx1="93.33"/>
+					<Connection Source="START.COLD" Destination="PubSubTestApp.SUBSCRIBE_1.INIT" dx1="93.33"/>
+				</EventConnections>
+			</FBNetwork>
+		</Resource>
+	</Device>
+	<Segment Name="Ethernet" Type="iec61499::system::Ethernet" x="2973.33" y="406.67" dx1="2000">
+		<Attribute Name="Color" Type="STRING" Value="68,233,181"/>
+	</Segment>
+	<Mapping From="PubSubTestApp.E_CYCLE" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.E_CTU" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.PUBLISH_1" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.E_PERMIT" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.SUBSCRIBE_1" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.SUBSCRIBE_2" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.E_PERMIT_1" To="FORTE_PC.EMB_RES"/>
+	<Mapping From="PubSubTestApp.E_PERMIT_2" To="FORTE_PC.EMB_RES"/>
+	<Link SegmentName="Ethernet" CommResource="FORTE_PC" Comment="">
+	</Link>
+</System>
