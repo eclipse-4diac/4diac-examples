@@ -1,0 +1,560 @@
+[
+    {
+        "id": "37304f32167cd75a",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5ee07e72fa7a7903",
+        "type": "OpcUa-Client",
+        "z": "37304f32167cd75a",
+        "endpoint": "b3a817ecda1f6aa9",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "applicationName": "",
+        "applicationUri": "",
+        "x": 640,
+        "y": 120,
+        "wires": [
+            [
+                "18f25cf8c9ed258d"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "326e29f5e8c7995f",
+        "type": "OpcUa-Item",
+        "z": "37304f32167cd75a",
+        "item": "ns=1;i=51211",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "Start",
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "5ee07e72fa7a7903",
+                "c2714313b0a6883f"
+            ]
+        ]
+    },
+    {
+        "id": "93ca46bcf8e244c6",
+        "type": "OpcUa-Item",
+        "z": "37304f32167cd75a",
+        "item": "ns=1;i=51212",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "Stop",
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "5ee07e72fa7a7903"
+            ]
+        ]
+    },
+    {
+        "id": "f6ec8d8146740a3b",
+        "type": "ui-button",
+        "z": "37304f32167cd75a",
+        "group": "6354ced7fe64b9f9",
+        "name": "Start",
+        "label": "Start",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "326e29f5e8c7995f",
+                "b24b0dc60ce6ce39"
+            ]
+        ]
+    },
+    {
+        "id": "b2489b7dc9ddbf1f",
+        "type": "ui-button",
+        "z": "37304f32167cd75a",
+        "group": "6354ced7fe64b9f9",
+        "name": "Stop",
+        "label": "Stop",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 90,
+        "y": 160,
+        "wires": [
+            [
+                "93ca46bcf8e244c6"
+            ]
+        ]
+    },
+    {
+        "id": "b3e558af79a2443e",
+        "type": "ui-text",
+        "z": "37304f32167cd75a",
+        "group": "6354ced7fe64b9f9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "number of received messages",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "76b71067ee340235",
+        "type": "OpcUa-Client",
+        "z": "37304f32167cd75a",
+        "endpoint": "b3a817ecda1f6aa9",
+        "action": "subscribe",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": "1",
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "",
+        "applicationName": "",
+        "applicationUri": "",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "3727e691d697eac1",
+                "797742988db3531b"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "204732af8748a21c",
+        "type": "OpcUa-Item",
+        "z": "37304f32167cd75a",
+        "item": "ns=1;i=51213",
+        "datatype": "UInt16",
+        "value": "",
+        "name": "",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "76b71067ee340235"
+            ]
+        ]
+    },
+    {
+        "id": "b24b0dc60ce6ce39",
+        "type": "rbe",
+        "z": "37304f32167cd75a",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "d59eced8e6702511"
+            ]
+        ]
+    },
+    {
+        "id": "18f25cf8c9ed258d",
+        "type": "debug",
+        "z": "37304f32167cd75a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3727e691d697eac1",
+        "type": "function",
+        "z": "37304f32167cd75a",
+        "name": "Counting messages",
+        "func": "flow.set(\"compteur\",flow.get('compteur')+1);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "c904e626b3b84a52"
+            ]
+        ]
+    },
+    {
+        "id": "d59eced8e6702511",
+        "type": "change",
+        "z": "37304f32167cd75a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "compteur",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "204732af8748a21c"
+            ]
+        ]
+    },
+    {
+        "id": "c904e626b3b84a52",
+        "type": "change",
+        "z": "37304f32167cd75a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "compteur",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "b3e558af79a2443e"
+            ]
+        ]
+    },
+    {
+        "id": "c2714313b0a6883f",
+        "type": "debug",
+        "z": "37304f32167cd75a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "797742988db3531b",
+        "type": "ui-progress",
+        "z": "37304f32167cd75a",
+        "group": "6354ced7fe64b9f9",
+        "name": "",
+        "label": "Counter to 100",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "color": "",
+        "className": "",
+        "x": 540,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c2bb492b45f66d6d",
+        "type": "OpcUa-Browser",
+        "z": "37304f32167cd75a",
+        "endpoint": "b3a817ecda1f6aa9",
+        "item": "",
+        "datatype": "",
+        "topic": "",
+        "items": [],
+        "name": "",
+        "x": 330,
+        "y": 500,
+        "wires": [
+            [
+                "a4639ba657b06bbc"
+            ]
+        ]
+    },
+    {
+        "id": "ebf0fa1bf2e5e27e",
+        "type": "inject",
+        "z": "37304f32167cd75a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 500,
+        "wires": [
+            [
+                "c2bb492b45f66d6d"
+            ]
+        ]
+    },
+    {
+        "id": "a4639ba657b06bbc",
+        "type": "debug",
+        "z": "37304f32167cd75a",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1edcada550c171ae",
+        "type": "comment",
+        "z": "37304f32167cd75a",
+        "name": "Find Node id with OPC browser",
+        "info": "",
+        "x": 250,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "b3a817ecda1f6aa9",
+        "type": "OpcUa-Endpoint",
+        "name": "",
+        "endpoint": "opc.tcp://localhost:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "6354ced7fe64b9f9",
+        "type": "ui-group",
+        "name": "4Diac counter",
+        "page": "25903321c7ccb6f3",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "25903321c7ccb6f3",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "dcd9f8118782c645",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "784d985b094ff170",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "dcd9f8118782c645",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "784d985b094ff170",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "bc1c196970b5ec63",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-opcua": "0.2.348",
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
+    }
+]
