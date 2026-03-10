@@ -8,7 +8,7 @@ In this folder, we collect projects that demonstrate features of the standard IE
 - examples demonstrating hierarchical groupings in IEC 61499
 
 ## Contents
-Each example is commented with expected behavior in response to a certain trigger event. This folder contains a project that can be opened with [4diac IDE 3.0](https://eclipse.dev/4diac/download/). The examples are structured into several Applications, each discussing certain subtopics.
+Each example is commented with expected behavior in response to a certain trigger event. The information is located in the .sys-file. This folder contains a project that can be opened with [4diac IDE 3.0](https://eclipse.dev/4diac/download/). The examples are structured into several Applications, each discussing certain subtopics.
 
 An example is shown here:
 
