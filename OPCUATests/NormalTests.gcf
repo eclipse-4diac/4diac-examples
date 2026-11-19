@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalConstants Name="NormalTests" Comment="Global constants">
+	<Identification Standard="61499-1">
+	</Identification>
+	<VersionInfo Version="1.0" Author="az" Date="2025-05-23">
+	</VersionInfo>
+	<CompilerInfo>
+	</CompilerInfo>
+	<GlobalConstants>
+		<VarDeclaration Name="intCommID1" Type="WSTRING" InitialValue="&quot;239.192.0.2:61499&quot;"/>
+		<VarDeclaration Name="intCommID2" Type="WSTRING" InitialValue="&quot;239.192.0.2:61500&quot;"/>
+		<VarDeclaration Name="opcuaNoSemicolon" Type="WSTRING" InitialValue="&quot;opc_ua[/Objects/test1]&quot;"/>
+		<VarDeclaration Name="opcuaEmptyAction" Type="WSTRING" InitialValue="&quot;opc_ua[;/Objects/test1]&quot;"/>
+		<VarDeclaration Name="opcuaNoExistingAction" Type="WSTRING" InitialValue="&quot;opc_ua[Read;/Objects/test1]&quot;"/>
+		<VarDeclaration Name="opcuaWrongPair" Type="WSTRING" InitialValue="&quot;opc_ua[READ;/Objects/test1,i=1,i=2]&quot;"/>
+		<VarDeclaration Name="opcuaWrongNodeId" Type="WSTRING" InitialValue="&quot;opc_ua[READ;/Objects/test1,1:i=1:i=2]&quot;"/>
+		<VarDeclaration Name="opcuaUnknownIdentifier" Type="WSTRING" InitialValue="&quot;opc_ua[READ;/Objects/test1,1:p=2]&quot;"/>
+		<VarDeclaration Name="opcuaWrongIdentifier" Type="WSTRING" InitialValue="&quot;opc_ua[READ;/Objects/test1,1:i=2 i=3]&quot;"/>
+		<VarDeclaration Name="opcuaLocalWithoutBrowseName" Type="WSTRING" InitialValue="&quot;opc_ua[READ;,1:i=2]&quot;"/>
+		<VarDeclaration Name="opcuaRemoteWithoutBrowseNameNorNodeId" Type="WSTRING" InitialValue="&quot;opc_ua[READ;192.168.0.1:4840#;]&quot;"/>
+		<VarDeclaration Name="opcuaGoodLocalRead" Type="WSTRING" InitialValue="&quot;opc_ua[READ;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodWrite1" Type="WSTRING" InitialValue="&quot;opc_ua[WRITE;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodCreateMethod1" Type="WSTRING" InitialValue="&quot;opc_ua[CREATE_METHOD;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodCallMethod1" Type="WSTRING" InitialValue="&quot;opc_ua[CALL_METHOD;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodSubscribe1" Type="WSTRING" InitialValue="&quot;opc_ua[SUBSCRIBE;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodCreateObject1" Type="WSTRING" InitialValue="&quot;127.0.0.1&quot;"/>
+		<VarDeclaration Name="opcuaGoodDeleteObject1" Type="WSTRING" InitialValue="&quot;127.0.0.1&quot;"/>
+		<VarDeclaration Name="opcuaGoodRemoteRead" Type="WSTRING" InitialValue="&quot;opc_ua[READ;192.168.0.1:4840#;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaGoodRemoteWrite" Type="WSTRING" InitialValue="&quot;opc_ua[WRITE;192.168.0.1:4840#;1:i=4]&quot;"/>
+		<VarDeclaration Name="opcuaCreatemethodWrongNoOfPairs" Type="WSTRING" InitialValue="&quot;opc_ua[CREATE_METHOD;/Objects/test1,1:i=4;/Objects/test2,1:i=5]&quot;"/>
+		<VarDeclaration Name="opcuaCallMethodWrongNoOfPairs" Type="WSTRING" InitialValue="&quot;opc_ua[CALL_METHOD;/Objects/test1,1:i=4;/Objects/test2,1:i=5]&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestOnlyBroseName1" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/OnlyBrowseName/folderTests/NoId&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestOnlyBroseName2" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/OnlyBrowseName/folderTests/sameFolder/NoId;/Objects/firstRead/OnlyBrowseName/folderTests/sameFolder/NoId1&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestOnlyBroseName3" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/OnlyBrowseName/folderTests/folder1/NoId;/Objects/firstRead/OnlyBrowseName/folderTests/folder2/NoId&quot;"/>
+		<VarDeclaration Name="opcuaReadValue1" Type="DINT" InitialValue="DINT#123"/>
+		<VarDeclaration Name="opcuaReadValue2" Type="DINT" InitialValue="DINT#456"/>
+		<VarDeclaration Name="opcuaReadValue3" Type="DINT" InitialValue="DINT#789"/>
+		<VarDeclaration Name="opcuaReadValue4" Type="DINT" InitialValue="DINT#123456"/>
+		<VarDeclaration Name="opcuaReadValue5" Type="DINT" InitialValue="DINT#654321"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdNumeric1" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/NumericNodeId/folderTests/WithId,1:i=12345&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdString1" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/StringNodeId/folderTests/WithId,1:s=hello&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdByteString1" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/ByteStringNodeId/folderTests/WithId,1:b=byteStringNodeId&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdNumeric2" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/NumericNodeId/folderTests/sameFolder/WithId,1:i=12346;/Objects/firstRead/NumericNodeId/folderTests/sameFolder/WithId1,1:i=12347&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdString2" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/StringNodeId/folderTests/sameFolder/WithId,1:s=hello1;/Objects/firstRead/StringNodeId/folderTests/sameFolder/WithId1,1:s=hello2&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdByteString2" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/ByteStringNodeId/folderTests/sameFolder/WithId,1:b=byteStringNodeId1;/Objects/firstRead/ByteStringNodeId/folderTests/sameFolder/WithId1,1:b=byteStringNodeId2&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdNumeric3" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/NumericNodeId/folderTests/folder1/WithId,1:i=12348;/Objects/firstRead/NumericNodeId/folderTests/folder2/WithId,1:i=12349&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdString3" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/StringNodeId/folderTests/folder1/WithId,1:s=hello3;/Objects/firstRead/StringNodeId/folderTests/folder2/WithId,1:s=hello4&quot;"/>
+		<VarDeclaration Name="opcuaFolderTestWithNodeIdByteString3" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/ByteStringNodeId/folderTests/folder1/WithId,1:b=byteStringNodeId3;/Objects/firstRead/ByteStringNodeId/folderTests/folder2/WithId,1:b=byteStringNodeId4&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation1" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/browseNameOnly/noOParameters&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation2" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/browseNameOnly/onlyInputParameters&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation3" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/browseNameOnly/onlyOutputPameters&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation4" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/browseNameOnly/bothInputAndOutputParameters&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation5" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/numericNodeId/noOParameters,1:i=22345&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation6" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/numericNodeId/onlyInputParameters,1:i=22346&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation7" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/numericNodeId/onlyOutputPameters,1:i=22347&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation8" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/numericNodeId/bothInputAndOutputParameters,1:i=22348&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation9" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/stringNodeId/noOParameters,1:s=methodHello&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation10" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/stringNodeId/onlyInputParameters,1:s=methodHello1&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation11" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/stringNodeId/onlyOutputPameters,1:s=methodHello2&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation12" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/stringNodeId/bothInputAndOutputParameters,1:s=methodHello3&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation13" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/byteStringNodeId/noOParameters,1:b=methodByteStringNodeId1&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation14" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/byteStringNodeId/onlyInputParameters,1:b=methodByteStringNodeId2&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation15" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/byteStringNodeId/onlyOutputPameters,1:b=methodByteStringNodeId3&quot;"/>
+		<VarDeclaration Name="opcuaMethodCreation16" Type="WSTRING" InitialValue="&quot;/Objects/firstRead/Methods/byteStringNodeId/bothInputAndOutputParameters,1:b=methodByteStringNodeId4&quot;"/>
+		<VarDeclaration Name="localMethodAction" Type="WSTRING" InitialValue="&quot;CREATE_METHOD&quot;"/>
+		<VarDeclaration Name="serverEndpoint" Type="WSTRING" InitialValue="&quot;opc.tcp://localhost:4840#&quot;"/>
+		<VarDeclaration Name="serverInitCommId" Type="WSTRING" InitialValue="&quot;239.192.0.2:61499&quot;"/>
+		<VarDeclaration Name="serverInitCommIdACK" Type="WSTRING" InitialValue="&quot;239.192.0.2:61500&quot;"/>
+		<VarDeclaration Name="clientEnded" Type="WSTRING" InitialValue="&quot;239.192.0.2:61501&quot;"/>
+		<VarDeclaration Name="opcuaGUIDIdentifier" Type="WSTRING" InitialValue="&quot;opc_ua[READ;/Objects/test1,1:g=2]&quot;"/>
+		<VarDeclaration Name="callMethodAction" Type="WSTRING" InitialValue="&quot;CALL_METHOD&quot;"/>
+		<VarDeclaration Name="unknownEndpoint" Type="WSTRING" InitialValue="&quot;opc.tcp://192.168.0.100:4840#&quot;"/>
+		<VarDeclaration Name="methodValidDelay" Type="WSTRING" InitialValue="&quot;T#500ms&quot;"/>
+		<VarDeclaration Name="unknownEndpoint2" Type="WSTRING" InitialValue="&quot;opc.tcp://192.168.0.101:4840#&quot;"/>
+		<VarDeclaration Name="opcuaTypeNode" Type="WSTRING" InitialValue="&quot;/Objects/types/method&quot;"/>
+		<VarDeclaration Name="opcuaTypeAll" Type="WSTRING" InitialValue="&quot;/Objects/types/BOOL;/Objects/types/SINT;/Objects/types/INT;/Objects/types/DINT;/Objects/types/LINT;/Objects/types/USINT;/Objects/types/UINT;/Objects/types/UDINT;/Objects/types/ULINT;/Objects/types/BYTE;/Objects/types/WORD;/Objects/types/DWORD;/Objects/types/LWORD;/Objects/types/DATE;/Objects/types/TIME_OF_DAY;/Objects/types/DATE_AND_TIME;/Objects/types/TIME;/Objects/types/REAL;/Objects/types/LREAL;/Objects/types/STRING;/Objects/types/WSTRING;/Objects/types/LocalizedText&quot;"/>
+		<VarDeclaration Name="boolValue" Type="WSTRING" InitialValue="&quot;BOOL#TRUE&quot;"/>
+		<VarDeclaration Name="sintValue" Type="WSTRING" InitialValue="&quot;SINT#121&quot;"/>
+		<VarDeclaration Name="intValue" Type="WSTRING" InitialValue="&quot;INT#234&quot;"/>
+		<VarDeclaration Name="dintValue" Type="WSTRING" InitialValue="&quot;DINT#345&quot;"/>
+		<VarDeclaration Name="lintValue" Type="WSTRING" InitialValue="&quot;LINT#456&quot;"/>
+		<VarDeclaration Name="usintValue" Type="WSTRING" InitialValue="&quot;USINT#122&quot;"/>
+		<VarDeclaration Name="uintValue" Type="WSTRING" InitialValue="&quot;UINT#678&quot;"/>
+		<VarDeclaration Name="udintValue" Type="WSTRING" InitialValue="&quot;UDINT#789&quot;"/>
+		<VarDeclaration Name="ulintValue" Type="WSTRING" InitialValue="&quot;ULINT#987&quot;"/>
+		<VarDeclaration Name="byteValue" Type="WSTRING" InitialValue="&quot;BYTE#123&quot;"/>
+		<VarDeclaration Name="wordValue" Type="WSTRING" InitialValue="&quot;WORD#765&quot;"/>
+		<VarDeclaration Name="dwordValue" Type="WSTRING" InitialValue="&quot;DWORD#654&quot;"/>
+		<VarDeclaration Name="lwordValue" Type="WSTRING" InitialValue="&quot;LWORD#543&quot;"/>
+		<VarDeclaration Name="dateValue" Type="WSTRING" InitialValue="&quot;BOOL#TRUE&quot;"/>
+		<VarDeclaration Name="datetimeValue" Type="WSTRING" InitialValue="&quot;BOOL#TRUE&quot;"/>
+		<VarDeclaration Name="timeofdayValue" Type="WSTRING" InitialValue="&quot;BOOL#TRUE&quot;"/>
+		<VarDeclaration Name="timeValue" Type="TIME" InitialValue="TIME#1450ms"/>
+		<VarDeclaration Name="realValue" Type="REAL" InitialValue="REAL#1.23"/>
+		<VarDeclaration Name="lrealValue" Type="LREAL" InitialValue="LREAL#3.21"/>
+		<VarDeclaration Name="stringValue" Type="STRING" InitialValue="'STRING#TestString'"/>
+		<VarDeclaration Name="wstringValue" Type="WSTRING" InitialValue="&quot;WSTRING#TestWString&quot;"/>
+		<VarDeclaration Name="opcuaREADVariable" Type="WSTRING" InitialValue="&quot;/Objects/IsolatedTests/READVariable&quot;"/>
+		<VarDeclaration Name="opcuaWRITEVariable" Type="WSTRING" InitialValue="&quot;/Objects/IsolatedTests/WRITEVariable&quot;"/>
+		<VarDeclaration Name="opcuaNoFolder" Type="WSTRING" InitialValue="&quot;/Objects/noNewFolder&quot;"/>
+		<VarDeclaration Name="opcuaNoFolderMethod" Type="WSTRING" InitialValue="&quot;/Objects/noNewFolderMethod&quot;"/>
+		<VarDeclaration Name="opcuaDirectRead" Type="WSTRING" InitialValue="&quot;/1:readVar/&quot;"/>
+		<VarDeclaration Name="opcuaDirectWrite" Type="WSTRING" InitialValue="&quot;/1:writeVar&quot;"/>
+		<VarDeclaration Name="opcuaDirectMethod" Type="WSTRING" InitialValue="&quot;/1:method&quot;"/>
+		<VarDeclaration Name="opcuaDirectRead2" Type="WSTRING" InitialValue="&quot;/1:folder2/readVar&quot;"/>
+		<VarDeclaration Name="opcuaDirectWrite2" Type="WSTRING" InitialValue="&quot;/1:folder2/writeVar&quot;"/>
+		<VarDeclaration Name="opcuaDirectMethod2" Type="WSTRING" InitialValue="&quot;/1:folder2/method&quot;"/>
+		<VarDeclaration Name="localizedTextValue" Type="WSTRING" InitialValue="&quot;(text:='JustAText',locale:='de-DE')&quot;"/>
+		<VarDeclaration Name="waitConnectionTime" Type="TIME" InitialValue="T#1s"/>
+		<VarDeclaration Name="serverDeInitCommId" Type="WSTRING" InitialValue="&quot;239.192.0.2:61502&quot;"/>
+		<VarDeclaration Name="serverInitTCP" Type="WSTRING" InitialValue="&quot;127.0.0.1:60100&quot;"/>
+		<VarDeclaration Name="serverDeinitTCP" Type="WSTRING" InitialValue="&quot;127.0.0.1:60101&quot;"/>
+		<VarDeclaration Name="clientInitTCP" Type="WSTRING" InitialValue="&quot;127.0.0.1:60102&quot;"/>
+		<VarDeclaration Name="avoidManyEventsDelay" Type="WSTRING" InitialValue="&quot;T#1000ms&quot;"/>
+		<VarDeclaration Name="opcuaFirstResourceINIT" Type="WSTRING" InitialValue="&quot;WSTRING#opcuaFirstResourceINIT&quot;"/>
+		<VarDeclaration Name="opcuaTenVars" Type="WSTRING" InitialValue="&quot;/Objects/folder1/var1;/Objects/folder1/var2;/Objects/folder1/var3;/Objects/folder1/var4;/Objects/folder1/var5;/Objects/folder1/var6;/Objects/folder1/var7;/Objects/folder1/var8;/Objects/folder1/var9;/Objects/folder1/var10&quot;"/>
+		<VarDeclaration Name="connectionTesterNode" Type="WSTRING" InitialValue="&quot;,0:i=2261&quot;"/>
+	</GlobalConstants>
+	<OriginalSource><![CDATA[GLOBALCONSTANTS NormalTests
+	VAR_GLOBAL CONSTANT
+		intCommID1 : WSTRING := "239.192.0.2:61499";
+		intCommID2 : WSTRING := "239.192.0.2:61500";
+		opcuaNoSemicolon : WSTRING := "opc_ua[/Objects/test1]";
+		opcuaEmptyAction : WSTRING := "opc_ua[;/Objects/test1]";
+		opcuaNoExistingAction : WSTRING := "opc_ua[Read;/Objects/test1]";
+		opcuaWrongPair : WSTRING := "opc_ua[READ;/Objects/test1,i=1,i=2]";
+		opcuaWrongNodeId : WSTRING := "opc_ua[READ;/Objects/test1,1:i=1:i=2]";
+		opcuaUnknownIdentifier : WSTRING := "opc_ua[READ;/Objects/test1,1:p=2]";
+		opcuaWrongIdentifier : WSTRING := "opc_ua[READ;/Objects/test1,1:i=2 i=3]";
+		opcuaLocalWithoutBrowseName : WSTRING := "opc_ua[READ;,1:i=2]";
+		opcuaRemoteWithoutBrowseNameNorNodeId : WSTRING := "opc_ua[READ;192.168.0.1:4840#;]";
+		opcuaGoodLocalRead : WSTRING := "opc_ua[READ;1:i=4]";
+		opcuaGoodWrite1 : WSTRING := "opc_ua[WRITE;1:i=4]";
+		opcuaGoodCreateMethod1 : WSTRING := "opc_ua[CREATE_METHOD;1:i=4]";
+		opcuaGoodCallMethod1 : WSTRING := "opc_ua[CALL_METHOD;1:i=4]";
+		opcuaGoodSubscribe1 : WSTRING := "opc_ua[SUBSCRIBE;1:i=4]";
+		opcuaGoodCreateObject1 : WSTRING := "127.0.0.1";
+		opcuaGoodDeleteObject1 : WSTRING := "127.0.0.1";
+		opcuaGoodRemoteRead : WSTRING := "opc_ua[READ;192.168.0.1:4840#;1:i=4]";
+		opcuaGoodRemoteWrite : WSTRING := "opc_ua[WRITE;192.168.0.1:4840#;1:i=4]";
+		opcuaCreatemethodWrongNoOfPairs : WSTRING := "opc_ua[CREATE_METHOD;/Objects/test1,1:i=4;/Objects/test2,1:i=5]";
+		opcuaCallMethodWrongNoOfPairs : WSTRING := "opc_ua[CALL_METHOD;/Objects/test1,1:i=4;/Objects/test2,1:i=5]";
+		opcuaFolderTestOnlyBroseName1 : WSTRING := "/Objects/firstRead/OnlyBrowseName/folderTests/NoId";
+		opcuaFolderTestOnlyBroseName2 : WSTRING :=
+			"/Objects/firstRead/OnlyBrowseName/folderTests/sameFolder/NoId;/Objects/firstRead/OnlyBrowseName/folderTests/sameFolder/NoId1";
+		opcuaFolderTestOnlyBroseName3 : WSTRING :=
+			"/Objects/firstRead/OnlyBrowseName/folderTests/folder1/NoId;/Objects/firstRead/OnlyBrowseName/folderTests/folder2/NoId";
+		opcuaReadValue1 : DINT := DINT#123;
+		opcuaReadValue2 : DINT := DINT#456;
+		opcuaReadValue3 : DINT := DINT#789;
+		opcuaReadValue4 : DINT := DINT#123456;
+		opcuaReadValue5 : DINT := DINT#654321;
+		opcuaFolderTestWithNodeIdNumeric1 : WSTRING := "/Objects/firstRead/NumericNodeId/folderTests/WithId,1:i=12345";
+		opcuaFolderTestWithNodeIdString1 : WSTRING := "/Objects/firstRead/StringNodeId/folderTests/WithId,1:s=hello";
+		opcuaFolderTestWithNodeIdByteString1 : WSTRING :=
+			"/Objects/firstRead/ByteStringNodeId/folderTests/WithId,1:b=byteStringNodeId";
+		opcuaFolderTestWithNodeIdNumeric2 : WSTRING :=
+			"/Objects/firstRead/NumericNodeId/folderTests/sameFolder/WithId,1:i=12346;/Objects/firstRead/NumericNodeId/folderTests/sameFolder/WithId1,1:i=12347";
+		opcuaFolderTestWithNodeIdString2 : WSTRING :=
+			"/Objects/firstRead/StringNodeId/folderTests/sameFolder/WithId,1:s=hello1;/Objects/firstRead/StringNodeId/folderTests/sameFolder/WithId1,1:s=hello2";
+		opcuaFolderTestWithNodeIdByteString2 : WSTRING :=
+			"/Objects/firstRead/ByteStringNodeId/folderTests/sameFolder/WithId,1:b=byteStringNodeId1;/Objects/firstRead/ByteStringNodeId/folderTests/sameFolder/WithId1,1:b=byteStringNodeId2";
+		opcuaFolderTestWithNodeIdNumeric3 : WSTRING :=
+			"/Objects/firstRead/NumericNodeId/folderTests/folder1/WithId,1:i=12348;/Objects/firstRead/NumericNodeId/folderTests/folder2/WithId,1:i=12349";
+		opcuaFolderTestWithNodeIdString3 : WSTRING :=
+			"/Objects/firstRead/StringNodeId/folderTests/folder1/WithId,1:s=hello3;/Objects/firstRead/StringNodeId/folderTests/folder2/WithId,1:s=hello4";
+		opcuaFolderTestWithNodeIdByteString3 : WSTRING :=
+			"/Objects/firstRead/ByteStringNodeId/folderTests/folder1/WithId,1:b=byteStringNodeId3;/Objects/firstRead/ByteStringNodeId/folderTests/folder2/WithId,1:b=byteStringNodeId4";
+		opcuaMethodCreation1 : WSTRING := "/Objects/firstRead/Methods/browseNameOnly/noOParameters";
+		opcuaMethodCreation2 : WSTRING := "/Objects/firstRead/Methods/browseNameOnly/onlyInputParameters";
+		opcuaMethodCreation3 : WSTRING := "/Objects/firstRead/Methods/browseNameOnly/onlyOutputPameters";
+		opcuaMethodCreation4 : WSTRING := "/Objects/firstRead/Methods/browseNameOnly/bothInputAndOutputParameters";
+		opcuaMethodCreation5 : WSTRING := "/Objects/firstRead/Methods/numericNodeId/noOParameters,1:i=22345";
+		opcuaMethodCreation6 : WSTRING := "/Objects/firstRead/Methods/numericNodeId/onlyInputParameters,1:i=22346";
+		opcuaMethodCreation7 : WSTRING := "/Objects/firstRead/Methods/numericNodeId/onlyOutputPameters,1:i=22347";
+		opcuaMethodCreation8 : WSTRING :=
+			"/Objects/firstRead/Methods/numericNodeId/bothInputAndOutputParameters,1:i=22348";
+		opcuaMethodCreation9 : WSTRING := "/Objects/firstRead/Methods/stringNodeId/noOParameters,1:s=methodHello";
+		opcuaMethodCreation10 : WSTRING :=
+			"/Objects/firstRead/Methods/stringNodeId/onlyInputParameters,1:s=methodHello1";
+		opcuaMethodCreation11 : WSTRING :=
+			"/Objects/firstRead/Methods/stringNodeId/onlyOutputPameters,1:s=methodHello2";
+		opcuaMethodCreation12 : WSTRING :=
+			"/Objects/firstRead/Methods/stringNodeId/bothInputAndOutputParameters,1:s=methodHello3";
+		opcuaMethodCreation13 : WSTRING :=
+			"/Objects/firstRead/Methods/byteStringNodeId/noOParameters,1:b=methodByteStringNodeId1";
+		opcuaMethodCreation14 : WSTRING :=
+			"/Objects/firstRead/Methods/byteStringNodeId/onlyInputParameters,1:b=methodByteStringNodeId2";
+		opcuaMethodCreation15 : WSTRING :=
+			"/Objects/firstRead/Methods/byteStringNodeId/onlyOutputPameters,1:b=methodByteStringNodeId3";
+		opcuaMethodCreation16 : WSTRING :=
+			"/Objects/firstRead/Methods/byteStringNodeId/bothInputAndOutputParameters,1:b=methodByteStringNodeId4";
+		localMethodAction : WSTRING := "CREATE_METHOD";
+		serverEndpoint : WSTRING := "opc.tcp://localhost:4840#";
+		serverInitCommId : WSTRING := "239.192.0.2:61499";
+		serverInitCommIdACK : WSTRING := "239.192.0.2:61500";
+		clientEnded : WSTRING := "239.192.0.2:61501";
+		opcuaGUIDIdentifier : WSTRING := "opc_ua[READ;/Objects/test1,1:g=2]";
+		callMethodAction : WSTRING := "CALL_METHOD";
+		unknownEndpoint : WSTRING := "opc.tcp://192.168.0.100:4840#";
+		methodValidDelay : WSTRING := "T#500ms";
+		unknownEndpoint2 : WSTRING := "opc.tcp://192.168.0.101:4840#";
+		opcuaTypeNode : WSTRING := "/Objects/types/method";
+		opcuaTypeAll : WSTRING :=
+			"/Objects/types/BOOL;/Objects/types/SINT;/Objects/types/INT;/Objects/types/DINT;/Objects/types/LINT;/Objects/types/USINT;/Objects/types/UINT;/Objects/types/UDINT;/Objects/types/ULINT;/Objects/types/BYTE;/Objects/types/WORD;/Objects/types/DWORD;/Objects/types/LWORD;/Objects/types/DATE;/Objects/types/TIME_OF_DAY;/Objects/types/DATE_AND_TIME;/Objects/types/TIME;/Objects/types/REAL;/Objects/types/LREAL;/Objects/types/STRING;/Objects/types/WSTRING;/Objects/types/LocalizedText";
+		boolValue : WSTRING := "BOOL#TRUE";
+		sintValue : WSTRING := "SINT#121";
+		intValue : WSTRING := "INT#234";
+		dintValue : WSTRING := "DINT#345";
+		lintValue : WSTRING := "LINT#456";
+		usintValue : WSTRING := "USINT#122";
+		uintValue : WSTRING := "UINT#678";
+		udintValue : WSTRING := "UDINT#789";
+		ulintValue : WSTRING := "ULINT#987";
+		byteValue : WSTRING := "BYTE#123";
+		wordValue : WSTRING := "WORD#765";
+		dwordValue : WSTRING := "DWORD#654";
+		lwordValue : WSTRING := "LWORD#543";
+		dateValue : WSTRING := "BOOL#TRUE";
+		datetimeValue : WSTRING := "BOOL#TRUE";
+		timeofdayValue : WSTRING := "BOOL#TRUE";
+		timeValue : TIME := TIME#1450ms;
+		realValue : REAL := REAL#1.23;
+		lrealValue : LREAL := LREAL#3.21;
+		stringValue : STRING := 'STRING#TestString';
+		wstringValue : WSTRING := "WSTRING#TestWString";
+		opcuaREADVariable : WSTRING := "/Objects/IsolatedTests/READVariable";
+		opcuaWRITEVariable : WSTRING := "/Objects/IsolatedTests/WRITEVariable";
+		opcuaNoFolder : WSTRING := "/Objects/noNewFolder";
+		opcuaNoFolderMethod : WSTRING := "/Objects/noNewFolderMethod";
+		opcuaDirectRead : WSTRING := "/1:readVar/";
+		opcuaDirectWrite : WSTRING := "/1:writeVar";
+		opcuaDirectMethod : WSTRING := "/1:method";
+		opcuaDirectRead2 : WSTRING := "/1:folder2/readVar";
+		opcuaDirectWrite2 : WSTRING := "/1:folder2/writeVar";
+		opcuaDirectMethod2 : WSTRING := "/1:folder2/method";
+		localizedTextValue : WSTRING := "(text:='JustAText',locale:='de-DE')";
+		waitConnectionTime : TIME := T#1s;
+		serverDeInitCommId : WSTRING := "239.192.0.2:61502";
+		serverInitTCP : WSTRING := "127.0.0.1:60100";
+		serverDeinitTCP : WSTRING := "127.0.0.1:60101";
+		clientInitTCP : WSTRING := "127.0.0.1:60102";
+		avoidManyEventsDelay : WSTRING := "T#1000ms";
+		opcuaFirstResourceINIT : WSTRING := "WSTRING#opcuaFirstResourceINIT";
+		opcuaTenVars : WSTRING :=
+			"/Objects/folder1/var1;/Objects/folder1/var2;/Objects/folder1/var3;/Objects/folder1/var4;/Objects/folder1/var5;/Objects/folder1/var6;/Objects/folder1/var7;/Objects/folder1/var8;/Objects/folder1/var9;/Objects/folder1/var10";
+		connectionTesterNode : WSTRING := ",0:i=2261";
+	END_VAR
+END_GLOBALCONSTANTS
+]]></OriginalSource>
+</GlobalConstants>

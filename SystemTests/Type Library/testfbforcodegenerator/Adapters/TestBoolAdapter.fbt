@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="TestBoolAdapter" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-07-18">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="Dynamic" Type="Event">
+				<With Var="DI"/>
+			</Event>
+			<Event Name="Compiled" Type="Event">
+				<With Var="DI"/>
+			</Event>
+		</EventInputs>
+		<InputVars>
+			<VarDeclaration Name="DI" Type="BOOL"/>
+		</InputVars>
+		<Plugs>
+			<AdapterDeclaration Name="ADP" Type="BoolAdapter"/>
+			<AdapterDeclaration Name="ADP_Compiled" Type="BoolAdapterCompiled"/>
+		</Plugs>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="3455" y="495">
+				<ECAction Algorithm="Dynamic"/>
+			</ECState>
+			<ECState Name="State_1" x="2160" y="1995">
+				<ECAction Algorithm="Compiled"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="Dynamic" x="2135" y="500"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="2165" y="880"/>
+			<ECTransition Source="START" Destination="State_1" Condition="Compiled" x="1505" y="1240"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1015" y="1720"/>
+		</ECC>
+		<Algorithm Name="Dynamic" Comment="new algorithm">
+			<ST><![CDATA[ADP.BO := DI;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Compiled" Comment="new algorithm">
+			<ST><![CDATA[ADP_Compiled.BO := DI;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

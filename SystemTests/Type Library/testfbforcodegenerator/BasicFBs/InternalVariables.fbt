@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="InternalVariables" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-06-10">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="A_PLUS" Type="Event">
+			</Event>
+			<Event Name="B_MINUS" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="A_O"/>
+				<With Var="B_O"/>
+			</Event>
+		</EventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="A_O" Type="INT"/>
+			<VarDeclaration Name="B_O" Type="INT"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<InternalVars>
+			<VarDeclaration Name="A" Type="INT" Comment="Internal Variable" InitialValue="0"/>
+			<VarDeclaration Name="B" Type="INT" Comment="Internal Variable" InitialValue="0"/>
+		</InternalVars>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="3175" y="585">
+				<ECAction Algorithm="A_PLUS" Output="EO"/>
+			</ECState>
+			<ECState Name="State_1" x="1230" y="1480">
+				<ECAction Algorithm="B_PLUS" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="A_PLUS" x="2080" y="310"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1990" y="950"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="575" y="1240"/>
+			<ECTransition Source="START" Destination="State_1" Condition="B_MINUS" x="1210" y="1010"/>
+		</ECC>
+		<Algorithm Name="A_PLUS" Comment="new algorithm">
+			<ST><![CDATA[A_O:=A;
+A:=A+1;]]></ST>
+		</Algorithm>
+		<Algorithm Name="B_PLUS" Comment="new algorithm">
+			<ST><![CDATA[B_O:=B;
+B:=B-1;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

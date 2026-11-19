@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="DataTypesBitStrings" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Normal just propagates the input to the output&#10;Internal: sets the output from inside&#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="Normal" Type="Event">
+				<With Var="BOOL_I"/>
+				<With Var="WORD_I"/>
+				<With Var="DWORD_I"/>
+				<With Var="LWORD_I"/>
+				<With Var="BYTE_I"/>
+			</Event>
+			<Event Name="Internal" Type="Event">
+				<With Var="BOOL_I"/>
+				<With Var="WORD_I"/>
+				<With Var="DWORD_I"/>
+				<With Var="LWORD_I"/>
+				<With Var="BYTE_I"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="BOOL_O"/>
+				<With Var="BYTE_O"/>
+				<With Var="WORD_O"/>
+				<With Var="DWORD_O"/>
+				<With Var="LWORD_O"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="BOOL_I" Type="BOOL"/>
+			<VarDeclaration Name="BYTE_I" Type="BYTE"/>
+			<VarDeclaration Name="WORD_I" Type="WORD"/>
+			<VarDeclaration Name="DWORD_I" Type="DWORD"/>
+			<VarDeclaration Name="LWORD_I" Type="LWORD"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="BOOL_O" Type="SINT"/>
+			<VarDeclaration Name="BYTE_O" Type="INT"/>
+			<VarDeclaration Name="WORD_O" Type="DINT"/>
+			<VarDeclaration Name="DWORD_O" Type="LINT"/>
+			<VarDeclaration Name="LWORD_O" Type="USINT"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2375" y="295">
+				<ECAction Algorithm="Normal" Output="EO"/>
+			</ECState>
+			<ECState Name="State_3" x="600" y="3000">
+				<ECAction Algorithm="Internal" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="Normal" x="1605" y="380"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1645" y="605"/>
+			<ECTransition Source="START" Destination="State_3" Condition="Internal" x="850" y="1460"/>
+			<ECTransition Source="State_3" Destination="START" Condition="1" x="135" y="1840"/>
+		</ECC>
+		<Algorithm Name="Normal" Comment="new algorithm">
+			<ST><![CDATA[BOOL_O:=BOOL_I;
+BYTE_O:=BYTE_I;
+WORD_O:=WORD_I;
+DWORD_O:=DWORD_I;
+LWORD_O:=LWORD_I;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Internal" Comment="new algorithm">
+			<ST><![CDATA[BOOL_O:=1;
+BYTE_O:=2;
+WORD_O:=35555;
+DWORD_O:=2147483648;
+LWORD_O:=2147483648;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>
