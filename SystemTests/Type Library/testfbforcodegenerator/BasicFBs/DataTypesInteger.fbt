@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="DataTypesInteger" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Normal just propagates the input to the output&#10;Max: sets to the highest possible value&#10;Min: sets to the lowest possible value&#10;Internal: sets the output from inside&#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="Normal" Type="Event">
+				<With Var="S_INT_I"/>
+				<With Var="INT_I"/>
+				<With Var="DINT_I"/>
+				<With Var="LINT_I"/>
+				<With Var="USINT_I"/>
+				<With Var="UIN_I"/>
+				<With Var="UDINT_I"/>
+				<With Var="ULINT_I"/>
+			</Event>
+			<Event Name="Internal" Type="Event">
+				<With Var="S_INT_I"/>
+				<With Var="INT_I"/>
+				<With Var="DINT_I"/>
+				<With Var="LINT_I"/>
+				<With Var="USINT_I"/>
+				<With Var="UIN_I"/>
+				<With Var="UDINT_I"/>
+				<With Var="ULINT_I"/>
+			</Event>
+			<Event Name="Max" Type="Event">
+				<With Var="S_INT_I"/>
+				<With Var="INT_I"/>
+				<With Var="DINT_I"/>
+				<With Var="LINT_I"/>
+				<With Var="USINT_I"/>
+				<With Var="UIN_I"/>
+				<With Var="UDINT_I"/>
+				<With Var="ULINT_I"/>
+			</Event>
+			<Event Name="Min" Type="Event">
+				<With Var="INT_I"/>
+				<With Var="S_INT_I"/>
+				<With Var="DINT_I"/>
+				<With Var="LINT_I"/>
+				<With Var="USINT_I"/>
+				<With Var="UIN_I"/>
+				<With Var="UDINT_I"/>
+				<With Var="ULINT_I"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="Event_1" Type="Event">
+				<With Var="SINT1"/>
+				<With Var="INT1"/>
+				<With Var="DINT1"/>
+				<With Var="LINT1"/>
+				<With Var="USINT1"/>
+				<With Var="UINT1"/>
+				<With Var="UDINT1"/>
+				<With Var="ULINT1"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="S_INT_I" Type="SINT"/>
+			<VarDeclaration Name="INT_I" Type="INT"/>
+			<VarDeclaration Name="DINT_I" Type="DINT"/>
+			<VarDeclaration Name="LINT_I" Type="LINT"/>
+			<VarDeclaration Name="USINT_I" Type="USINT"/>
+			<VarDeclaration Name="UIN_I" Type="UINT"/>
+			<VarDeclaration Name="UDINT_I" Type="UDINT"/>
+			<VarDeclaration Name="ULINT_I" Type="ULINT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="SINT1" Type="SINT"/>
+			<VarDeclaration Name="INT1" Type="INT"/>
+			<VarDeclaration Name="DINT1" Type="DINT"/>
+			<VarDeclaration Name="LINT1" Type="LINT"/>
+			<VarDeclaration Name="USINT1" Type="USINT"/>
+			<VarDeclaration Name="UINT1" Type="UINT"/>
+			<VarDeclaration Name="UDINT1" Type="UDINT"/>
+			<VarDeclaration Name="ULINT1" Type="ULINT"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2375" y="295">
+				<ECAction Algorithm="Normal" Output="Event_1"/>
+			</ECState>
+			<ECState Name="State_1" x="2900" y="1200">
+				<ECAction Algorithm="Max" Output="Event_1"/>
+			</ECState>
+			<ECState Name="State_2" x="2700" y="3000">
+				<ECAction Algorithm="Min" Output="Event_1"/>
+			</ECState>
+			<ECState Name="State_3" x="600" y="3000">
+				<ECAction Algorithm="Internal" Output="Event_1"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="Normal" x="1605" y="380"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1645" y="605"/>
+			<ECTransition Source="START" Destination="State_1" Condition="Max" x="1375" y="865"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1490" y="1215"/>
+			<ECTransition Source="START" Destination="State_2" Condition="Min" x="1075" y="1145"/>
+			<ECTransition Source="State_2" Destination="START" Condition="1" x="565" y="1720"/>
+			<ECTransition Source="START" Destination="State_3" Condition="Internal" x="850" y="1460"/>
+			<ECTransition Source="State_3" Destination="START" Condition="1" x="135" y="1840"/>
+		</ECC>
+		<Algorithm Name="Normal" Comment="new algorithm">
+			<ST><![CDATA[SINT1 :=S_INT_I;
+INT1:=INT_I;
+DINT1:=DINT_I;
+LINT1:=LINT_I;
+USINT1:=USINT_I;
+UINT1:=UIN_I;
+UDINT1:=UDINT_I;
+ULINT1:=ULINT_I;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Max" Comment="new algorithm">
+			<ST><![CDATA[SINT1 :=127;
+INT1:=32767;
+DINT1:=2147483647;
+LINT1:=9223372036854775807;
+USINT1:=255;
+UINT1:=65535;
+UDINT1:=4294967295;
+ULINT1:=1;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Min" Comment="new algorithm">
+			<ST><![CDATA[SINT1 :=-128;
+INT1:=-32768;
+DINT1:=-2147483648;
+LINT1:=-9223372036854775808;
+USINT1:=0;
+UINT1:=0;
+UDINT1:=0;
+ULINT1:=0;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Internal" Comment="new algorithm">
+			<ST><![CDATA[SINT1 :=-10;
+INT1:=-20;
+DINT1:=-30;
+LINT1:=-40;
+USINT1:=50;
+UINT1:=60;
+UDINT1:=70;
+ULINT1:=80;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

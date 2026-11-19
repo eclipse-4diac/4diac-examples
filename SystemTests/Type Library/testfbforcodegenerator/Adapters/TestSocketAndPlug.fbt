@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="TestSocketAndPlug" Comment="Template for a simple Basic Function Block Type">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-07-25">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<Plugs>
+			<AdapterDeclaration Name="AdpPlug" Type="TestAdapter"/>
+		</Plugs>
+		<Sockets>
+			<AdapterDeclaration Name="AdpSocket" Type="TestAdapter"/>
+		</Sockets>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="475" y="1125">
+			</ECState>
+			<ECState Name="State" x="2800" y="500">
+				<ECAction Algorithm="Plug"/>
+			</ECState>
+			<ECState Name="State_1" x="3230" y="2060">
+				<ECAction Algorithm="Socket"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="[AdpPlug.EI]" x="1835" y="670"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1920" y="1260"/>
+			<ECTransition Source="START" Destination="State_1" Condition="[AdpSocket.EO]" x="1990" y="1625"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1825" y="2030"/>
+		</ECC>
+		<Algorithm Name="Plug" Comment="new algorithm">
+			<ST><![CDATA[AdpPlug.D0 := AdpPlug.DI;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Socket" Comment="new algorithm">
+			<ST><![CDATA[AdpSocket.DI := AdpSocket.D0;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

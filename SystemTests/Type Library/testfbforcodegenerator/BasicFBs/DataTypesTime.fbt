@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="DataTypesTime" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="Normal" Type="Event">
+			</Event>
+			<Event Name="Internal" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="TIME_I" Type="TIME"/>
+			<VarDeclaration Name="DATE_I" Type="DATE"/>
+			<VarDeclaration Name="TOD_I" Type="TIME_OF_DAY"/>
+			<VarDeclaration Name="DAT_I" Type="DATE_AND_TIME"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="TIME_O" Type="TIME"/>
+			<VarDeclaration Name="DATE_O" Type="DATE"/>
+			<VarDeclaration Name="TOD_O" Type="TIME_OF_DAY"/>
+			<VarDeclaration Name="DAT_O" Type="DATE_AND_TIME"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="4755" y="430">
+				<ECAction/>
+			</ECState>
+			<ECState Name="State_1" x="1680" y="1775">
+				<ECAction/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="Normal" x="2775" y="465"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="2870" y="920"/>
+			<ECTransition Source="START" Destination="State_1" Condition="Internal" x="1245" y="1150"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="760" y="1490"/>
+		</ECC>
+		<Algorithm Name="Normal" Comment="new algorithm">
+			<ST><![CDATA[TIME_O:=TIME_I;
+DATE_O:=DATE_I;
+TOD_O:=TOD_I;
+DAT_O:=DAT_I;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Internal" Comment="new algorithm">
+			<ST><![CDATA[TIME_O:=TIME#1m;
+DATE_O:=D#1996-08-12;
+TOD_O:=TOD#06:06:66;
+DAT_O:=DT#1989-06-15-13:56:14.77;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="AdapterTransition" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-06-21">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+			</Event>
+		</EventOutputs>
+		<Plugs>
+			<AdapterDeclaration Name="ATimeOut" Type="iec61499::events::ATimeOut"/>
+		</Plugs>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2680" y="905">
+				<ECAction Output="ATimeOut.START"/>
+			</ECState>
+			<ECState Name="State_1" x="1585" y="1700">
+				<ECAction Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="1760" y="715"/>
+			<ECTransition Source="State" Destination="State_1" Condition="ATimeOut.TimeOut" x="2230" y="1355"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1175" y="1145"/>
+		</ECC>
+	</BasicFB>
+</FBType>

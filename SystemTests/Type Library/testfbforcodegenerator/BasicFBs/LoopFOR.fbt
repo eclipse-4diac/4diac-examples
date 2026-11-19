@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="LoopFOR" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Summs up to the iteraTIONS&#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+				<With Var="Iterations"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="O"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="Iterations" Type="INT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="O" Type="INT"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<InternalVars>
+			<VarDeclaration Name="i" Type="INT" Comment="Internal Variable" InitialValue="0"/>
+		</InternalVars>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2860" y="650">
+				<ECAction Algorithm="FOR" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="2010" y="435"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1840" y="770"/>
+		</ECC>
+		<Algorithm Name="FOR" Comment="new algorithm">
+			<ST><![CDATA[FOR i := 0 TO Iterations BY 1 DO
+	O := O+i;
+END_FOR;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

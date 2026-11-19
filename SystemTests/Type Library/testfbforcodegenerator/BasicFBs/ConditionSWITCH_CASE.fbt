@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="ConditionSWITCH_CASE" Comment="Test FB fpr Switch Statement">
+	<Identification Standard="61499-2" Description="It checks if the input data I is:&#10;= 5&#10;= 10 &#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0&#10;">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+				<With Var="InputInt"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="EQ5"/>
+				<With Var="EQ10"/>
+				<With Var="ELSEO"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="InputInt" Type="DINT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="EQ5" Type="BOOL"/>
+			<VarDeclaration Name="EQ10" Type="BOOL"/>
+			<VarDeclaration Name="ELSEO" Type="BOOL"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2430" y="925">
+				<ECAction Algorithm="Switch" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="1645" y="720"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1500" y="1045"/>
+		</ECC>
+		<Algorithm Name="Switch">
+			<ST><![CDATA[CASE InputInt OF
+	5 : EQ5 := true;
+	10: EQ10 :=true;
+ELSE
+	ELSEO:=true;
+END_CASE;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

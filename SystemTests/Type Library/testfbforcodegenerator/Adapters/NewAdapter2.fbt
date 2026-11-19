@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="NewAdapter2" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-06-10">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="O"/>
+			</Event>
+		</EventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="O" Type="INT"/>
+		</OutputVars>
+		<Sockets>
+			<AdapterDeclaration Name="TestAdapter" Type="TestAdapter"/>
+		</Sockets>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="600" y="400">
+			</ECState>
+			<ECState Name="State" x="3965" y="645">
+				<ECAction Algorithm="OUT" Output="EO"/>
+			</ECState>
+			<ECState Name="State_1" x="1760" y="2145">
+				<ECAction Output="TestAdapter.EI"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="TestAdapter.EO" x="2405" y="585"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="2365" y="1120"/>
+			<ECTransition Source="START" Destination="State_1" Condition="EI" x="1300" y="1330"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="835" y="1595"/>
+		</ECC>
+		<Algorithm Name="OUT" Comment="new algorithm">
+			<ST><![CDATA[O:= TestAdapter.D0;
+TestAdapter.DI:= TestAdapter.D0;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>
