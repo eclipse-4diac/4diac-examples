@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="OperatorBitwise" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="AND_" Type="Event">
+				<With Var="A"/>
+				<With Var="B"/>
+				<With Var="C"/>
+			</Event>
+			<Event Name="OR_" Type="Event">
+				<With Var="A"/>
+				<With Var="B"/>
+				<With Var="C"/>
+			</Event>
+			<Event Name="XOR_" Type="Event">
+				<With Var="A"/>
+				<With Var="B"/>
+				<With Var="C"/>
+			</Event>
+			<Event Name="NOT_" Type="Event">
+				<With Var="A"/>
+				<With Var="B"/>
+				<With Var="C"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="OUT"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="A" Type="BYTE"/>
+			<VarDeclaration Name="B" Type="BYTE"/>
+			<VarDeclaration Name="C" Type="BYTE"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="OUT" Type="BYTE"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="4300" y="1900">
+			</ECState>
+			<ECState Name="State_1" x="4590" y="545">
+				<ECAction Algorithm="AND" Output="EO"/>
+			</ECState>
+			<ECState Name="State_2" x="7055" y="1570">
+				<ECAction Algorithm="OR" Output="EO"/>
+			</ECState>
+			<ECState Name="State_3" x="6220" y="2925">
+				<ECAction Algorithm="XOR" Output="EO"/>
+			</ECState>
+			<ECState Name="State_4" x="4225" y="3050">
+				<ECAction Algorithm="NOT" Output="EO"/>
+			</ECState>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="5135" y="1250"/>
+			<ECTransition Source="START" Destination="State_1" Condition="AND_" x="4385" y="1185"/>
+			<ECTransition Source="START" Destination="State_2" Condition="OR_" x="5845" y="1465"/>
+			<ECTransition Source="START" Destination="State_3" Condition="XOR_" x="5585" y="2270"/>
+			<ECTransition Source="START" Destination="State_4" Condition="NOT_" x="4400" y="2540"/>
+			<ECTransition Source="State_4" Destination="START" Condition="1" x="3740" y="2505"/>
+			<ECTransition Source="State_3" Destination="START" Condition="1" x="5210" y="2730"/>
+			<ECTransition Source="State_2" Destination="START" Condition="1" x="5815" y="2175"/>
+		</ECC>
+		<Algorithm Name="AND" Comment="new algorithm">
+			<ST><![CDATA[OUT:=(A and B and C);]]></ST>
+		</Algorithm>
+		<Algorithm Name="OR" Comment="new algorithm">
+			<ST><![CDATA[OUT:=(A or B);]]></ST>
+		</Algorithm>
+		<Algorithm Name="XOR" Comment="new algorithm">
+			<ST><![CDATA[OUT:=(A XOR B);]]></ST>
+		</Algorithm>
+		<Algorithm Name="NOT" Comment="new algorithm">
+			<ST><![CDATA[OUT:=NOT A;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="TestSocketAndPlug_Socket" Comment="Template for a simple Basic Function Block Type">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-07-25">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event" Comment="Normal Execution Request">
+				<With Var="DI"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="D0"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="DI" Type="INT" Comment="Input event qualifier"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="D0" Type="INT"/>
+		</OutputVars>
+		<Sockets>
+			<AdapterDeclaration Name="TestAdapter" Type="TestAdapter"/>
+		</Sockets>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="475" y="1125">
+			</ECState>
+			<ECState Name="State" x="3240" y="1025">
+				<ECAction Algorithm="ToPlug" Output="TestAdapter.EI"/>
+			</ECState>
+			<ECState Name="State_1" x="3000" y="2000">
+				<ECAction Algorithm="Out" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="1940" y="955"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1995" y="1505"/>
+			<ECTransition Source="START" Destination="State_1" Condition="TestAdapter.EO" x="1830" y="1645"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1415" y="2450"/>
+		</ECC>
+		<Algorithm Name="ToPlug" Comment="new algorithm">
+			<ST><![CDATA[TestAdapter.DI := DI;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Out" Comment="new algorithm">
+			<ST><![CDATA[D0 := TestAdapter.D0;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

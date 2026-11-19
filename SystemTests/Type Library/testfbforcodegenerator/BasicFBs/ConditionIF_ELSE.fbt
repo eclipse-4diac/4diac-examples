@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="ConditionIF_ELSE" Comment="Lua Test FB for IF statement">
+	<Identification Standard="61499-2" Description="IF  is TRUE when a &gt; b &#10;IF_ELSE is TRUE when b &gt; c&#10;ELSE is TRUE when non of the above trigger&#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="IF_ONLY" Type="Event">
+			</Event>
+			<Event Name="IF_ELSE" Type="Event">
+			</Event>
+			<Event Name="IF_ELSEIF" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="B_IF"/>
+				<With Var="B_IF_ELSE"/>
+				<With Var="B_IF_ELSEIF"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="a" Type="INT"/>
+			<VarDeclaration Name="b" Type="INT"/>
+			<VarDeclaration Name="c" Type="INT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="B_IF" Type="BOOL"/>
+			<VarDeclaration Name="B_IF_ELSE" Type="BOOL"/>
+			<VarDeclaration Name="B_IF_ELSEIF" Type="BOOL"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="IF" x="2765" y="395">
+				<ECAction Algorithm="SetToFalse"/>
+				<ECAction Algorithm="Only_IF" Output="EO"/>
+			</ECState>
+			<ECState Name="IF_ELSE" x="2390" y="1040">
+				<ECAction Algorithm="SetToFalse"/>
+				<ECAction Algorithm="IF_ELSE" Output="EO"/>
+			</ECState>
+			<ECState Name="IF_ELSEIF" x="1015" y="1515">
+				<ECAction Algorithm="SetToFalse"/>
+				<ECAction Algorithm="IF_ELSEIF_ELSE" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="IF" Condition="IF_ONLY" x="1845" y="485"/>
+			<ECTransition Source="START" Destination="IF_ELSE" Condition="IF_ELSE" x="1550" y="815"/>
+			<ECTransition Source="START" Destination="IF_ELSEIF" Condition="IF_ELSEIF" x="875" y="1040"/>
+			<ECTransition Source="IF" Destination="START" Condition="1" x="1745" y="670"/>
+			<ECTransition Source="IF_ELSE" Destination="START" Condition="1" x="1590" y="1295"/>
+			<ECTransition Source="IF_ELSEIF" Destination="START" Condition="1" x="420" y="1390"/>
+		</ECC>
+		<Algorithm Name="Only_IF" Comment="new algorithm">
+			<ST><![CDATA[if a > b then
+	B_IF := true;
+end_if;]]></ST>
+		</Algorithm>
+		<Algorithm Name="IF_ELSE" Comment="new algorithm">
+			<ST><![CDATA[if a > b then
+	B_IF := true;
+elsif b > c then
+	B_IF_ELSEIF := true;
+end_if;]]></ST>
+		</Algorithm>
+		<Algorithm Name="IF_ELSEIF_ELSE" Comment="new algorithm">
+			<ST><![CDATA[if a > b then
+	B_IF := true;
+elsif b > c then
+	B_IF_ELSEIF := true;
+else
+	B_IF_ELSE :=true;
+end_if;
+]]></ST>
+		</Algorithm>
+		<Algorithm Name="SetToFalse" Comment="new algorithm">
+			<ST><![CDATA[B_IF := false;
+B_IF_ELSEIF := false;
+B_IF_ELSE :=false;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

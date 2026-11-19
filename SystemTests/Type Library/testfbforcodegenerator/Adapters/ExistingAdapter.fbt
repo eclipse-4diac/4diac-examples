@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="ExistingAdapter" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-06-10">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="O"/>
+			</Event>
+		</EventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="O" Type="TIME"/>
+		</OutputVars>
+		<Plugs>
+			<AdapterDeclaration Name="ATimeOut" Type="iec61499::events::ATimeOut"/>
+		</Plugs>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="3720" y="645">
+				<ECAction Algorithm="Start" Output="ATimeOut.START"/>
+			</ECState>
+			<ECState Name="State_1" x="1470" y="1810">
+				<ECAction Algorithm="OUT" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="2385" y="290"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="2120" y="1015"/>
+			<ECTransition Source="START" Destination="State_1" Condition="ATimeOut.TimeOut" x="1160" y="1165"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="740" y="1420"/>
+		</ECC>
+		<Algorithm Name="Start" Comment="new algorithm">
+			<ST><![CDATA[ATimeOut.DT := T#10ms;]]></ST>
+		</Algorithm>
+		<Algorithm Name="OUT" Comment="new algorithm">
+			<ST><![CDATA[O := ATimeOut.DT;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

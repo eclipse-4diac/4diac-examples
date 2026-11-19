@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="DataTypesFloatingPoints" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Normal just propagates the input to the output&#10;Internal: sets the output from inside to pi and e&#10;&#10;Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="jholz" Date="2019-06-05">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::BasicFBs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="Normal" Type="Event">
+				<With Var="REAL_I"/>
+				<With Var="LREAL_I"/>
+			</Event>
+			<Event Name="Internal" Type="Event">
+				<With Var="REAL_I"/>
+				<With Var="LREAL_I"/>
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+				<With Var="REAL_O"/>
+				<With Var="LREAL_O"/>
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="REAL_I" Type="REAL"/>
+			<VarDeclaration Name="LREAL_I" Type="REAL"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="REAL_O" Type="REAL"/>
+			<VarDeclaration Name="LREAL_O" Type="LREAL"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2375" y="295">
+				<ECAction Algorithm="Normal" Output="EO"/>
+			</ECState>
+			<ECState Name="State_3" x="600" y="3000">
+				<ECAction Algorithm="Internal" Output="EO"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="Normal" x="1605" y="380"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1645" y="605"/>
+			<ECTransition Source="START" Destination="State_3" Condition="Internal" x="850" y="1460"/>
+			<ECTransition Source="State_3" Destination="START" Condition="1" x="135" y="1840"/>
+		</ECC>
+		<Algorithm Name="Normal" Comment="new algorithm">
+			<ST><![CDATA[REAL_O:=REAL_I;
+LREAL_O :=LREAL_I;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Internal" Comment="new algorithm">
+			<ST><![CDATA[REAL_O:=3.14159265359;
+LREAL_O :=2.7182818;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

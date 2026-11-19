@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="TestBoolAdapter2" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-07-18">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::Adapters">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventOutputs>
+			<Event Name="Normal" Type="Event">
+				<With Var="D0"/>
+			</Event>
+			<Event Name="Compiled" Type="Event">
+				<With Var="D0"/>
+			</Event>
+		</EventOutputs>
+		<OutputVars>
+			<VarDeclaration Name="D0" Type="BOOL"/>
+		</OutputVars>
+		<Sockets>
+			<AdapterDeclaration Name="ADP" Type="BoolAdapter"/>
+			<AdapterDeclaration Name="ADP_Compiled" Type="BoolAdapterCompiled"/>
+		</Sockets>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="3720" y="565">
+				<ECAction Algorithm="Dynamic" Output="Normal"/>
+			</ECState>
+			<ECState Name="State_1" x="2330" y="1995">
+				<ECAction Algorithm="Compiled" Output="Compiled"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="ADP.EO" x="2235" y="525"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="2195" y="895"/>
+			<ECTransition Source="START" Destination="State_1" Condition="ADP_Compiled.EO" x="1560" y="1275"/>
+			<ECTransition Source="State_1" Destination="START" Condition="1" x="1190" y="1660"/>
+		</ECC>
+		<Algorithm Name="Dynamic" Comment="new algorithm">
+			<ST><![CDATA[D0 := ADP.BO;]]></ST>
+		</Algorithm>
+		<Algorithm Name="Compiled" Comment="new algorithm">
+			<ST><![CDATA[D0 := ADP_Compiled.BO;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>

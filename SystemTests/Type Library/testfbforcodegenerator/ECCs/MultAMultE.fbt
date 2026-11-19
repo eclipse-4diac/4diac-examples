@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="MultAMultE" Comment="Template for an empty basic function block">
+	<Identification Standard="61499-2" Description="Copyright (c) 2019 Jan Holzweber&#10; &#10;This program and the accompanying materials are made&#10;available under the terms of the Eclipse Public License 2.0&#10;which is available at https://www.eclipse.org/legal/epl-2.0/&#10;SPDX-License-Identifier: EPL-2.0">
+	</Identification>
+	<VersionInfo Version="1.0" Author="Jan Holzweber" Date="2019-06-11">
+	</VersionInfo>
+	<CompilerInfo packageName="testfbforcodegenerator::ECCs">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI" Type="Event">
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event">
+			</Event>
+			<Event Name="E1" Type="Event">
+			</Event>
+			<Event Name="E2" Type="Event">
+			</Event>
+			<Event Name="E3" Type="Event">
+			</Event>
+		</EventOutputs>
+		<InputVars>
+			<VarDeclaration Name="I" Type="INT"/>
+		</InputVars>
+		<OutputVars>
+			<VarDeclaration Name="INC" Type="INT"/>
+			<VarDeclaration Name="DEC" Type="INT"/>
+			<VarDeclaration Name="MUL" Type="INT"/>
+			<VarDeclaration Name="EXP" Type="INT"/>
+		</OutputVars>
+	</InterfaceList>
+	<BasicFB>
+		<ECC>
+			<ECState Name="START" Comment="Initial State" x="550" y="425">
+			</ECState>
+			<ECState Name="State" x="2930" y="810">
+				<ECAction Algorithm="INC" Output="EO"/>
+				<ECAction Algorithm="DEC" Output="E1"/>
+				<ECAction Algorithm="MUL" Output="E2"/>
+				<ECAction Algorithm="EXP" Output="E3"/>
+			</ECState>
+			<ECTransition Source="START" Destination="State" Condition="EI" x="1865" y="685"/>
+			<ECTransition Source="State" Destination="START" Condition="1" x="1795" y="900"/>
+		</ECC>
+		<Algorithm Name="INC" Comment="new algorithm">
+			<ST><![CDATA[INC:=I+1;]]></ST>
+		</Algorithm>
+		<Algorithm Name="DEC" Comment="new algorithm">
+			<ST><![CDATA[DEC:=I-1;]]></ST>
+		</Algorithm>
+		<Algorithm Name="MUL" Comment="new algorithm">
+			<ST><![CDATA[MUL:=I*I;]]></ST>
+		</Algorithm>
+		<Algorithm Name="EXP" Comment="new algorithm">
+			<ST><![CDATA[EXP:=I**I;]]></ST>
+		</Algorithm>
+	</BasicFB>
+</FBType>
